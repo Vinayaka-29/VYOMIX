@@ -1,0 +1,56 @@
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: satquery-backend
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=postgresql://satquery_user:satquery_pass@db:5432/satquery_db
+      - ENVIRONMENT=development
+    volumes:
+      - ./backend:/app
+      - ./backend/data/uploads:/app/data/uploads
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: satquery-frontend
+    ports:
+      - "5173:5173"
+    environment:
+      - VITE_API_URL=http://localhost:8000
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    depends_on:
+      - backend
+    restart: unless-stopped
+
+  db:
+    image: postgis/postgis:16-3.4
+    container_name: satquery-db
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=satquery_user
+      - POSTGRES_PASSWORD=satquery_pass
+      - POSTGRES_DB=satquery_db
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U satquery_user -d satquery_db"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+
+volumes:
+  pgdata:
+    driver: local

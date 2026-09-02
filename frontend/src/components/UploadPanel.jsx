@@ -7,8 +7,16 @@ import {
   Upload, 
   X, 
   CheckCircle2, 
+  AlertCircle,
   FileCode2,
-  Layers
+  Layers,
+  MapPin,
+  Maximize2,
+  Sliders,
+  ToggleLeft,
+  ToggleRight,
+  ShieldCheck,
+  Zap
 } from 'lucide-react';
 
 const SLOTS = [
@@ -51,7 +59,7 @@ const SLOTS = [
 ];
 
 function formatBytes(bytes) {
-  if (bytes === 0) return '0 Bytes';
+  if (!bytes || bytes === 0) return '0 Bytes';
   const k = 1024;
   const sizes = ['Bytes', 'KB', 'MB', 'GB'];
   const i = Math.floor(Math.log(bytes) / Math.log(k));
@@ -63,7 +71,10 @@ export default function UploadPanel({
   setFiles,
   uploadManifest,
   isUploading,
-  onUploadAll,
+  isBenchmarkMode,
+  setIsBenchmarkMode,
+  modalityOverrides,
+  setModalityOverrides,
 }) {
   const handleFileChange = (slotId, e) => {
     const file = e.target.files?.[0];
@@ -85,14 +96,15 @@ export default function UploadPanel({
   };
 
   const totalSelected = Object.keys(files).length;
+  const coReg = uploadManifest?.co_registration;
 
   return (
     <div className="bg-space-900/90 border border-space-700/60 rounded-2xl p-5 backdrop-blur-xl shadow-2xl relative overflow-hidden">
       {/* Background radial accent */}
       <div className="absolute top-0 right-0 w-64 h-64 bg-satcyan-500/5 rounded-full blur-3xl pointer-events-none" />
 
-      {/* Header */}
-      <div className="flex items-center justify-between mb-4">
+      {/* Header with Benchmark Mode Toggle */}
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
         <div className="flex items-center space-x-2.5">
           <div className="p-2 bg-space-800 border border-space-700 rounded-xl text-satcyan-400">
             <Layers className="w-5 h-5" />
@@ -105,25 +117,69 @@ export default function UploadPanel({
               </span>
             </h2>
             <p className="text-xs text-slate-400">
-              Upload GeoTIFF/TIFF rasters or benchmark images for multi-modal remote sensing
+              GeoTIFF rasters primary • CRS, resolution & modality automatically extracted
             </p>
           </div>
         </div>
 
-        {uploadManifest && (
-          <div className="flex items-center gap-1.5 text-xs text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-3 py-1 rounded-full font-mono">
-            <CheckCircle2 className="w-3.5 h-3.5" />
-            <span>Uploaded: {uploadManifest.upload_id.slice(0, 8)}...</span>
-          </div>
-        )}
+        {/* Benchmark toggle */}
+        <div className="flex items-center space-x-2 bg-space-950/80 px-3 py-1.5 rounded-xl border border-space-800 self-start sm:self-auto">
+          <span className="text-xs text-slate-300 font-medium">Benchmark Input (PNG/JPG)</span>
+          <button
+            type="button"
+            onClick={() => setIsBenchmarkMode(!isBenchmarkMode)}
+            className="text-satcyan-400 hover:text-satcyan-300 transition-colors focus:outline-none"
+            title="Enable if testing with standard benchmark images (VRSBench, RSVQA, CDVQA)"
+          >
+            {isBenchmarkMode ? (
+              <ToggleRight className="w-6 h-6 text-satcyan-400" />
+            ) : (
+              <ToggleLeft className="w-6 h-6 text-slate-600" />
+            )}
+          </button>
+        </div>
       </div>
+
+      {/* Pairwise Co-Registration Status Banner */}
+      {coReg && (coReg.optical_sar || coReg.before_after) && (
+        <div className="mb-4 space-y-2">
+          {coReg.optical_sar && (
+            <div className={`p-2.5 rounded-xl border flex items-center justify-between text-xs font-mono ${
+              coReg.optical_sar.is_co_registered 
+                ? 'bg-emerald-500/10 border-emerald-500/30 text-emerald-300'
+                : 'bg-amber-500/10 border-amber-500/30 text-amber-300'
+            }`}>
+              <div className="flex items-center space-x-2">
+                <ShieldCheck className="w-4 h-4" />
+                <span>Optical + SAR Pair: <strong>{coReg.optical_sar.flag}</strong> ({coReg.optical_sar.overlap_percentage}% overlap)</span>
+              </div>
+              {coReg.optical_sar.warning && <span className="text-[11px] text-amber-400">{coReg.optical_sar.warning}</span>}
+            </div>
+          )}
+          {coReg.before_after && (
+            <div className={`p-2.5 rounded-xl border flex items-center justify-between text-xs font-mono ${
+              coReg.before_after.is_co_registered 
+                ? 'bg-emerald-500/10 border-emerald-500/30 text-emerald-300'
+                : 'bg-amber-500/10 border-amber-500/30 text-amber-300'
+            }`}>
+              <div className="flex items-center space-x-2">
+                <ShieldCheck className="w-4 h-4" />
+                <span>Before + After Pair: <strong>{coReg.before_after.flag}</strong> ({coReg.before_after.overlap_percentage}% overlap)</span>
+              </div>
+              {coReg.before_after.warning && <span className="text-[11px] text-amber-400">{coReg.before_after.warning}</span>}
+            </div>
+          )}
+        </div>
+      )}
 
       {/* 4 Named Image Slots Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5">
         {SLOTS.map((slot) => {
           const Icon = slot.icon;
           const selectedFile = files[slot.id];
-          const isUploaded = uploadManifest?.files?.[slot.id];
+          const uploadedInfo = uploadManifest?.files?.[slot.id];
+          const metadata = uploadedInfo?.metadata;
+          const modality = uploadedInfo?.modality;
 
           return (
             <div
@@ -158,17 +214,13 @@ export default function UploadPanel({
                 )}
               </div>
 
-              <p className="text-[11px] text-slate-400 mb-3 line-clamp-1">
-                {slot.description}
-              </p>
-
               {/* Upload Drop/Picker Area */}
-              <label className="cursor-pointer block">
+              <label className="cursor-pointer block mb-2">
                 <input
                   type="file"
                   id={`slot-${slot.id}`}
                   className="hidden"
-                  accept=".tif,.tiff,.png,.jpg,.jpeg"
+                  accept={isBenchmarkMode ? ".tif,.tiff,.png,.jpg,.jpeg,.webp" : ".tif,.tiff,.geotiff"}
                   onChange={(e) => handleFileChange(slot.id, e)}
                 />
                 {selectedFile ? (
@@ -180,19 +232,64 @@ export default function UploadPanel({
                         <p className="text-[10px] text-slate-400">{formatBytes(selectedFile.size)}</p>
                       </div>
                     </div>
-                    {isUploaded && (
+                    {uploadedInfo && (
                       <span className="shrink-0 text-[10px] text-emerald-400 bg-emerald-500/10 px-1.5 py-0.5 rounded border border-emerald-500/20 font-mono">
-                        Saved
+                        Validated
                       </span>
                     )}
                   </div>
                 ) : (
                   <div className="border border-dashed border-space-700 group-hover:border-slate-500 rounded-lg py-2.5 px-3 flex items-center justify-center space-x-2 text-xs text-slate-400 hover:text-slate-200 transition-colors">
                     <Upload className="w-3.5 h-3.5" />
-                    <span>Choose file or drag here</span>
+                    <span>Attach {isBenchmarkMode ? "raster or benchmark image" : "GeoTIFF (.tif)"}</span>
                   </div>
                 )}
               </label>
+
+              {/* Phase 2: Metadata & Modality Badges */}
+              {metadata && (
+                <div className="mt-2 pt-2 border-t border-space-800/80 space-y-1.5">
+                  <div className="flex flex-wrap items-center gap-1.5 text-[10px] font-mono">
+                    {/* Modality Tag */}
+                    <span className={`px-2 py-0.5 rounded border font-semibold flex items-center gap-1 ${
+                      modality?.modality === 'SAR'
+                        ? 'bg-emerald-500/15 border-emerald-500/30 text-emerald-300'
+                        : modality?.modality === 'MULTISPECTRAL'
+                        ? 'bg-purple-500/15 border-purple-500/30 text-purple-300'
+                        : 'bg-cyan-500/15 border-cyan-500/30 text-cyan-300'
+                    }`}>
+                      <Zap className="w-3 h-3" />
+                      {modality?.modality || 'UNKNOWN'}
+                    </span>
+
+                    {/* CRS / Georeferencing */}
+                    <span className="px-1.5 py-0.5 rounded bg-space-900 border border-space-800 text-slate-300 flex items-center gap-1">
+                      <MapPin className="w-2.5 h-2.5 text-satcyan-400" />
+                      {metadata.epsg ? `EPSG:${metadata.epsg}` : metadata.crs}
+                    </span>
+
+                    {/* Resolution / GSD */}
+                    {metadata.resolution?.x && (
+                      <span className="px-1.5 py-0.5 rounded bg-space-900 border border-space-800 text-slate-300 flex items-center gap-1">
+                        <Maximize2 className="w-2.5 h-2.5 text-satcyan-400" />
+                        GSD: {metadata.resolution.x}m
+                      </span>
+                    )}
+
+                    {/* Bands */}
+                    <span className="px-1.5 py-0.5 rounded bg-space-900 border border-space-800 text-slate-300">
+                      {metadata.bands} {metadata.bands === 1 ? 'Band' : 'Bands'}
+                    </span>
+                  </div>
+
+                  {/* Acquisition date if detected */}
+                  {metadata.acquisition_date && (
+                    <div className="text-[10px] text-slate-400 font-mono">
+                      Acquired: {metadata.acquisition_date}
+                    </div>
+                  )}
+                </div>
+              )}
             </div>
           );
         })}

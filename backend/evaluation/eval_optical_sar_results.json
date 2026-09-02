@@ -1,0 +1,24 @@
+{
+  "benchmark": "SatQuery Optical-SAR Co-Registered Qualitative Evaluation Set",
+  "evaluation_type": "Qualitative Dual-Branch Attribution",
+  "num_pairs": 2,
+  "conclusions": "Dual-branch analysis consistently provides complementary information: SAR resolves optical cloud obscuration and separates smooth water from bare soil, while Optical provides multi-spectral discrimination unavailable in single/dual-band radar.",
+  "samples": [
+    {
+      "pair_id": "OPT_SAR_PAIR_01",
+      "scene_description": "Coastal port with urban warehouses and partial cloud cover.",
+      "optical_contribution": "Provides spectral delineation of sea water and vegetative parklands, but cloud shadow obscures port berths.",
+      "sar_contribution": "Microwave signals penetrate cloud layer completely; strong double-bounce backscatter isolates ship hulls and metallic cranes.",
+      "fused_synthesis": "Comprehensive port delineation with cloud-free verification of maritime infrastructure and accurate water boundaries.",
+      "complementarity_rating": "High (5/5)"
+    },
+    {
+      "pair_id": "OPT_SAR_PAIR_02",
+      "scene_description": "Agricultural floodplain during monsoon season.",
+      "optical_contribution": "High NDVI highlights active crop canopy, but turbid water resembles muddy soil.",
+      "sar_contribution": "Specular reflection from standing flood water produces near-zero backscatter, clearly separating inundated zones from wet soil.",
+      "fused_synthesis": "Exact flood mapping isolating standing water from saturated vegetation without spectral confusion.",
+      "complementarity_rating": "High (5/5)"
+    }
+  ]
+}

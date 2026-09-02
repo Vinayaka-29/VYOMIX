@@ -7,7 +7,9 @@ import {
   WifiOff, 
   RefreshCw,
   ExternalLink,
-  Info
+  Info,
+  Layers,
+  FileCheck
 } from 'lucide-react';
 import UploadPanel from './components/UploadPanel';
 import QueryBox from './components/QueryBox';
@@ -27,6 +29,7 @@ export default function App() {
   const [backendHealth, setBackendHealth] = useState({ online: false, checking: true, data: null });
   const [activeSlot, setActiveSlot] = useState(null);
   const [activeFilePreviewUrl, setActiveFilePreviewUrl] = useState(null);
+  const [isBenchmarkMode, setIsBenchmarkMode] = useState(false);
 
   // Check backend health on mount and periodically
   const checkHealth = async () => {
@@ -83,11 +86,12 @@ export default function App() {
     setQueryResponse(null);
 
     try {
-      // 1. Upload files
+      // 1. Upload files with benchmark toggle
       const formData = new FormData();
       for (const slot of fileKeys) {
         formData.append(slot, files[slot]);
       }
+      formData.append('is_benchmark', isBenchmarkMode ? 'true' : 'false');
 
       const uploadRes = await fetch(`${API_BASE_URL}/upload`, {
         method: 'POST',
@@ -96,13 +100,16 @@ export default function App() {
 
       if (!uploadRes.ok) {
         const errData = await uploadRes.json().catch(() => ({}));
-        throw new Error(errData.detail || `Upload failed with status ${uploadRes.status}`);
+        if (uploadRes.status === 422 && errData.detail?.errors) {
+          throw new Error(errData.detail.errors.join(' '));
+        }
+        throw new Error(errData.detail?.message || errData.detail || `Upload failed with status ${uploadRes.status}`);
       }
 
       const manifest = await uploadRes.json();
       setUploadManifest(manifest);
 
-      // 2. Call query endpoint with upload_id
+      // 2. Call Agentic Controller query endpoint
       const queryRes = await fetch(`${API_BASE_URL}/query`, {
         method: 'POST',
         headers: {
@@ -116,7 +123,7 @@ export default function App() {
 
       if (!queryRes.ok) {
         const errData = await queryRes.json().catch(() => ({}));
-        throw new Error(errData.detail || `Query processing failed with status ${queryRes.status}`);
+        throw new Error(errData.detail?.message || errData.detail || `Query processing failed with status ${queryRes.status}`);
       }
 
       const qResponse = await queryRes.json();
@@ -181,9 +188,9 @@ export default function App() {
               </button>
             </div>
 
-            <div className="hidden sm:flex items-center space-x-2 text-xs text-slate-400 bg-space-800/80 px-3 py-1.5 rounded-lg border border-space-700">
+            <div className="hidden sm:flex items-center space-x-2 text-xs text-slate-300 bg-space-800/80 px-3 py-1.5 rounded-lg border border-space-700">
               <Cpu className="w-3.5 h-3.5 text-satcyan-400" />
-              <span>Phase 1: Scaffold & Plumbing</span>
+              <span>Full 10-Phase Pipeline</span>
             </div>
           </div>
         </div>
@@ -196,12 +203,11 @@ export default function App() {
           <div className="flex items-center space-x-2">
             <Info className="w-4 h-4 text-satcyan-400 shrink-0" />
             <span>
-              <strong>Phase 1 Active:</strong> Upload plumbing, multi-slot staging, and backend query echo are active.
-              Docker-ready with Postgres+PostGIS configuration.
+              <strong>All 10 Phases Operational:</strong> GeoTIFF validation, VQA, dense captioning, text grounding overlays, LoRA-adapted backbone, bi-temporal differencing, Optical+SAR fusion, and auditable trace exports.
             </span>
           </div>
           <span className="font-mono text-[11px] text-satcyan-400 hidden md:inline">
-            FastAPI + React + Vite + Tailwind
+            Deterministic Agentic Routing
           </span>
         </div>
 
@@ -214,6 +220,8 @@ export default function App() {
               setFiles={setFiles}
               uploadManifest={uploadManifest}
               isUploading={isLoading}
+              isBenchmarkMode={isBenchmarkMode}
+              setIsBenchmarkMode={setIsBenchmarkMode}
             />
 
             <QueryBox
@@ -230,6 +238,7 @@ export default function App() {
             <ImageViewer
               activeFileUrl={activeFilePreviewUrl}
               activeSlotName={activeSlot}
+              visualArtifacts={queryResponse?.visual_artifacts}
             />
 
             <ResultsDashboard
@@ -238,7 +247,9 @@ export default function App() {
               error={error}
             />
 
-            <ExecutionTracePanel />
+            <ExecutionTracePanel 
+              executionTrace={queryResponse?.execution_trace} 
+            />
           </div>
         </div>
       </main>

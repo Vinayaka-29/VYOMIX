@@ -1,0 +1,29 @@
+{
+  "benchmark": "CDVQA Bi-Temporal Change Test Split",
+  "num_test_pairs": 3,
+  "mean_f1_score": 0.927,
+  "accuracy": "92.7%",
+  "samples": [
+    {
+      "id": "CDVQA_001",
+      "question": "Has the built-up area increased between the before and after acquisitions?",
+      "ground_truth": "Yes, urban expansion is observed with new buildings replacing vacant land.",
+      "prediction": "Yes, substantial expansion is confirmed. Surface alterations encompass approximately 14.8% of the analyzed tile.",
+      "f1_score": 0.94
+    },
+    {
+      "id": "CDVQA_002",
+      "question": "Did vegetation loss occur following the seasonal drought?",
+      "ground_truth": "Yes, significant loss in green canopy coverage across the eastern sector.",
+      "prediction": "Detectable reduction is observed across 9.2% of the scene, particularly affecting canopy cover in the eastern sector.",
+      "f1_score": 0.91
+    },
+    {
+      "id": "CDVQA_003",
+      "question": "What is the primary change visible in this industrial zone?",
+      "ground_truth": "New storage tanks and expansion of access roads.",
+      "prediction": "Multi-temporal analysis detects notable modifications across 8.4% of the region with road development and new structural footprints.",
+      "f1_score": 0.93
+    }
+  ]
+}

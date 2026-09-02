@@ -21,13 +21,12 @@ from models.change_detection import compute_change_map
 from models.change_vqa_model import answer_change_question
 from models.optical_sar_fusion import fuse_optical_and_sar
 
-# Phase 8 Agentic Controller
+# Phase 8-12 Agentic Central Brain
 from agent.query_interpreter import interpret_query
-from agent.task_classifier import validate_intent_against_inputs
+from agent.task_classifier import classify_and_validate_task
+from agent.geospatial_validator import validate_geospatial_compatibility
 from agent.planner import create_execution_plan
 from agent.executor import execute_plan
-
-# Phase 9 Evidence Fusion, Confidence, Trace & Reporting
 from agent.evidence_fusion import fuse_execution_evidence
 from agent.confidence import evaluate_confidence_and_conflicts
 from agent.execution_trace import build_execution_trace
@@ -263,11 +262,11 @@ async def process_query(request: QueryRequest):
 
     manifest_files = manifest["files"]
 
-    # Step 1: Interpret Query Intent
+    # Step 1: Interpret Query Intent (Phase 4)
     intent = interpret_query(query_text)
 
-    # Step 2: Validate Intent Against Available Rasters & Modalities
-    compatible, error_msg, validated_config = validate_intent_against_inputs(intent, manifest_files)
+    # Step 2: Validate Intent Against Available Rasters & Modalities (Phase 5)
+    compatible, error_msg, validated_config = classify_and_validate_task(intent, manifest_files)
     if not compatible:
         raise HTTPException(
             status_code=400,
@@ -279,22 +278,34 @@ async def process_query(request: QueryRequest):
             }
         )
 
-    # Step 3: Create Ordered Plan
-    plan = create_execution_plan(validated_config, manifest_files, query_text)
+    # Step 3: Geospatial Compatibility Verification (Phase 6)
+    geo_ok, geo_msg, geo_report = validate_geospatial_compatibility(validated_config, manifest_files)
+    if not geo_ok:
+        raise HTTPException(
+            status_code=400,
+            detail={
+                "error": "Geospatial Compatibility Failure",
+                "message": geo_msg,
+                "geospatial_report": geo_report,
+            }
+        )
 
-    # Step 4: Execute Plan Steps
+    # Step 4: Create Ordered DAG Plan (Phase 7 & 8)
+    plan = create_execution_plan(validated_config, manifest_files, query_text, geospatial_report=geo_report)
+
+    # Step 5: Execute Plan Steps (Phase 9 & 13)
     executed_steps = execute_plan(plan)
 
-    # Step 5: Evidence Fusion
+    # Step 6: Evidence Fusion (Phase 10)
     task_name = validated_config["task"]
-    fusion_result = fuse_execution_evidence(executed_steps, task_name)
+    fusion_result = fuse_execution_evidence(executed_steps, task_name, raw_query=query_text)
 
-    # Step 6: Confidence Scoring & Conflict Disagreement Detection
+    # Step 7: Confidence Scoring & Conflict Disagreement Detection (Phase 11)
     final_confidence, disagreement_flagged, conflicts = evaluate_confidence_and_conflicts(
-        executed_steps, task_name
+        executed_steps, task_name, geospatial_report=geo_report
     )
 
-    # Step 7: Build Auditable Execution Trace
+    # Step 8: Build Auditable Execution Trace (Phase 12)
     trace = build_execution_trace(
         task_name=task_name,
         query_text=query_text,
@@ -304,6 +315,7 @@ async def process_query(request: QueryRequest):
         disagreement_flagged=disagreement_flagged,
         conflicts=conflicts,
         intent=intent,
+        geospatial_report=geo_report,
     )
 
     response_payload = {

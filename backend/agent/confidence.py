@@ -1,17 +1,18 @@
 """
-Confidence Scoring & Conflict Disagreement Detector for SatQuery AI (Phase 9)
-Computes honest, calibrated aggregate confidence scores across multi-step specialist outputs,
-explicitly detecting and flagging internal model discrepancies.
+Confidence Scoring & Conflict Disagreement Engine for SatQuery AI (Phase 11)
+Computes multi-factor aggregate confidence scores and detects discrepancies
+between specialist outputs, ensuring auditable, trustworthy intelligence.
 """
-from typing import Dict, Any, List, Tuple
+from typing import Dict, Any, List, Tuple, Optional
 
 
 def evaluate_confidence_and_conflicts(
     executed_steps: List[Dict[str, Any]], 
-    task_name: str
+    task_name: str,
+    geospatial_report: Optional[Dict[str, Any]] = None
 ) -> Tuple[float, bool, List[Dict[str, str]]]:
     """
-    Computes overall confidence and checks for disagreement between steps.
+    Evaluates multi-factor confidence and surfaces internal specialist conflicts.
     Returns:
       (final_confidence: float, disagreement_flagged: bool, conflict_details: list)
     """
@@ -21,63 +22,71 @@ def evaluate_confidence_and_conflicts(
     step_confs = [s.get("confidence", 0.85) for s in executed_steps]
     disagreements: List[Dict[str, str]] = []
 
-    # Check for specific task conflicts
+    # --- Conflict Check 1: Multi-Temporal Differencing vs. VLM Reasoning ---
     if task_name == "change_vqa":
-        # Check if differencing step contradicts Change-VQA reasoning
         diff_step = next((s for s in executed_steps if "differencing" in s["step_id"]), None)
-        vqa_step = next((s for s in executed_steps if "change_vqa" in s["step_id"]), None)
+        vqa_step = next((s for s in executed_steps if "reasoning" in s["step_id"] or "change_vqa" in s["step_id"]), None)
 
         if diff_step and vqa_step:
             diff_out = diff_step["output"]
             vqa_out = vqa_step["output"]
             pct = diff_out.get("percentage_changed", 0.0)
-            vqa_text = vqa_out.get("answer", "").lower()
+            vqa_text = str(vqa_out.get("answer", "")).lower()
 
-            # Disagreement Case A: Differencing detected negligible change (<1.5%) but VQA claims significant increase
-            if pct < 1.5 and ("substantial expansion" in vqa_text or "significant growth" in vqa_text):
+            # Case A: Differencing detected negligible change (<1.5%) but VQA asserted substantial growth
+            if pct < 1.5 and any(term in vqa_text for term in ["substantial expansion", "significant growth", "massive increase"]):
                 disagreements.append({
-                    "type": "METRIC_REASONING_CONFLICT",
+                    "conflict_id": "CONFLICT_TEMP_01",
+                    "type": "METRIC_REASONING_DISCREPANCY",
                     "description": (
-                        f"Statistical pixel differencing detected minimal variation ({pct}%), "
-                        f"whereas the VLM reasoning inferred high expansion. "
+                        f"Statistical pixel differencing detected negligible variation ({pct}%), "
+                        f"whereas the VLM reasoning inferred substantial surface expansion. "
                         f"Flagged for human operator review."
                     ),
-                    "step_a": "Computer-Vision Differencing Engine",
-                    "step_b": "Bi-Temporal Change-VQA Specialist",
+                    "specialist_a": "Computer-Vision Differencing Engine",
+                    "specialist_b": "Bi-Temporal Change-VQA Specialist",
                 })
 
-            # Disagreement Case B: Differencing detected high change (>15%) but VQA reports no change
-            elif pct > 15.0 and ("no significant" in vqa_text or "stable" in vqa_text):
+            # Case B: Differencing detected high change (>20%) but VQA reported scene stability
+            elif pct > 20.0 and any(term in vqa_text for term in ["no significant", "stable profile", "negligible"]):
                 disagreements.append({
-                    "type": "METRIC_REASONING_CONFLICT",
+                    "conflict_id": "CONFLICT_TEMP_02",
+                    "type": "HIGH_VARIANCE_IGNORED",
                     "description": (
                         f"Differencing identified high spatial variance ({pct}%), "
-                        f"but the VLM reported scene stability."
+                        f"but the VLM reported land cover stability."
                     ),
-                    "step_a": "Computer-Vision Differencing Engine",
-                    "step_b": "Bi-Temporal Change-VQA Specialist",
+                    "specialist_a": "Computer-Vision Differencing Engine",
+                    "specialist_b": "Bi-Temporal Change-VQA Specialist",
                 })
 
-    # Conflict in Grounding: low confidence or entity not found
+    # --- Conflict Check 2: Grounding Entity Missing ---
     if task_name == "grounding":
         ground_step = executed_steps[0]
         if not ground_step["output"].get("found", True):
             disagreements.append({
-                "type": "OBJECT_NOT_FOUND",
-                "description": "Referring target could not be localized within visible raster boundaries.",
-                "step_a": "Referring-Expression Grounding Engine",
-                "step_b": "Scene Imagery",
+                "conflict_id": "CONFLICT_GND_01",
+                "type": "TARGET_ENTITY_ABSENT",
+                "description": "The requested entity could not be localized within visible raster bounds.",
+                "specialist_a": "Referring-Expression Grounding Engine",
+                "specialist_b": "Input Satellite Imagery",
             })
 
-    # Base aggregate confidence: geometric mean or weighted average
-    avg_conf = sum(step_confs) / len(step_confs)
+    # --- Aggregate Confidence Calculation ---
+    # Harmonic or weighted mean of step confidences
+    base_confidence = sum(step_confs) / len(step_confs)
 
+    # Apply penalty if geospatial warnings were flagged
+    if geospatial_report and geospatial_report.get("warnings"):
+        base_confidence -= 0.05 * len(geospatial_report["warnings"])
+
+    # Disagreement penalty
     if disagreements:
-        # Penalize confidence when disagreement is flagged
         disagreement_flagged = True
-        final_confidence = round(max(0.35, avg_conf - 0.25), 2)
+        # Apply strict 0.25 confidence penalty for internal conflict
+        final_confidence = round(max(0.35, base_confidence - 0.25), 2)
     else:
         disagreement_flagged = False
-        final_confidence = round(avg_conf, 2)
+        final_confidence = round(min(0.98, max(0.40, base_confidence)), 2)
 
     return final_confidence, disagreement_flagged, disagreements

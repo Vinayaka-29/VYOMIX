@@ -24,6 +24,7 @@ backend/.pytest_cache/
 backend/data/uploads/*
 !backend/data/uploads/.gitkeep
 backend/data/test_scratch/
+backend/data/test_brain_e2e/
 
 # OS / IDE
 .DS_Store

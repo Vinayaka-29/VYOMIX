@@ -1,20 +1,28 @@
 {
   "peft_type": "LORA",
-  "base_model_name_or_path": "mbzuai-oryx/GeoChat-7B",
+  "auto_mapping": null,
+  "base_model_name_or_path": "SatQuery-RS-Multimodal-Transformer",
   "task_type": "CAUSAL_LM",
-  "r": 16,
+  "r": 32,
   "lora_alpha": 32,
   "lora_dropout": 0.05,
   "target_modules": [
     "q_proj",
-    "v_proj",
     "k_proj",
-    "o_proj"
+    "v_proj",
+    "out_proj",
+    "mlp_fc1",
+    "mlp_fc2"
   ],
   "bias": "none",
-  "dataset_adapted": "BigEarthNet-19 + VRSBench",
+  "dataset_adapted": "BigEarthNet-19 + VRSBench Remote Sensing",
   "training_epochs": 1,
-  "final_loss": 0.838,
-  "training_time_seconds": 0.4,
-  "adaptation_domain": "Remote Sensing / Earth Observation (ISRO PS 26167)"
+  "final_loss": 7.0285,
+  "loss_reduction": 0.0,
+  "trainable_parameters": 1179648,
+  "trainable_percentage": 7.6,
+  "training_time_seconds": 4.68,
+  "weight_size_bytes": 4733847,
+  "adaptation_domain": "Remote Sensing / Earth Observation (ISRO PS 26167)",
+  "hardware_used": "Host CPU"
 }

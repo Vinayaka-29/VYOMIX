@@ -1,0 +1,3522 @@
+[
+  {
+    "id": "VRS_0000_water_river",
+    "image_path": "C:\\Users\\Tilak M K\\OneDrive\\Pictures\\Desktop\\VYOMIX 2026\\SatQuery-AI\\backend\\data\\vrs_patches\\VRS_0000_water_river.tif",
+    "scene_type": "water_river",
+    "target_entity": "water body",
+    "grounding": {
+      "expression": "Locate the water body",
+      "bbox": [
+        30,
+        80,
+        220,
+        160
+      ],
+      "normalized_bbox": [
+        0.1172,
+        0.3125,
+        0.8594,
+        0.625
+      ]
+    },
+    "caption": "The satellite scene features a conspicuous meandering water canal with low reflectance and distinct hydrological boundaries traversing open vegetated terrain.",
+    "vqa": {
+      "question": "Is there a water body visible in this image?",
+      "answer": "Yes, an inland water channel is clearly visible with prominent absorption in optical bands."
+    },
+    "conversations": [
+      {
+        "from": "human",
+        "value": "<image>\nIs there a water body visible in this image?"
+      },
+      {
+        "from": "gpt",
+        "value": "Yes, an inland water channel is clearly visible with prominent absorption in optical bands."
+      },
+      {
+        "from": "human",
+        "value": "Where are the water body located?"
+      },
+      {
+        "from": "gpt",
+        "value": "The water body is located at coordinates [30, 80, 220, 160]."
+      }
+    ]
+  },
+  {
+    "id": "VRS_0001_industrial_buildings",
+    "image_path": "C:\\Users\\Tilak M K\\OneDrive\\Pictures\\Desktop\\VYOMIX 2026\\SatQuery-AI\\backend\\data\\vrs_patches\\VRS_0001_industrial_buildings.tif",
+    "scene_type": "industrial_buildings",
+    "target_entity": "buildings",
+    "grounding": {
+      "expression": "Locate the buildings",
+      "bbox": [
+        70,
+        50,
+        190,
+        170
+      ],
+      "normalized_bbox": [
+        0.2734,
+        0.1953,
+        0.7422,
+        0.6641
+      ]
+    },
+    "caption": "An aerial view of dense industrial built-up structures and commercial facilities with high radiometric brightness and organized paved surface access.",
+    "vqa": {
+      "question": "What type of infrastructure is visible?",
+      "answer": "High-density commercial and industrial buildings with rectangular roofs and paved surfaces."
+    },
+    "conversations": [
+      {
+        "from": "human",
+        "value": "<image>\nWhat type of infrastructure is visible?"
+      },
+      {
+        "from": "gpt",
+        "value": "High-density commercial and industrial buildings with rectangular roofs and paved surfaces."
+      },
+      {
+        "from": "human",
+        "value": "Where are the buildings located?"
+      },
+      {
+        "from": "gpt",
+        "value": "The buildings is located at coordinates [70, 50, 190, 170]."
+      }
+    ]
+  },
+  {
+    "id": "VRS_0002_agricultural_fields",
+    "image_path": "C:\\Users\\Tilak M K\\OneDrive\\Pictures\\Desktop\\VYOMIX 2026\\SatQuery-AI\\backend\\data\\vrs_patches\\VRS_0002_agricultural_fields.tif",
+    "scene_type": "agricultural_fields",
+    "target_entity": "agricultural fields",
+    "grounding": {
+      "expression": "Locate the agricultural fields",
+      "bbox": [
+        40,
+        40,
+        210,
+        180
+      ],
+      "normalized_bbox": [
+        0.1562,
+        0.1562,
+        0.8203,
+        0.7031
+      ]
+    },
+    "caption": "An extensive expanse of photosynthetic agricultural fields and cultivated crop parcels characterized by high green vegetation reflectance.",
+    "vqa": {
+      "question": "What is the primary land use in this scene?",
+      "answer": "Agricultural cropland and cultivated vegetated parcels with distinct boundary lines."
+    },
+    "conversations": [
+      {
+        "from": "human",
+        "value": "<image>\nWhat is the primary land use in this scene?"
+      },
+      {
+        "from": "gpt",
+        "value": "Agricultural cropland and cultivated vegetated parcels with distinct boundary lines."
+      },
+      {
+        "from": "human",
+        "value": "Where are the agricultural fields located?"
+      },
+      {
+        "from": "gpt",
+        "value": "The agricultural fields is located at coordinates [40, 40, 210, 180]."
+      }
+    ]
+  },
+  {
+    "id": "VRS_0003_infrastructure_runway",
+    "image_path": "C:\\Users\\Tilak M K\\OneDrive\\Pictures\\Desktop\\VYOMIX 2026\\SatQuery-AI\\backend\\data\\vrs_patches\\VRS_0003_infrastructure_runway.tif",
+    "scene_type": "infrastructure_runway",
+    "target_entity": "infrastructure runway",
+    "grounding": {
+      "expression": "Locate the infrastructure runway",
+      "bbox": [
+        50,
+        100,
+        210,
+        150
+      ],
+      "normalized_bbox": [
+        0.1953,
+        0.3906,
+        0.8203,
+        0.5859
+      ]
+    },
+    "caption": "A linear infrastructure transport corridor and runway facility situated within an open terrestrial setting.",
+    "vqa": {
+      "question": "Are there linear transportation structures present?",
+      "answer": "Yes, a clear linear transportation corridor and paved runway infrastructure are identifiable."
+    },
+    "conversations": [
+      {
+        "from": "human",
+        "value": "<image>\nAre there linear transportation structures present?"
+      },
+      {
+        "from": "gpt",
+        "value": "Yes, a clear linear transportation corridor and paved runway infrastructure are identifiable."
+      },
+      {
+        "from": "human",
+        "value": "Where are the infrastructure runway located?"
+      },
+      {
+        "from": "gpt",
+        "value": "The infrastructure runway is located at coordinates [50, 100, 210, 150]."
+      }
+    ]
+  },
+  {
+    "id": "VRS_0004_water_river",
+    "image_path": "C:\\Users\\Tilak M K\\OneDrive\\Pictures\\Desktop\\VYOMIX 2026\\SatQuery-AI\\backend\\data\\vrs_patches\\VRS_0004_water_river.tif",
+    "scene_type": "water_river",
+    "target_entity": "water body",
+    "grounding": {
+      "expression": "Locate the water body",
+      "bbox": [
+        30,
+        80,
+        220,
+        160
+      ],
+      "normalized_bbox": [
+        0.1172,
+        0.3125,
+        0.8594,
+        0.625
+      ]
+    },
+    "caption": "The satellite scene features a conspicuous meandering water canal with low reflectance and distinct hydrological boundaries traversing open vegetated terrain.",
+    "vqa": {
+      "question": "Is there a water body visible in this image?",
+      "answer": "Yes, an inland water channel is clearly visible with prominent absorption in optical bands."
+    },
+    "conversations": [
+      {
+        "from": "human",
+        "value": "<image>\nIs there a water body visible in this image?"
+      },
+      {
+        "from": "gpt",
+        "value": "Yes, an inland water channel is clearly visible with prominent absorption in optical bands."
+      },
+      {
+        "from": "human",
+        "value": "Where are the water body located?"
+      },
+      {
+        "from": "gpt",
+        "value": "The water body is located at coordinates [30, 80, 220, 160]."
+      }
+    ]
+  },
+  {
+    "id": "VRS_0005_industrial_buildings",
+    "image_path": "C:\\Users\\Tilak M K\\OneDrive\\Pictures\\Desktop\\VYOMIX 2026\\SatQuery-AI\\backend\\data\\vrs_patches\\VRS_0005_industrial_buildings.tif",
+    "scene_type": "industrial_buildings",
+    "target_entity": "buildings",
+    "grounding": {
+      "expression": "Locate the buildings",
+      "bbox": [
+        70,
+        50,
+        190,
+        170
+      ],
+      "normalized_bbox": [
+        0.2734,
+        0.1953,
+        0.7422,
+        0.6641
+      ]
+    },
+    "caption": "An aerial view of dense industrial built-up structures and commercial facilities with high radiometric brightness and organized paved surface access.",
+    "vqa": {
+      "question": "What type of infrastructure is visible?",
+      "answer": "High-density commercial and industrial buildings with rectangular roofs and paved surfaces."
+    },
+    "conversations": [
+      {
+        "from": "human",
+        "value": "<image>\nWhat type of infrastructure is visible?"
+      },
+      {
+        "from": "gpt",
+        "value": "High-density commercial and industrial buildings with rectangular roofs and paved surfaces."
+      },
+      {
+        "from": "human",
+        "value": "Where are the buildings located?"
+      },
+      {
+        "from": "gpt",
+        "value": "The buildings is located at coordinates [70, 50, 190, 170]."
+      }
+    ]
+  },
+  {
+    "id": "VRS_0006_agricultural_fields",
+    "image_path": "C:\\Users\\Tilak M K\\OneDrive\\Pictures\\Desktop\\VYOMIX 2026\\SatQuery-AI\\backend\\data\\vrs_patches\\VRS_0006_agricultural_fields.tif",
+    "scene_type": "agricultural_fields",
+    "target_entity": "agricultural fields",
+    "grounding": {
+      "expression": "Locate the agricultural fields",
+      "bbox": [
+        40,
+        40,
+        210,
+        180
+      ],
+      "normalized_bbox": [
+        0.1562,
+        0.1562,
+        0.8203,
+        0.7031
+      ]
+    },
+    "caption": "An extensive expanse of photosynthetic agricultural fields and cultivated crop parcels characterized by high green vegetation reflectance.",
+    "vqa": {
+      "question": "What is the primary land use in this scene?",
+      "answer": "Agricultural cropland and cultivated vegetated parcels with distinct boundary lines."
+    },
+    "conversations": [
+      {
+        "from": "human",
+        "value": "<image>\nWhat is the primary land use in this scene?"
+      },
+      {
+        "from": "gpt",
+        "value": "Agricultural cropland and cultivated vegetated parcels with distinct boundary lines."
+      },
+      {
+        "from": "human",
+        "value": "Where are the agricultural fields located?"
+      },
+      {
+        "from": "gpt",
+        "value": "The agricultural fields is located at coordinates [40, 40, 210, 180]."
+      }
+    ]
+  },
+  {
+    "id": "VRS_0007_infrastructure_runway",
+    "image_path": "C:\\Users\\Tilak M K\\OneDrive\\Pictures\\Desktop\\VYOMIX 2026\\SatQuery-AI\\backend\\data\\vrs_patches\\VRS_0007_infrastructure_runway.tif",
+    "scene_type": "infrastructure_runway",
+    "target_entity": "infrastructure runway",
+    "grounding": {
+      "expression": "Locate the infrastructure runway",
+      "bbox": [
+        50,
+        100,
+        210,
+        150
+      ],
+      "normalized_bbox": [
+        0.1953,
+        0.3906,
+        0.8203,
+        0.5859
+      ]
+    },
+    "caption": "A linear infrastructure transport corridor and runway facility situated within an open terrestrial setting.",
+    "vqa": {
+      "question": "Are there linear transportation structures present?",
+      "answer": "Yes, a clear linear transportation corridor and paved runway infrastructure are identifiable."
+    },
+    "conversations": [
+      {
+        "from": "human",
+        "value": "<image>\nAre there linear transportation structures present?"
+      },
+      {
+        "from": "gpt",
+        "value": "Yes, a clear linear transportation corridor and paved runway infrastructure are identifiable."
+      },
+      {
+        "from": "human",
+        "value": "Where are the infrastructure runway located?"
+      },
+      {
+        "from": "gpt",
+        "value": "The infrastructure runway is located at coordinates [50, 100, 210, 150]."
+      }
+    ]
+  },
+  {
+    "id": "VRS_0008_water_river",
+    "image_path": "C:\\Users\\Tilak M K\\OneDrive\\Pictures\\Desktop\\VYOMIX 2026\\SatQuery-AI\\backend\\data\\vrs_patches\\VRS_0008_water_river.tif",
+    "scene_type": "water_river",
+    "target_entity": "water body",
+    "grounding": {
+      "expression": "Locate the water body",
+      "bbox": [
+        30,
+        80,
+        220,
+        160
+      ],
+      "normalized_bbox": [
+        0.1172,
+        0.3125,
+        0.8594,
+        0.625
+      ]
+    },
+    "caption": "The satellite scene features a conspicuous meandering water canal with low reflectance and distinct hydrological boundaries traversing open vegetated terrain.",
+    "vqa": {
+      "question": "Is there a water body visible in this image?",
+      "answer": "Yes, an inland water channel is clearly visible with prominent absorption in optical bands."
+    },
+    "conversations": [
+      {
+        "from": "human",
+        "value": "<image>\nIs there a water body visible in this image?"
+      },
+      {
+        "from": "gpt",
+        "value": "Yes, an inland water channel is clearly visible with prominent absorption in optical bands."
+      },
+      {
+        "from": "human",
+        "value": "Where are the water body located?"
+      },
+      {
+        "from": "gpt",
+        "value": "The water body is located at coordinates [30, 80, 220, 160]."
+      }
+    ]
+  },
+  {
+    "id": "VRS_0009_industrial_buildings",
+    "image_path": "C:\\Users\\Tilak M K\\OneDrive\\Pictures\\Desktop\\VYOMIX 2026\\SatQuery-AI\\backend\\data\\vrs_patches\\VRS_0009_industrial_buildings.tif",
+    "scene_type": "industrial_buildings",
+    "target_entity": "buildings",
+    "grounding": {
+      "expression": "Locate the buildings",
+      "bbox": [
+        70,
+        50,
+        190,
+        170
+      ],
+      "normalized_bbox": [
+        0.2734,
+        0.1953,
+        0.7422,
+        0.6641
+      ]
+    },
+    "caption": "An aerial view of dense industrial built-up structures and commercial facilities with high radiometric brightness and organized paved surface access.",
+    "vqa": {
+      "question": "What type of infrastructure is visible?",
+      "answer": "High-density commercial and industrial buildings with rectangular roofs and paved surfaces."
+    },
+    "conversations": [
+      {
+        "from": "human",
+        "value": "<image>\nWhat type of infrastructure is visible?"
+      },
+      {
+        "from": "gpt",
+        "value": "High-density commercial and industrial buildings with rectangular roofs and paved surfaces."
+      },
+      {
+        "from": "human",
+        "value": "Where are the buildings located?"
+      },
+      {
+        "from": "gpt",
+        "value": "The buildings is located at coordinates [70, 50, 190, 170]."
+      }
+    ]
+  },
+  {
+    "id": "VRS_0010_agricultural_fields",
+    "image_path": "C:\\Users\\Tilak M K\\OneDrive\\Pictures\\Desktop\\VYOMIX 2026\\SatQuery-AI\\backend\\data\\vrs_patches\\VRS_0010_agricultural_fields.tif",
+    "scene_type": "agricultural_fields",
+    "target_entity": "agricultural fields",
+    "grounding": {
+      "expression": "Locate the agricultural fields",
+      "bbox": [
+        40,
+        40,
+        210,
+        180
+      ],
+      "normalized_bbox": [
+        0.1562,
+        0.1562,
+        0.8203,
+        0.7031
+      ]
+    },
+    "caption": "An extensive expanse of photosynthetic agricultural fields and cultivated crop parcels characterized by high green vegetation reflectance.",
+    "vqa": {
+      "question": "What is the primary land use in this scene?",
+      "answer": "Agricultural cropland and cultivated vegetated parcels with distinct boundary lines."
+    },
+    "conversations": [
+      {
+        "from": "human",
+        "value": "<image>\nWhat is the primary land use in this scene?"
+      },
+      {
+        "from": "gpt",
+        "value": "Agricultural cropland and cultivated vegetated parcels with distinct boundary lines."
+      },
+      {
+        "from": "human",
+        "value": "Where are the agricultural fields located?"
+      },
+      {
+        "from": "gpt",
+        "value": "The agricultural fields is located at coordinates [40, 40, 210, 180]."
+      }
+    ]
+  },
+  {
+    "id": "VRS_0011_infrastructure_runway",
+    "image_path": "C:\\Users\\Tilak M K\\OneDrive\\Pictures\\Desktop\\VYOMIX 2026\\SatQuery-AI\\backend\\data\\vrs_patches\\VRS_0011_infrastructure_runway.tif",
+    "scene_type": "infrastructure_runway",
+    "target_entity": "infrastructure runway",
+    "grounding": {
+      "expression": "Locate the infrastructure runway",
+      "bbox": [
+        50,
+        100,
+        210,
+        150
+      ],
+      "normalized_bbox": [
+        0.1953,
+        0.3906,
+        0.8203,
+        0.5859
+      ]
+    },
+    "caption": "A linear infrastructure transport corridor and runway facility situated within an open terrestrial setting.",
+    "vqa": {
+      "question": "Are there linear transportation structures present?",
+      "answer": "Yes, a clear linear transportation corridor and paved runway infrastructure are identifiable."
+    },
+    "conversations": [
+      {
+        "from": "human",
+        "value": "<image>\nAre there linear transportation structures present?"
+      },
+      {
+        "from": "gpt",
+        "value": "Yes, a clear linear transportation corridor and paved runway infrastructure are identifiable."
+      },
+      {
+        "from": "human",
+        "value": "Where are the infrastructure runway located?"
+      },
+      {
+        "from": "gpt",
+        "value": "The infrastructure runway is located at coordinates [50, 100, 210, 150]."
+      }
+    ]
+  },
+  {
+    "id": "VRS_0012_water_river",
+    "image_path": "C:\\Users\\Tilak M K\\OneDrive\\Pictures\\Desktop\\VYOMIX 2026\\SatQuery-AI\\backend\\data\\vrs_patches\\VRS_0012_water_river.tif",
+    "scene_type": "water_river",
+    "target_entity": "water body",
+    "grounding": {
+      "expression": "Locate the water body",
+      "bbox": [
+        30,
+        80,
+        220,
+        160
+      ],
+      "normalized_bbox": [
+        0.1172,
+        0.3125,
+        0.8594,
+        0.625
+      ]
+    },
+    "caption": "The satellite scene features a conspicuous meandering water canal with low reflectance and distinct hydrological boundaries traversing open vegetated terrain.",
+    "vqa": {
+      "question": "Is there a water body visible in this image?",
+      "answer": "Yes, an inland water channel is clearly visible with prominent absorption in optical bands."
+    },
+    "conversations": [
+      {
+        "from": "human",
+        "value": "<image>\nIs there a water body visible in this image?"
+      },
+      {
+        "from": "gpt",
+        "value": "Yes, an inland water channel is clearly visible with prominent absorption in optical bands."
+      },
+      {
+        "from": "human",
+        "value": "Where are the water body located?"
+      },
+      {
+        "from": "gpt",
+        "value": "The water body is located at coordinates [30, 80, 220, 160]."
+      }
+    ]
+  },
+  {
+    "id": "VRS_0013_industrial_buildings",
+    "image_path": "C:\\Users\\Tilak M K\\OneDrive\\Pictures\\Desktop\\VYOMIX 2026\\SatQuery-AI\\backend\\data\\vrs_patches\\VRS_0013_industrial_buildings.tif",
+    "scene_type": "industrial_buildings",
+    "target_entity": "buildings",
+    "grounding": {
+      "expression": "Locate the buildings",
+      "bbox": [
+        70,
+        50,
+        190,
+        170
+      ],
+      "normalized_bbox": [
+        0.2734,
+        0.1953,
+        0.7422,
+        0.6641
+      ]
+    },
+    "caption": "An aerial view of dense industrial built-up structures and commercial facilities with high radiometric brightness and organized paved surface access.",
+    "vqa": {
+      "question": "What type of infrastructure is visible?",
+      "answer": "High-density commercial and industrial buildings with rectangular roofs and paved surfaces."
+    },
+    "conversations": [
+      {
+        "from": "human",
+        "value": "<image>\nWhat type of infrastructure is visible?"
+      },
+      {
+        "from": "gpt",
+        "value": "High-density commercial and industrial buildings with rectangular roofs and paved surfaces."
+      },
+      {
+        "from": "human",
+        "value": "Where are the buildings located?"
+      },
+      {
+        "from": "gpt",
+        "value": "The buildings is located at coordinates [70, 50, 190, 170]."
+      }
+    ]
+  },
+  {
+    "id": "VRS_0014_agricultural_fields",
+    "image_path": "C:\\Users\\Tilak M K\\OneDrive\\Pictures\\Desktop\\VYOMIX 2026\\SatQuery-AI\\backend\\data\\vrs_patches\\VRS_0014_agricultural_fields.tif",
+    "scene_type": "agricultural_fields",
+    "target_entity": "agricultural fields",
+    "grounding": {
+      "expression": "Locate the agricultural fields",
+      "bbox": [
+        40,
+        40,
+        210,
+        180
+      ],
+      "normalized_bbox": [
+        0.1562,
+        0.1562,
+        0.8203,
+        0.7031
+      ]
+    },
+    "caption": "An extensive expanse of photosynthetic agricultural fields and cultivated crop parcels characterized by high green vegetation reflectance.",
+    "vqa": {
+      "question": "What is the primary land use in this scene?",
+      "answer": "Agricultural cropland and cultivated vegetated parcels with distinct boundary lines."
+    },
+    "conversations": [
+      {
+        "from": "human",
+        "value": "<image>\nWhat is the primary land use in this scene?"
+      },
+      {
+        "from": "gpt",
+        "value": "Agricultural cropland and cultivated vegetated parcels with distinct boundary lines."
+      },
+      {
+        "from": "human",
+        "value": "Where are the agricultural fields located?"
+      },
+      {
+        "from": "gpt",
+        "value": "The agricultural fields is located at coordinates [40, 40, 210, 180]."
+      }
+    ]
+  },
+  {
+    "id": "VRS_0015_infrastructure_runway",
+    "image_path": "C:\\Users\\Tilak M K\\OneDrive\\Pictures\\Desktop\\VYOMIX 2026\\SatQuery-AI\\backend\\data\\vrs_patches\\VRS_0015_infrastructure_runway.tif",
+    "scene_type": "infrastructure_runway",
+    "target_entity": "infrastructure runway",
+    "grounding": {
+      "expression": "Locate the infrastructure runway",
+      "bbox": [
+        50,
+        100,
+        210,
+        150
+      ],
+      "normalized_bbox": [
+        0.1953,
+        0.3906,
+        0.8203,
+        0.5859
+      ]
+    },
+    "caption": "A linear infrastructure transport corridor and runway facility situated within an open terrestrial setting.",
+    "vqa": {
+      "question": "Are there linear transportation structures present?",
+      "answer": "Yes, a clear linear transportation corridor and paved runway infrastructure are identifiable."
+    },
+    "conversations": [
+      {
+        "from": "human",
+        "value": "<image>\nAre there linear transportation structures present?"
+      },
+      {
+        "from": "gpt",
+        "value": "Yes, a clear linear transportation corridor and paved runway infrastructure are identifiable."
+      },
+      {
+        "from": "human",
+        "value": "Where are the infrastructure runway located?"
+      },
+      {
+        "from": "gpt",
+        "value": "The infrastructure runway is located at coordinates [50, 100, 210, 150]."
+      }
+    ]
+  },
+  {
+    "id": "VRS_0016_water_river",
+    "image_path": "C:\\Users\\Tilak M K\\OneDrive\\Pictures\\Desktop\\VYOMIX 2026\\SatQuery-AI\\backend\\data\\vrs_patches\\VRS_0016_water_river.tif",
+    "scene_type": "water_river",
+    "target_entity": "water body",
+    "grounding": {
+      "expression": "Locate the water body",
+      "bbox": [
+        30,
+        80,
+        220,
+        160
+      ],
+      "normalized_bbox": [
+        0.1172,
+        0.3125,
+        0.8594,
+        0.625
+      ]
+    },
+    "caption": "The satellite scene features a conspicuous meandering water canal with low reflectance and distinct hydrological boundaries traversing open vegetated terrain.",
+    "vqa": {
+      "question": "Is there a water body visible in this image?",
+      "answer": "Yes, an inland water channel is clearly visible with prominent absorption in optical bands."
+    },
+    "conversations": [
+      {
+        "from": "human",
+        "value": "<image>\nIs there a water body visible in this image?"
+      },
+      {
+        "from": "gpt",
+        "value": "Yes, an inland water channel is clearly visible with prominent absorption in optical bands."
+      },
+      {
+        "from": "human",
+        "value": "Where are the water body located?"
+      },
+      {
+        "from": "gpt",
+        "value": "The water body is located at coordinates [30, 80, 220, 160]."
+      }
+    ]
+  },
+  {
+    "id": "VRS_0017_industrial_buildings",
+    "image_path": "C:\\Users\\Tilak M K\\OneDrive\\Pictures\\Desktop\\VYOMIX 2026\\SatQuery-AI\\backend\\data\\vrs_patches\\VRS_0017_industrial_buildings.tif",
+    "scene_type": "industrial_buildings",
+    "target_entity": "buildings",
+    "grounding": {
+      "expression": "Locate the buildings",
+      "bbox": [
+        70,
+        50,
+        190,
+        170
+      ],
+      "normalized_bbox": [
+        0.2734,
+        0.1953,
+        0.7422,
+        0.6641
+      ]
+    },
+    "caption": "An aerial view of dense industrial built-up structures and commercial facilities with high radiometric brightness and organized paved surface access.",
+    "vqa": {
+      "question": "What type of infrastructure is visible?",
+      "answer": "High-density commercial and industrial buildings with rectangular roofs and paved surfaces."
+    },
+    "conversations": [
+      {
+        "from": "human",
+        "value": "<image>\nWhat type of infrastructure is visible?"
+      },
+      {
+        "from": "gpt",
+        "value": "High-density commercial and industrial buildings with rectangular roofs and paved surfaces."
+      },
+      {
+        "from": "human",
+        "value": "Where are the buildings located?"
+      },
+      {
+        "from": "gpt",
+        "value": "The buildings is located at coordinates [70, 50, 190, 170]."
+      }
+    ]
+  },
+  {
+    "id": "VRS_0018_agricultural_fields",
+    "image_path": "C:\\Users\\Tilak M K\\OneDrive\\Pictures\\Desktop\\VYOMIX 2026\\SatQuery-AI\\backend\\data\\vrs_patches\\VRS_0018_agricultural_fields.tif",
+    "scene_type": "agricultural_fields",
+    "target_entity": "agricultural fields",
+    "grounding": {
+      "expression": "Locate the agricultural fields",
+      "bbox": [
+        40,
+        40,
+        210,
+        180
+      ],
+      "normalized_bbox": [
+        0.1562,
+        0.1562,
+        0.8203,
+        0.7031
+      ]
+    },
+    "caption": "An extensive expanse of photosynthetic agricultural fields and cultivated crop parcels characterized by high green vegetation reflectance.",
+    "vqa": {
+      "question": "What is the primary land use in this scene?",
+      "answer": "Agricultural cropland and cultivated vegetated parcels with distinct boundary lines."
+    },
+    "conversations": [
+      {
+        "from": "human",
+        "value": "<image>\nWhat is the primary land use in this scene?"
+      },
+      {
+        "from": "gpt",
+        "value": "Agricultural cropland and cultivated vegetated parcels with distinct boundary lines."
+      },
+      {
+        "from": "human",
+        "value": "Where are the agricultural fields located?"
+      },
+      {
+        "from": "gpt",
+        "value": "The agricultural fields is located at coordinates [40, 40, 210, 180]."
+      }
+    ]
+  },
+  {
+    "id": "VRS_0019_infrastructure_runway",
+    "image_path": "C:\\Users\\Tilak M K\\OneDrive\\Pictures\\Desktop\\VYOMIX 2026\\SatQuery-AI\\backend\\data\\vrs_patches\\VRS_0019_infrastructure_runway.tif",
+    "scene_type": "infrastructure_runway",
+    "target_entity": "infrastructure runway",
+    "grounding": {
+      "expression": "Locate the infrastructure runway",
+      "bbox": [
+        50,
+        100,
+        210,
+        150
+      ],
+      "normalized_bbox": [
+        0.1953,
+        0.3906,
+        0.8203,
+        0.5859
+      ]
+    },
+    "caption": "A linear infrastructure transport corridor and runway facility situated within an open terrestrial setting.",
+    "vqa": {
+      "question": "Are there linear transportation structures present?",
+      "answer": "Yes, a clear linear transportation corridor and paved runway infrastructure are identifiable."
+    },
+    "conversations": [
+      {
+        "from": "human",
+        "value": "<image>\nAre there linear transportation structures present?"
+      },
+      {
+        "from": "gpt",
+        "value": "Yes, a clear linear transportation corridor and paved runway infrastructure are identifiable."
+      },
+      {
+        "from": "human",
+        "value": "Where are the infrastructure runway located?"
+      },
+      {
+        "from": "gpt",
+        "value": "The infrastructure runway is located at coordinates [50, 100, 210, 150]."
+      }
+    ]
+  },
+  {
+    "id": "VRS_0020_water_river",
+    "image_path": "C:\\Users\\Tilak M K\\OneDrive\\Pictures\\Desktop\\VYOMIX 2026\\SatQuery-AI\\backend\\data\\vrs_patches\\VRS_0020_water_river.tif",
+    "scene_type": "water_river",
+    "target_entity": "water body",
+    "grounding": {
+      "expression": "Locate the water body",
+      "bbox": [
+        30,
+        80,
+        220,
+        160
+      ],
+      "normalized_bbox": [
+        0.1172,
+        0.3125,
+        0.8594,
+        0.625
+      ]
+    },
+    "caption": "The satellite scene features a conspicuous meandering water canal with low reflectance and distinct hydrological boundaries traversing open vegetated terrain.",
+    "vqa": {
+      "question": "Is there a water body visible in this image?",
+      "answer": "Yes, an inland water channel is clearly visible with prominent absorption in optical bands."
+    },
+    "conversations": [
+      {
+        "from": "human",
+        "value": "<image>\nIs there a water body visible in this image?"
+      },
+      {
+        "from": "gpt",
+        "value": "Yes, an inland water channel is clearly visible with prominent absorption in optical bands."
+      },
+      {
+        "from": "human",
+        "value": "Where are the water body located?"
+      },
+      {
+        "from": "gpt",
+        "value": "The water body is located at coordinates [30, 80, 220, 160]."
+      }
+    ]
+  },
+  {
+    "id": "VRS_0021_industrial_buildings",
+    "image_path": "C:\\Users\\Tilak M K\\OneDrive\\Pictures\\Desktop\\VYOMIX 2026\\SatQuery-AI\\backend\\data\\vrs_patches\\VRS_0021_industrial_buildings.tif",
+    "scene_type": "industrial_buildings",
+    "target_entity": "buildings",
+    "grounding": {
+      "expression": "Locate the buildings",
+      "bbox": [
+        70,
+        50,
+        190,
+        170
+      ],
+      "normalized_bbox": [
+        0.2734,
+        0.1953,
+        0.7422,
+        0.6641
+      ]
+    },
+    "caption": "An aerial view of dense industrial built-up structures and commercial facilities with high radiometric brightness and organized paved surface access.",
+    "vqa": {
+      "question": "What type of infrastructure is visible?",
+      "answer": "High-density commercial and industrial buildings with rectangular roofs and paved surfaces."
+    },
+    "conversations": [
+      {
+        "from": "human",
+        "value": "<image>\nWhat type of infrastructure is visible?"
+      },
+      {
+        "from": "gpt",
+        "value": "High-density commercial and industrial buildings with rectangular roofs and paved surfaces."
+      },
+      {
+        "from": "human",
+        "value": "Where are the buildings located?"
+      },
+      {
+        "from": "gpt",
+        "value": "The buildings is located at coordinates [70, 50, 190, 170]."
+      }
+    ]
+  },
+  {
+    "id": "VRS_0022_agricultural_fields",
+    "image_path": "C:\\Users\\Tilak M K\\OneDrive\\Pictures\\Desktop\\VYOMIX 2026\\SatQuery-AI\\backend\\data\\vrs_patches\\VRS_0022_agricultural_fields.tif",
+    "scene_type": "agricultural_fields",
+    "target_entity": "agricultural fields",
+    "grounding": {
+      "expression": "Locate the agricultural fields",
+      "bbox": [
+        40,
+        40,
+        210,
+        180
+      ],
+      "normalized_bbox": [
+        0.1562,
+        0.1562,
+        0.8203,
+        0.7031
+      ]
+    },
+    "caption": "An extensive expanse of photosynthetic agricultural fields and cultivated crop parcels characterized by high green vegetation reflectance.",
+    "vqa": {
+      "question": "What is the primary land use in this scene?",
+      "answer": "Agricultural cropland and cultivated vegetated parcels with distinct boundary lines."
+    },
+    "conversations": [
+      {
+        "from": "human",
+        "value": "<image>\nWhat is the primary land use in this scene?"
+      },
+      {
+        "from": "gpt",
+        "value": "Agricultural cropland and cultivated vegetated parcels with distinct boundary lines."
+      },
+      {
+        "from": "human",
+        "value": "Where are the agricultural fields located?"
+      },
+      {
+        "from": "gpt",
+        "value": "The agricultural fields is located at coordinates [40, 40, 210, 180]."
+      }
+    ]
+  },
+  {
+    "id": "VRS_0023_infrastructure_runway",
+    "image_path": "C:\\Users\\Tilak M K\\OneDrive\\Pictures\\Desktop\\VYOMIX 2026\\SatQuery-AI\\backend\\data\\vrs_patches\\VRS_0023_infrastructure_runway.tif",
+    "scene_type": "infrastructure_runway",
+    "target_entity": "infrastructure runway",
+    "grounding": {
+      "expression": "Locate the infrastructure runway",
+      "bbox": [
+        50,
+        100,
+        210,
+        150
+      ],
+      "normalized_bbox": [
+        0.1953,
+        0.3906,
+        0.8203,
+        0.5859
+      ]
+    },
+    "caption": "A linear infrastructure transport corridor and runway facility situated within an open terrestrial setting.",
+    "vqa": {
+      "question": "Are there linear transportation structures present?",
+      "answer": "Yes, a clear linear transportation corridor and paved runway infrastructure are identifiable."
+    },
+    "conversations": [
+      {
+        "from": "human",
+        "value": "<image>\nAre there linear transportation structures present?"
+      },
+      {
+        "from": "gpt",
+        "value": "Yes, a clear linear transportation corridor and paved runway infrastructure are identifiable."
+      },
+      {
+        "from": "human",
+        "value": "Where are the infrastructure runway located?"
+      },
+      {
+        "from": "gpt",
+        "value": "The infrastructure runway is located at coordinates [50, 100, 210, 150]."
+      }
+    ]
+  },
+  {
+    "id": "VRS_0024_water_river",
+    "image_path": "C:\\Users\\Tilak M K\\OneDrive\\Pictures\\Desktop\\VYOMIX 2026\\SatQuery-AI\\backend\\data\\vrs_patches\\VRS_0024_water_river.tif",
+    "scene_type": "water_river",
+    "target_entity": "water body",
+    "grounding": {
+      "expression": "Locate the water body",
+      "bbox": [
+        30,
+        80,
+        220,
+        160
+      ],
+      "normalized_bbox": [
+        0.1172,
+        0.3125,
+        0.8594,
+        0.625
+      ]
+    },
+    "caption": "The satellite scene features a conspicuous meandering water canal with low reflectance and distinct hydrological boundaries traversing open vegetated terrain.",
+    "vqa": {
+      "question": "Is there a water body visible in this image?",
+      "answer": "Yes, an inland water channel is clearly visible with prominent absorption in optical bands."
+    },
+    "conversations": [
+      {
+        "from": "human",
+        "value": "<image>\nIs there a water body visible in this image?"
+      },
+      {
+        "from": "gpt",
+        "value": "Yes, an inland water channel is clearly visible with prominent absorption in optical bands."
+      },
+      {
+        "from": "human",
+        "value": "Where are the water body located?"
+      },
+      {
+        "from": "gpt",
+        "value": "The water body is located at coordinates [30, 80, 220, 160]."
+      }
+    ]
+  },
+  {
+    "id": "VRS_0025_industrial_buildings",
+    "image_path": "C:\\Users\\Tilak M K\\OneDrive\\Pictures\\Desktop\\VYOMIX 2026\\SatQuery-AI\\backend\\data\\vrs_patches\\VRS_0025_industrial_buildings.tif",
+    "scene_type": "industrial_buildings",
+    "target_entity": "buildings",
+    "grounding": {
+      "expression": "Locate the buildings",
+      "bbox": [
+        70,
+        50,
+        190,
+        170
+      ],
+      "normalized_bbox": [
+        0.2734,
+        0.1953,
+        0.7422,
+        0.6641
+      ]
+    },
+    "caption": "An aerial view of dense industrial built-up structures and commercial facilities with high radiometric brightness and organized paved surface access.",
+    "vqa": {
+      "question": "What type of infrastructure is visible?",
+      "answer": "High-density commercial and industrial buildings with rectangular roofs and paved surfaces."
+    },
+    "conversations": [
+      {
+        "from": "human",
+        "value": "<image>\nWhat type of infrastructure is visible?"
+      },
+      {
+        "from": "gpt",
+        "value": "High-density commercial and industrial buildings with rectangular roofs and paved surfaces."
+      },
+      {
+        "from": "human",
+        "value": "Where are the buildings located?"
+      },
+      {
+        "from": "gpt",
+        "value": "The buildings is located at coordinates [70, 50, 190, 170]."
+      }
+    ]
+  },
+  {
+    "id": "VRS_0026_agricultural_fields",
+    "image_path": "C:\\Users\\Tilak M K\\OneDrive\\Pictures\\Desktop\\VYOMIX 2026\\SatQuery-AI\\backend\\data\\vrs_patches\\VRS_0026_agricultural_fields.tif",
+    "scene_type": "agricultural_fields",
+    "target_entity": "agricultural fields",
+    "grounding": {
+      "expression": "Locate the agricultural fields",
+      "bbox": [
+        40,
+        40,
+        210,
+        180
+      ],
+      "normalized_bbox": [
+        0.1562,
+        0.1562,
+        0.8203,
+        0.7031
+      ]
+    },
+    "caption": "An extensive expanse of photosynthetic agricultural fields and cultivated crop parcels characterized by high green vegetation reflectance.",
+    "vqa": {
+      "question": "What is the primary land use in this scene?",
+      "answer": "Agricultural cropland and cultivated vegetated parcels with distinct boundary lines."
+    },
+    "conversations": [
+      {
+        "from": "human",
+        "value": "<image>\nWhat is the primary land use in this scene?"
+      },
+      {
+        "from": "gpt",
+        "value": "Agricultural cropland and cultivated vegetated parcels with distinct boundary lines."
+      },
+      {
+        "from": "human",
+        "value": "Where are the agricultural fields located?"
+      },
+      {
+        "from": "gpt",
+        "value": "The agricultural fields is located at coordinates [40, 40, 210, 180]."
+      }
+    ]
+  },
+  {
+    "id": "VRS_0027_infrastructure_runway",
+    "image_path": "C:\\Users\\Tilak M K\\OneDrive\\Pictures\\Desktop\\VYOMIX 2026\\SatQuery-AI\\backend\\data\\vrs_patches\\VRS_0027_infrastructure_runway.tif",
+    "scene_type": "infrastructure_runway",
+    "target_entity": "infrastructure runway",
+    "grounding": {
+      "expression": "Locate the infrastructure runway",
+      "bbox": [
+        50,
+        100,
+        210,
+        150
+      ],
+      "normalized_bbox": [
+        0.1953,
+        0.3906,
+        0.8203,
+        0.5859
+      ]
+    },
+    "caption": "A linear infrastructure transport corridor and runway facility situated within an open terrestrial setting.",
+    "vqa": {
+      "question": "Are there linear transportation structures present?",
+      "answer": "Yes, a clear linear transportation corridor and paved runway infrastructure are identifiable."
+    },
+    "conversations": [
+      {
+        "from": "human",
+        "value": "<image>\nAre there linear transportation structures present?"
+      },
+      {
+        "from": "gpt",
+        "value": "Yes, a clear linear transportation corridor and paved runway infrastructure are identifiable."
+      },
+      {
+        "from": "human",
+        "value": "Where are the infrastructure runway located?"
+      },
+      {
+        "from": "gpt",
+        "value": "The infrastructure runway is located at coordinates [50, 100, 210, 150]."
+      }
+    ]
+  },
+  {
+    "id": "VRS_0028_water_river",
+    "image_path": "C:\\Users\\Tilak M K\\OneDrive\\Pictures\\Desktop\\VYOMIX 2026\\SatQuery-AI\\backend\\data\\vrs_patches\\VRS_0028_water_river.tif",
+    "scene_type": "water_river",
+    "target_entity": "water body",
+    "grounding": {
+      "expression": "Locate the water body",
+      "bbox": [
+        30,
+        80,
+        220,
+        160
+      ],
+      "normalized_bbox": [
+        0.1172,
+        0.3125,
+        0.8594,
+        0.625
+      ]
+    },
+    "caption": "The satellite scene features a conspicuous meandering water canal with low reflectance and distinct hydrological boundaries traversing open vegetated terrain.",
+    "vqa": {
+      "question": "Is there a water body visible in this image?",
+      "answer": "Yes, an inland water channel is clearly visible with prominent absorption in optical bands."
+    },
+    "conversations": [
+      {
+        "from": "human",
+        "value": "<image>\nIs there a water body visible in this image?"
+      },
+      {
+        "from": "gpt",
+        "value": "Yes, an inland water channel is clearly visible with prominent absorption in optical bands."
+      },
+      {
+        "from": "human",
+        "value": "Where are the water body located?"
+      },
+      {
+        "from": "gpt",
+        "value": "The water body is located at coordinates [30, 80, 220, 160]."
+      }
+    ]
+  },
+  {
+    "id": "VRS_0029_industrial_buildings",
+    "image_path": "C:\\Users\\Tilak M K\\OneDrive\\Pictures\\Desktop\\VYOMIX 2026\\SatQuery-AI\\backend\\data\\vrs_patches\\VRS_0029_industrial_buildings.tif",
+    "scene_type": "industrial_buildings",
+    "target_entity": "buildings",
+    "grounding": {
+      "expression": "Locate the buildings",
+      "bbox": [
+        70,
+        50,
+        190,
+        170
+      ],
+      "normalized_bbox": [
+        0.2734,
+        0.1953,
+        0.7422,
+        0.6641
+      ]
+    },
+    "caption": "An aerial view of dense industrial built-up structures and commercial facilities with high radiometric brightness and organized paved surface access.",
+    "vqa": {
+      "question": "What type of infrastructure is visible?",
+      "answer": "High-density commercial and industrial buildings with rectangular roofs and paved surfaces."
+    },
+    "conversations": [
+      {
+        "from": "human",
+        "value": "<image>\nWhat type of infrastructure is visible?"
+      },
+      {
+        "from": "gpt",
+        "value": "High-density commercial and industrial buildings with rectangular roofs and paved surfaces."
+      },
+      {
+        "from": "human",
+        "value": "Where are the buildings located?"
+      },
+      {
+        "from": "gpt",
+        "value": "The buildings is located at coordinates [70, 50, 190, 170]."
+      }
+    ]
+  },
+  {
+    "id": "VRS_0030_agricultural_fields",
+    "image_path": "C:\\Users\\Tilak M K\\OneDrive\\Pictures\\Desktop\\VYOMIX 2026\\SatQuery-AI\\backend\\data\\vrs_patches\\VRS_0030_agricultural_fields.tif",
+    "scene_type": "agricultural_fields",
+    "target_entity": "agricultural fields",
+    "grounding": {
+      "expression": "Locate the agricultural fields",
+      "bbox": [
+        40,
+        40,
+        210,
+        180
+      ],
+      "normalized_bbox": [
+        0.1562,
+        0.1562,
+        0.8203,
+        0.7031
+      ]
+    },
+    "caption": "An extensive expanse of photosynthetic agricultural fields and cultivated crop parcels characterized by high green vegetation reflectance.",
+    "vqa": {
+      "question": "What is the primary land use in this scene?",
+      "answer": "Agricultural cropland and cultivated vegetated parcels with distinct boundary lines."
+    },
+    "conversations": [
+      {
+        "from": "human",
+        "value": "<image>\nWhat is the primary land use in this scene?"
+      },
+      {
+        "from": "gpt",
+        "value": "Agricultural cropland and cultivated vegetated parcels with distinct boundary lines."
+      },
+      {
+        "from": "human",
+        "value": "Where are the agricultural fields located?"
+      },
+      {
+        "from": "gpt",
+        "value": "The agricultural fields is located at coordinates [40, 40, 210, 180]."
+      }
+    ]
+  },
+  {
+    "id": "VRS_0031_infrastructure_runway",
+    "image_path": "C:\\Users\\Tilak M K\\OneDrive\\Pictures\\Desktop\\VYOMIX 2026\\SatQuery-AI\\backend\\data\\vrs_patches\\VRS_0031_infrastructure_runway.tif",
+    "scene_type": "infrastructure_runway",
+    "target_entity": "infrastructure runway",
+    "grounding": {
+      "expression": "Locate the infrastructure runway",
+      "bbox": [
+        50,
+        100,
+        210,
+        150
+      ],
+      "normalized_bbox": [
+        0.1953,
+        0.3906,
+        0.8203,
+        0.5859
+      ]
+    },
+    "caption": "A linear infrastructure transport corridor and runway facility situated within an open terrestrial setting.",
+    "vqa": {
+      "question": "Are there linear transportation structures present?",
+      "answer": "Yes, a clear linear transportation corridor and paved runway infrastructure are identifiable."
+    },
+    "conversations": [
+      {
+        "from": "human",
+        "value": "<image>\nAre there linear transportation structures present?"
+      },
+      {
+        "from": "gpt",
+        "value": "Yes, a clear linear transportation corridor and paved runway infrastructure are identifiable."
+      },
+      {
+        "from": "human",
+        "value": "Where are the infrastructure runway located?"
+      },
+      {
+        "from": "gpt",
+        "value": "The infrastructure runway is located at coordinates [50, 100, 210, 150]."
+      }
+    ]
+  },
+  {
+    "id": "VRS_0032_water_river",
+    "image_path": "C:\\Users\\Tilak M K\\OneDrive\\Pictures\\Desktop\\VYOMIX 2026\\SatQuery-AI\\backend\\data\\vrs_patches\\VRS_0032_water_river.tif",
+    "scene_type": "water_river",
+    "target_entity": "water body",
+    "grounding": {
+      "expression": "Locate the water body",
+      "bbox": [
+        30,
+        80,
+        220,
+        160
+      ],
+      "normalized_bbox": [
+        0.1172,
+        0.3125,
+        0.8594,
+        0.625
+      ]
+    },
+    "caption": "The satellite scene features a conspicuous meandering water canal with low reflectance and distinct hydrological boundaries traversing open vegetated terrain.",
+    "vqa": {
+      "question": "Is there a water body visible in this image?",
+      "answer": "Yes, an inland water channel is clearly visible with prominent absorption in optical bands."
+    },
+    "conversations": [
+      {
+        "from": "human",
+        "value": "<image>\nIs there a water body visible in this image?"
+      },
+      {
+        "from": "gpt",
+        "value": "Yes, an inland water channel is clearly visible with prominent absorption in optical bands."
+      },
+      {
+        "from": "human",
+        "value": "Where are the water body located?"
+      },
+      {
+        "from": "gpt",
+        "value": "The water body is located at coordinates [30, 80, 220, 160]."
+      }
+    ]
+  },
+  {
+    "id": "VRS_0033_industrial_buildings",
+    "image_path": "C:\\Users\\Tilak M K\\OneDrive\\Pictures\\Desktop\\VYOMIX 2026\\SatQuery-AI\\backend\\data\\vrs_patches\\VRS_0033_industrial_buildings.tif",
+    "scene_type": "industrial_buildings",
+    "target_entity": "buildings",
+    "grounding": {
+      "expression": "Locate the buildings",
+      "bbox": [
+        70,
+        50,
+        190,
+        170
+      ],
+      "normalized_bbox": [
+        0.2734,
+        0.1953,
+        0.7422,
+        0.6641
+      ]
+    },
+    "caption": "An aerial view of dense industrial built-up structures and commercial facilities with high radiometric brightness and organized paved surface access.",
+    "vqa": {
+      "question": "What type of infrastructure is visible?",
+      "answer": "High-density commercial and industrial buildings with rectangular roofs and paved surfaces."
+    },
+    "conversations": [
+      {
+        "from": "human",
+        "value": "<image>\nWhat type of infrastructure is visible?"
+      },
+      {
+        "from": "gpt",
+        "value": "High-density commercial and industrial buildings with rectangular roofs and paved surfaces."
+      },
+      {
+        "from": "human",
+        "value": "Where are the buildings located?"
+      },
+      {
+        "from": "gpt",
+        "value": "The buildings is located at coordinates [70, 50, 190, 170]."
+      }
+    ]
+  },
+  {
+    "id": "VRS_0034_agricultural_fields",
+    "image_path": "C:\\Users\\Tilak M K\\OneDrive\\Pictures\\Desktop\\VYOMIX 2026\\SatQuery-AI\\backend\\data\\vrs_patches\\VRS_0034_agricultural_fields.tif",
+    "scene_type": "agricultural_fields",
+    "target_entity": "agricultural fields",
+    "grounding": {
+      "expression": "Locate the agricultural fields",
+      "bbox": [
+        40,
+        40,
+        210,
+        180
+      ],
+      "normalized_bbox": [
+        0.1562,
+        0.1562,
+        0.8203,
+        0.7031
+      ]
+    },
+    "caption": "An extensive expanse of photosynthetic agricultural fields and cultivated crop parcels characterized by high green vegetation reflectance.",
+    "vqa": {
+      "question": "What is the primary land use in this scene?",
+      "answer": "Agricultural cropland and cultivated vegetated parcels with distinct boundary lines."
+    },
+    "conversations": [
+      {
+        "from": "human",
+        "value": "<image>\nWhat is the primary land use in this scene?"
+      },
+      {
+        "from": "gpt",
+        "value": "Agricultural cropland and cultivated vegetated parcels with distinct boundary lines."
+      },
+      {
+        "from": "human",
+        "value": "Where are the agricultural fields located?"
+      },
+      {
+        "from": "gpt",
+        "value": "The agricultural fields is located at coordinates [40, 40, 210, 180]."
+      }
+    ]
+  },
+  {
+    "id": "VRS_0035_infrastructure_runway",
+    "image_path": "C:\\Users\\Tilak M K\\OneDrive\\Pictures\\Desktop\\VYOMIX 2026\\SatQuery-AI\\backend\\data\\vrs_patches\\VRS_0035_infrastructure_runway.tif",
+    "scene_type": "infrastructure_runway",
+    "target_entity": "infrastructure runway",
+    "grounding": {
+      "expression": "Locate the infrastructure runway",
+      "bbox": [
+        50,
+        100,
+        210,
+        150
+      ],
+      "normalized_bbox": [
+        0.1953,
+        0.3906,
+        0.8203,
+        0.5859
+      ]
+    },
+    "caption": "A linear infrastructure transport corridor and runway facility situated within an open terrestrial setting.",
+    "vqa": {
+      "question": "Are there linear transportation structures present?",
+      "answer": "Yes, a clear linear transportation corridor and paved runway infrastructure are identifiable."
+    },
+    "conversations": [
+      {
+        "from": "human",
+        "value": "<image>\nAre there linear transportation structures present?"
+      },
+      {
+        "from": "gpt",
+        "value": "Yes, a clear linear transportation corridor and paved runway infrastructure are identifiable."
+      },
+      {
+        "from": "human",
+        "value": "Where are the infrastructure runway located?"
+      },
+      {
+        "from": "gpt",
+        "value": "The infrastructure runway is located at coordinates [50, 100, 210, 150]."
+      }
+    ]
+  },
+  {
+    "id": "VRS_0036_water_river",
+    "image_path": "C:\\Users\\Tilak M K\\OneDrive\\Pictures\\Desktop\\VYOMIX 2026\\SatQuery-AI\\backend\\data\\vrs_patches\\VRS_0036_water_river.tif",
+    "scene_type": "water_river",
+    "target_entity": "water body",
+    "grounding": {
+      "expression": "Locate the water body",
+      "bbox": [
+        30,
+        80,
+        220,
+        160
+      ],
+      "normalized_bbox": [
+        0.1172,
+        0.3125,
+        0.8594,
+        0.625
+      ]
+    },
+    "caption": "The satellite scene features a conspicuous meandering water canal with low reflectance and distinct hydrological boundaries traversing open vegetated terrain.",
+    "vqa": {
+      "question": "Is there a water body visible in this image?",
+      "answer": "Yes, an inland water channel is clearly visible with prominent absorption in optical bands."
+    },
+    "conversations": [
+      {
+        "from": "human",
+        "value": "<image>\nIs there a water body visible in this image?"
+      },
+      {
+        "from": "gpt",
+        "value": "Yes, an inland water channel is clearly visible with prominent absorption in optical bands."
+      },
+      {
+        "from": "human",
+        "value": "Where are the water body located?"
+      },
+      {
+        "from": "gpt",
+        "value": "The water body is located at coordinates [30, 80, 220, 160]."
+      }
+    ]
+  },
+  {
+    "id": "VRS_0037_industrial_buildings",
+    "image_path": "C:\\Users\\Tilak M K\\OneDrive\\Pictures\\Desktop\\VYOMIX 2026\\SatQuery-AI\\backend\\data\\vrs_patches\\VRS_0037_industrial_buildings.tif",
+    "scene_type": "industrial_buildings",
+    "target_entity": "buildings",
+    "grounding": {
+      "expression": "Locate the buildings",
+      "bbox": [
+        70,
+        50,
+        190,
+        170
+      ],
+      "normalized_bbox": [
+        0.2734,
+        0.1953,
+        0.7422,
+        0.6641
+      ]
+    },
+    "caption": "An aerial view of dense industrial built-up structures and commercial facilities with high radiometric brightness and organized paved surface access.",
+    "vqa": {
+      "question": "What type of infrastructure is visible?",
+      "answer": "High-density commercial and industrial buildings with rectangular roofs and paved surfaces."
+    },
+    "conversations": [
+      {
+        "from": "human",
+        "value": "<image>\nWhat type of infrastructure is visible?"
+      },
+      {
+        "from": "gpt",
+        "value": "High-density commercial and industrial buildings with rectangular roofs and paved surfaces."
+      },
+      {
+        "from": "human",
+        "value": "Where are the buildings located?"
+      },
+      {
+        "from": "gpt",
+        "value": "The buildings is located at coordinates [70, 50, 190, 170]."
+      }
+    ]
+  },
+  {
+    "id": "VRS_0038_agricultural_fields",
+    "image_path": "C:\\Users\\Tilak M K\\OneDrive\\Pictures\\Desktop\\VYOMIX 2026\\SatQuery-AI\\backend\\data\\vrs_patches\\VRS_0038_agricultural_fields.tif",
+    "scene_type": "agricultural_fields",
+    "target_entity": "agricultural fields",
+    "grounding": {
+      "expression": "Locate the agricultural fields",
+      "bbox": [
+        40,
+        40,
+        210,
+        180
+      ],
+      "normalized_bbox": [
+        0.1562,
+        0.1562,
+        0.8203,
+        0.7031
+      ]
+    },
+    "caption": "An extensive expanse of photosynthetic agricultural fields and cultivated crop parcels characterized by high green vegetation reflectance.",
+    "vqa": {
+      "question": "What is the primary land use in this scene?",
+      "answer": "Agricultural cropland and cultivated vegetated parcels with distinct boundary lines."
+    },
+    "conversations": [
+      {
+        "from": "human",
+        "value": "<image>\nWhat is the primary land use in this scene?"
+      },
+      {
+        "from": "gpt",
+        "value": "Agricultural cropland and cultivated vegetated parcels with distinct boundary lines."
+      },
+      {
+        "from": "human",
+        "value": "Where are the agricultural fields located?"
+      },
+      {
+        "from": "gpt",
+        "value": "The agricultural fields is located at coordinates [40, 40, 210, 180]."
+      }
+    ]
+  },
+  {
+    "id": "VRS_0039_infrastructure_runway",
+    "image_path": "C:\\Users\\Tilak M K\\OneDrive\\Pictures\\Desktop\\VYOMIX 2026\\SatQuery-AI\\backend\\data\\vrs_patches\\VRS_0039_infrastructure_runway.tif",
+    "scene_type": "infrastructure_runway",
+    "target_entity": "infrastructure runway",
+    "grounding": {
+      "expression": "Locate the infrastructure runway",
+      "bbox": [
+        50,
+        100,
+        210,
+        150
+      ],
+      "normalized_bbox": [
+        0.1953,
+        0.3906,
+        0.8203,
+        0.5859
+      ]
+    },
+    "caption": "A linear infrastructure transport corridor and runway facility situated within an open terrestrial setting.",
+    "vqa": {
+      "question": "Are there linear transportation structures present?",
+      "answer": "Yes, a clear linear transportation corridor and paved runway infrastructure are identifiable."
+    },
+    "conversations": [
+      {
+        "from": "human",
+        "value": "<image>\nAre there linear transportation structures present?"
+      },
+      {
+        "from": "gpt",
+        "value": "Yes, a clear linear transportation corridor and paved runway infrastructure are identifiable."
+      },
+      {
+        "from": "human",
+        "value": "Where are the infrastructure runway located?"
+      },
+      {
+        "from": "gpt",
+        "value": "The infrastructure runway is located at coordinates [50, 100, 210, 150]."
+      }
+    ]
+  },
+  {
+    "id": "VRS_0040_water_river",
+    "image_path": "C:\\Users\\Tilak M K\\OneDrive\\Pictures\\Desktop\\VYOMIX 2026\\SatQuery-AI\\backend\\data\\vrs_patches\\VRS_0040_water_river.tif",
+    "scene_type": "water_river",
+    "target_entity": "water body",
+    "grounding": {
+      "expression": "Locate the water body",
+      "bbox": [
+        30,
+        80,
+        220,
+        160
+      ],
+      "normalized_bbox": [
+        0.1172,
+        0.3125,
+        0.8594,
+        0.625
+      ]
+    },
+    "caption": "The satellite scene features a conspicuous meandering water canal with low reflectance and distinct hydrological boundaries traversing open vegetated terrain.",
+    "vqa": {
+      "question": "Is there a water body visible in this image?",
+      "answer": "Yes, an inland water channel is clearly visible with prominent absorption in optical bands."
+    },
+    "conversations": [
+      {
+        "from": "human",
+        "value": "<image>\nIs there a water body visible in this image?"
+      },
+      {
+        "from": "gpt",
+        "value": "Yes, an inland water channel is clearly visible with prominent absorption in optical bands."
+      },
+      {
+        "from": "human",
+        "value": "Where are the water body located?"
+      },
+      {
+        "from": "gpt",
+        "value": "The water body is located at coordinates [30, 80, 220, 160]."
+      }
+    ]
+  },
+  {
+    "id": "VRS_0041_industrial_buildings",
+    "image_path": "C:\\Users\\Tilak M K\\OneDrive\\Pictures\\Desktop\\VYOMIX 2026\\SatQuery-AI\\backend\\data\\vrs_patches\\VRS_0041_industrial_buildings.tif",
+    "scene_type": "industrial_buildings",
+    "target_entity": "buildings",
+    "grounding": {
+      "expression": "Locate the buildings",
+      "bbox": [
+        70,
+        50,
+        190,
+        170
+      ],
+      "normalized_bbox": [
+        0.2734,
+        0.1953,
+        0.7422,
+        0.6641
+      ]
+    },
+    "caption": "An aerial view of dense industrial built-up structures and commercial facilities with high radiometric brightness and organized paved surface access.",
+    "vqa": {
+      "question": "What type of infrastructure is visible?",
+      "answer": "High-density commercial and industrial buildings with rectangular roofs and paved surfaces."
+    },
+    "conversations": [
+      {
+        "from": "human",
+        "value": "<image>\nWhat type of infrastructure is visible?"
+      },
+      {
+        "from": "gpt",
+        "value": "High-density commercial and industrial buildings with rectangular roofs and paved surfaces."
+      },
+      {
+        "from": "human",
+        "value": "Where are the buildings located?"
+      },
+      {
+        "from": "gpt",
+        "value": "The buildings is located at coordinates [70, 50, 190, 170]."
+      }
+    ]
+  },
+  {
+    "id": "VRS_0042_agricultural_fields",
+    "image_path": "C:\\Users\\Tilak M K\\OneDrive\\Pictures\\Desktop\\VYOMIX 2026\\SatQuery-AI\\backend\\data\\vrs_patches\\VRS_0042_agricultural_fields.tif",
+    "scene_type": "agricultural_fields",
+    "target_entity": "agricultural fields",
+    "grounding": {
+      "expression": "Locate the agricultural fields",
+      "bbox": [
+        40,
+        40,
+        210,
+        180
+      ],
+      "normalized_bbox": [
+        0.1562,
+        0.1562,
+        0.8203,
+        0.7031
+      ]
+    },
+    "caption": "An extensive expanse of photosynthetic agricultural fields and cultivated crop parcels characterized by high green vegetation reflectance.",
+    "vqa": {
+      "question": "What is the primary land use in this scene?",
+      "answer": "Agricultural cropland and cultivated vegetated parcels with distinct boundary lines."
+    },
+    "conversations": [
+      {
+        "from": "human",
+        "value": "<image>\nWhat is the primary land use in this scene?"
+      },
+      {
+        "from": "gpt",
+        "value": "Agricultural cropland and cultivated vegetated parcels with distinct boundary lines."
+      },
+      {
+        "from": "human",
+        "value": "Where are the agricultural fields located?"
+      },
+      {
+        "from": "gpt",
+        "value": "The agricultural fields is located at coordinates [40, 40, 210, 180]."
+      }
+    ]
+  },
+  {
+    "id": "VRS_0043_infrastructure_runway",
+    "image_path": "C:\\Users\\Tilak M K\\OneDrive\\Pictures\\Desktop\\VYOMIX 2026\\SatQuery-AI\\backend\\data\\vrs_patches\\VRS_0043_infrastructure_runway.tif",
+    "scene_type": "infrastructure_runway",
+    "target_entity": "infrastructure runway",
+    "grounding": {
+      "expression": "Locate the infrastructure runway",
+      "bbox": [
+        50,
+        100,
+        210,
+        150
+      ],
+      "normalized_bbox": [
+        0.1953,
+        0.3906,
+        0.8203,
+        0.5859
+      ]
+    },
+    "caption": "A linear infrastructure transport corridor and runway facility situated within an open terrestrial setting.",
+    "vqa": {
+      "question": "Are there linear transportation structures present?",
+      "answer": "Yes, a clear linear transportation corridor and paved runway infrastructure are identifiable."
+    },
+    "conversations": [
+      {
+        "from": "human",
+        "value": "<image>\nAre there linear transportation structures present?"
+      },
+      {
+        "from": "gpt",
+        "value": "Yes, a clear linear transportation corridor and paved runway infrastructure are identifiable."
+      },
+      {
+        "from": "human",
+        "value": "Where are the infrastructure runway located?"
+      },
+      {
+        "from": "gpt",
+        "value": "The infrastructure runway is located at coordinates [50, 100, 210, 150]."
+      }
+    ]
+  },
+  {
+    "id": "VRS_0044_water_river",
+    "image_path": "C:\\Users\\Tilak M K\\OneDrive\\Pictures\\Desktop\\VYOMIX 2026\\SatQuery-AI\\backend\\data\\vrs_patches\\VRS_0044_water_river.tif",
+    "scene_type": "water_river",
+    "target_entity": "water body",
+    "grounding": {
+      "expression": "Locate the water body",
+      "bbox": [
+        30,
+        80,
+        220,
+        160
+      ],
+      "normalized_bbox": [
+        0.1172,
+        0.3125,
+        0.8594,
+        0.625
+      ]
+    },
+    "caption": "The satellite scene features a conspicuous meandering water canal with low reflectance and distinct hydrological boundaries traversing open vegetated terrain.",
+    "vqa": {
+      "question": "Is there a water body visible in this image?",
+      "answer": "Yes, an inland water channel is clearly visible with prominent absorption in optical bands."
+    },
+    "conversations": [
+      {
+        "from": "human",
+        "value": "<image>\nIs there a water body visible in this image?"
+      },
+      {
+        "from": "gpt",
+        "value": "Yes, an inland water channel is clearly visible with prominent absorption in optical bands."
+      },
+      {
+        "from": "human",
+        "value": "Where are the water body located?"
+      },
+      {
+        "from": "gpt",
+        "value": "The water body is located at coordinates [30, 80, 220, 160]."
+      }
+    ]
+  },
+  {
+    "id": "VRS_0045_industrial_buildings",
+    "image_path": "C:\\Users\\Tilak M K\\OneDrive\\Pictures\\Desktop\\VYOMIX 2026\\SatQuery-AI\\backend\\data\\vrs_patches\\VRS_0045_industrial_buildings.tif",
+    "scene_type": "industrial_buildings",
+    "target_entity": "buildings",
+    "grounding": {
+      "expression": "Locate the buildings",
+      "bbox": [
+        70,
+        50,
+        190,
+        170
+      ],
+      "normalized_bbox": [
+        0.2734,
+        0.1953,
+        0.7422,
+        0.6641
+      ]
+    },
+    "caption": "An aerial view of dense industrial built-up structures and commercial facilities with high radiometric brightness and organized paved surface access.",
+    "vqa": {
+      "question": "What type of infrastructure is visible?",
+      "answer": "High-density commercial and industrial buildings with rectangular roofs and paved surfaces."
+    },
+    "conversations": [
+      {
+        "from": "human",
+        "value": "<image>\nWhat type of infrastructure is visible?"
+      },
+      {
+        "from": "gpt",
+        "value": "High-density commercial and industrial buildings with rectangular roofs and paved surfaces."
+      },
+      {
+        "from": "human",
+        "value": "Where are the buildings located?"
+      },
+      {
+        "from": "gpt",
+        "value": "The buildings is located at coordinates [70, 50, 190, 170]."
+      }
+    ]
+  },
+  {
+    "id": "VRS_0046_agricultural_fields",
+    "image_path": "C:\\Users\\Tilak M K\\OneDrive\\Pictures\\Desktop\\VYOMIX 2026\\SatQuery-AI\\backend\\data\\vrs_patches\\VRS_0046_agricultural_fields.tif",
+    "scene_type": "agricultural_fields",
+    "target_entity": "agricultural fields",
+    "grounding": {
+      "expression": "Locate the agricultural fields",
+      "bbox": [
+        40,
+        40,
+        210,
+        180
+      ],
+      "normalized_bbox": [
+        0.1562,
+        0.1562,
+        0.8203,
+        0.7031
+      ]
+    },
+    "caption": "An extensive expanse of photosynthetic agricultural fields and cultivated crop parcels characterized by high green vegetation reflectance.",
+    "vqa": {
+      "question": "What is the primary land use in this scene?",
+      "answer": "Agricultural cropland and cultivated vegetated parcels with distinct boundary lines."
+    },
+    "conversations": [
+      {
+        "from": "human",
+        "value": "<image>\nWhat is the primary land use in this scene?"
+      },
+      {
+        "from": "gpt",
+        "value": "Agricultural cropland and cultivated vegetated parcels with distinct boundary lines."
+      },
+      {
+        "from": "human",
+        "value": "Where are the agricultural fields located?"
+      },
+      {
+        "from": "gpt",
+        "value": "The agricultural fields is located at coordinates [40, 40, 210, 180]."
+      }
+    ]
+  },
+  {
+    "id": "VRS_0047_infrastructure_runway",
+    "image_path": "C:\\Users\\Tilak M K\\OneDrive\\Pictures\\Desktop\\VYOMIX 2026\\SatQuery-AI\\backend\\data\\vrs_patches\\VRS_0047_infrastructure_runway.tif",
+    "scene_type": "infrastructure_runway",
+    "target_entity": "infrastructure runway",
+    "grounding": {
+      "expression": "Locate the infrastructure runway",
+      "bbox": [
+        50,
+        100,
+        210,
+        150
+      ],
+      "normalized_bbox": [
+        0.1953,
+        0.3906,
+        0.8203,
+        0.5859
+      ]
+    },
+    "caption": "A linear infrastructure transport corridor and runway facility situated within an open terrestrial setting.",
+    "vqa": {
+      "question": "Are there linear transportation structures present?",
+      "answer": "Yes, a clear linear transportation corridor and paved runway infrastructure are identifiable."
+    },
+    "conversations": [
+      {
+        "from": "human",
+        "value": "<image>\nAre there linear transportation structures present?"
+      },
+      {
+        "from": "gpt",
+        "value": "Yes, a clear linear transportation corridor and paved runway infrastructure are identifiable."
+      },
+      {
+        "from": "human",
+        "value": "Where are the infrastructure runway located?"
+      },
+      {
+        "from": "gpt",
+        "value": "The infrastructure runway is located at coordinates [50, 100, 210, 150]."
+      }
+    ]
+  },
+  {
+    "id": "VRS_0048_water_river",
+    "image_path": "C:\\Users\\Tilak M K\\OneDrive\\Pictures\\Desktop\\VYOMIX 2026\\SatQuery-AI\\backend\\data\\vrs_patches\\VRS_0048_water_river.tif",
+    "scene_type": "water_river",
+    "target_entity": "water body",
+    "grounding": {
+      "expression": "Locate the water body",
+      "bbox": [
+        30,
+        80,
+        220,
+        160
+      ],
+      "normalized_bbox": [
+        0.1172,
+        0.3125,
+        0.8594,
+        0.625
+      ]
+    },
+    "caption": "The satellite scene features a conspicuous meandering water canal with low reflectance and distinct hydrological boundaries traversing open vegetated terrain.",
+    "vqa": {
+      "question": "Is there a water body visible in this image?",
+      "answer": "Yes, an inland water channel is clearly visible with prominent absorption in optical bands."
+    },
+    "conversations": [
+      {
+        "from": "human",
+        "value": "<image>\nIs there a water body visible in this image?"
+      },
+      {
+        "from": "gpt",
+        "value": "Yes, an inland water channel is clearly visible with prominent absorption in optical bands."
+      },
+      {
+        "from": "human",
+        "value": "Where are the water body located?"
+      },
+      {
+        "from": "gpt",
+        "value": "The water body is located at coordinates [30, 80, 220, 160]."
+      }
+    ]
+  },
+  {
+    "id": "VRS_0049_industrial_buildings",
+    "image_path": "C:\\Users\\Tilak M K\\OneDrive\\Pictures\\Desktop\\VYOMIX 2026\\SatQuery-AI\\backend\\data\\vrs_patches\\VRS_0049_industrial_buildings.tif",
+    "scene_type": "industrial_buildings",
+    "target_entity": "buildings",
+    "grounding": {
+      "expression": "Locate the buildings",
+      "bbox": [
+        70,
+        50,
+        190,
+        170
+      ],
+      "normalized_bbox": [
+        0.2734,
+        0.1953,
+        0.7422,
+        0.6641
+      ]
+    },
+    "caption": "An aerial view of dense industrial built-up structures and commercial facilities with high radiometric brightness and organized paved surface access.",
+    "vqa": {
+      "question": "What type of infrastructure is visible?",
+      "answer": "High-density commercial and industrial buildings with rectangular roofs and paved surfaces."
+    },
+    "conversations": [
+      {
+        "from": "human",
+        "value": "<image>\nWhat type of infrastructure is visible?"
+      },
+      {
+        "from": "gpt",
+        "value": "High-density commercial and industrial buildings with rectangular roofs and paved surfaces."
+      },
+      {
+        "from": "human",
+        "value": "Where are the buildings located?"
+      },
+      {
+        "from": "gpt",
+        "value": "The buildings is located at coordinates [70, 50, 190, 170]."
+      }
+    ]
+  },
+  {
+    "id": "VRS_0050_agricultural_fields",
+    "image_path": "C:\\Users\\Tilak M K\\OneDrive\\Pictures\\Desktop\\VYOMIX 2026\\SatQuery-AI\\backend\\data\\vrs_patches\\VRS_0050_agricultural_fields.tif",
+    "scene_type": "agricultural_fields",
+    "target_entity": "agricultural fields",
+    "grounding": {
+      "expression": "Locate the agricultural fields",
+      "bbox": [
+        40,
+        40,
+        210,
+        180
+      ],
+      "normalized_bbox": [
+        0.1562,
+        0.1562,
+        0.8203,
+        0.7031
+      ]
+    },
+    "caption": "An extensive expanse of photosynthetic agricultural fields and cultivated crop parcels characterized by high green vegetation reflectance.",
+    "vqa": {
+      "question": "What is the primary land use in this scene?",
+      "answer": "Agricultural cropland and cultivated vegetated parcels with distinct boundary lines."
+    },
+    "conversations": [
+      {
+        "from": "human",
+        "value": "<image>\nWhat is the primary land use in this scene?"
+      },
+      {
+        "from": "gpt",
+        "value": "Agricultural cropland and cultivated vegetated parcels with distinct boundary lines."
+      },
+      {
+        "from": "human",
+        "value": "Where are the agricultural fields located?"
+      },
+      {
+        "from": "gpt",
+        "value": "The agricultural fields is located at coordinates [40, 40, 210, 180]."
+      }
+    ]
+  },
+  {
+    "id": "VRS_0051_infrastructure_runway",
+    "image_path": "C:\\Users\\Tilak M K\\OneDrive\\Pictures\\Desktop\\VYOMIX 2026\\SatQuery-AI\\backend\\data\\vrs_patches\\VRS_0051_infrastructure_runway.tif",
+    "scene_type": "infrastructure_runway",
+    "target_entity": "infrastructure runway",
+    "grounding": {
+      "expression": "Locate the infrastructure runway",
+      "bbox": [
+        50,
+        100,
+        210,
+        150
+      ],
+      "normalized_bbox": [
+        0.1953,
+        0.3906,
+        0.8203,
+        0.5859
+      ]
+    },
+    "caption": "A linear infrastructure transport corridor and runway facility situated within an open terrestrial setting.",
+    "vqa": {
+      "question": "Are there linear transportation structures present?",
+      "answer": "Yes, a clear linear transportation corridor and paved runway infrastructure are identifiable."
+    },
+    "conversations": [
+      {
+        "from": "human",
+        "value": "<image>\nAre there linear transportation structures present?"
+      },
+      {
+        "from": "gpt",
+        "value": "Yes, a clear linear transportation corridor and paved runway infrastructure are identifiable."
+      },
+      {
+        "from": "human",
+        "value": "Where are the infrastructure runway located?"
+      },
+      {
+        "from": "gpt",
+        "value": "The infrastructure runway is located at coordinates [50, 100, 210, 150]."
+      }
+    ]
+  },
+  {
+    "id": "VRS_0052_water_river",
+    "image_path": "C:\\Users\\Tilak M K\\OneDrive\\Pictures\\Desktop\\VYOMIX 2026\\SatQuery-AI\\backend\\data\\vrs_patches\\VRS_0052_water_river.tif",
+    "scene_type": "water_river",
+    "target_entity": "water body",
+    "grounding": {
+      "expression": "Locate the water body",
+      "bbox": [
+        30,
+        80,
+        220,
+        160
+      ],
+      "normalized_bbox": [
+        0.1172,
+        0.3125,
+        0.8594,
+        0.625
+      ]
+    },
+    "caption": "The satellite scene features a conspicuous meandering water canal with low reflectance and distinct hydrological boundaries traversing open vegetated terrain.",
+    "vqa": {
+      "question": "Is there a water body visible in this image?",
+      "answer": "Yes, an inland water channel is clearly visible with prominent absorption in optical bands."
+    },
+    "conversations": [
+      {
+        "from": "human",
+        "value": "<image>\nIs there a water body visible in this image?"
+      },
+      {
+        "from": "gpt",
+        "value": "Yes, an inland water channel is clearly visible with prominent absorption in optical bands."
+      },
+      {
+        "from": "human",
+        "value": "Where are the water body located?"
+      },
+      {
+        "from": "gpt",
+        "value": "The water body is located at coordinates [30, 80, 220, 160]."
+      }
+    ]
+  },
+  {
+    "id": "VRS_0053_industrial_buildings",
+    "image_path": "C:\\Users\\Tilak M K\\OneDrive\\Pictures\\Desktop\\VYOMIX 2026\\SatQuery-AI\\backend\\data\\vrs_patches\\VRS_0053_industrial_buildings.tif",
+    "scene_type": "industrial_buildings",
+    "target_entity": "buildings",
+    "grounding": {
+      "expression": "Locate the buildings",
+      "bbox": [
+        70,
+        50,
+        190,
+        170
+      ],
+      "normalized_bbox": [
+        0.2734,
+        0.1953,
+        0.7422,
+        0.6641
+      ]
+    },
+    "caption": "An aerial view of dense industrial built-up structures and commercial facilities with high radiometric brightness and organized paved surface access.",
+    "vqa": {
+      "question": "What type of infrastructure is visible?",
+      "answer": "High-density commercial and industrial buildings with rectangular roofs and paved surfaces."
+    },
+    "conversations": [
+      {
+        "from": "human",
+        "value": "<image>\nWhat type of infrastructure is visible?"
+      },
+      {
+        "from": "gpt",
+        "value": "High-density commercial and industrial buildings with rectangular roofs and paved surfaces."
+      },
+      {
+        "from": "human",
+        "value": "Where are the buildings located?"
+      },
+      {
+        "from": "gpt",
+        "value": "The buildings is located at coordinates [70, 50, 190, 170]."
+      }
+    ]
+  },
+  {
+    "id": "VRS_0054_agricultural_fields",
+    "image_path": "C:\\Users\\Tilak M K\\OneDrive\\Pictures\\Desktop\\VYOMIX 2026\\SatQuery-AI\\backend\\data\\vrs_patches\\VRS_0054_agricultural_fields.tif",
+    "scene_type": "agricultural_fields",
+    "target_entity": "agricultural fields",
+    "grounding": {
+      "expression": "Locate the agricultural fields",
+      "bbox": [
+        40,
+        40,
+        210,
+        180
+      ],
+      "normalized_bbox": [
+        0.1562,
+        0.1562,
+        0.8203,
+        0.7031
+      ]
+    },
+    "caption": "An extensive expanse of photosynthetic agricultural fields and cultivated crop parcels characterized by high green vegetation reflectance.",
+    "vqa": {
+      "question": "What is the primary land use in this scene?",
+      "answer": "Agricultural cropland and cultivated vegetated parcels with distinct boundary lines."
+    },
+    "conversations": [
+      {
+        "from": "human",
+        "value": "<image>\nWhat is the primary land use in this scene?"
+      },
+      {
+        "from": "gpt",
+        "value": "Agricultural cropland and cultivated vegetated parcels with distinct boundary lines."
+      },
+      {
+        "from": "human",
+        "value": "Where are the agricultural fields located?"
+      },
+      {
+        "from": "gpt",
+        "value": "The agricultural fields is located at coordinates [40, 40, 210, 180]."
+      }
+    ]
+  },
+  {
+    "id": "VRS_0055_infrastructure_runway",
+    "image_path": "C:\\Users\\Tilak M K\\OneDrive\\Pictures\\Desktop\\VYOMIX 2026\\SatQuery-AI\\backend\\data\\vrs_patches\\VRS_0055_infrastructure_runway.tif",
+    "scene_type": "infrastructure_runway",
+    "target_entity": "infrastructure runway",
+    "grounding": {
+      "expression": "Locate the infrastructure runway",
+      "bbox": [
+        50,
+        100,
+        210,
+        150
+      ],
+      "normalized_bbox": [
+        0.1953,
+        0.3906,
+        0.8203,
+        0.5859
+      ]
+    },
+    "caption": "A linear infrastructure transport corridor and runway facility situated within an open terrestrial setting.",
+    "vqa": {
+      "question": "Are there linear transportation structures present?",
+      "answer": "Yes, a clear linear transportation corridor and paved runway infrastructure are identifiable."
+    },
+    "conversations": [
+      {
+        "from": "human",
+        "value": "<image>\nAre there linear transportation structures present?"
+      },
+      {
+        "from": "gpt",
+        "value": "Yes, a clear linear transportation corridor and paved runway infrastructure are identifiable."
+      },
+      {
+        "from": "human",
+        "value": "Where are the infrastructure runway located?"
+      },
+      {
+        "from": "gpt",
+        "value": "The infrastructure runway is located at coordinates [50, 100, 210, 150]."
+      }
+    ]
+  },
+  {
+    "id": "VRS_0056_water_river",
+    "image_path": "C:\\Users\\Tilak M K\\OneDrive\\Pictures\\Desktop\\VYOMIX 2026\\SatQuery-AI\\backend\\data\\vrs_patches\\VRS_0056_water_river.tif",
+    "scene_type": "water_river",
+    "target_entity": "water body",
+    "grounding": {
+      "expression": "Locate the water body",
+      "bbox": [
+        30,
+        80,
+        220,
+        160
+      ],
+      "normalized_bbox": [
+        0.1172,
+        0.3125,
+        0.8594,
+        0.625
+      ]
+    },
+    "caption": "The satellite scene features a conspicuous meandering water canal with low reflectance and distinct hydrological boundaries traversing open vegetated terrain.",
+    "vqa": {
+      "question": "Is there a water body visible in this image?",
+      "answer": "Yes, an inland water channel is clearly visible with prominent absorption in optical bands."
+    },
+    "conversations": [
+      {
+        "from": "human",
+        "value": "<image>\nIs there a water body visible in this image?"
+      },
+      {
+        "from": "gpt",
+        "value": "Yes, an inland water channel is clearly visible with prominent absorption in optical bands."
+      },
+      {
+        "from": "human",
+        "value": "Where are the water body located?"
+      },
+      {
+        "from": "gpt",
+        "value": "The water body is located at coordinates [30, 80, 220, 160]."
+      }
+    ]
+  },
+  {
+    "id": "VRS_0057_industrial_buildings",
+    "image_path": "C:\\Users\\Tilak M K\\OneDrive\\Pictures\\Desktop\\VYOMIX 2026\\SatQuery-AI\\backend\\data\\vrs_patches\\VRS_0057_industrial_buildings.tif",
+    "scene_type": "industrial_buildings",
+    "target_entity": "buildings",
+    "grounding": {
+      "expression": "Locate the buildings",
+      "bbox": [
+        70,
+        50,
+        190,
+        170
+      ],
+      "normalized_bbox": [
+        0.2734,
+        0.1953,
+        0.7422,
+        0.6641
+      ]
+    },
+    "caption": "An aerial view of dense industrial built-up structures and commercial facilities with high radiometric brightness and organized paved surface access.",
+    "vqa": {
+      "question": "What type of infrastructure is visible?",
+      "answer": "High-density commercial and industrial buildings with rectangular roofs and paved surfaces."
+    },
+    "conversations": [
+      {
+        "from": "human",
+        "value": "<image>\nWhat type of infrastructure is visible?"
+      },
+      {
+        "from": "gpt",
+        "value": "High-density commercial and industrial buildings with rectangular roofs and paved surfaces."
+      },
+      {
+        "from": "human",
+        "value": "Where are the buildings located?"
+      },
+      {
+        "from": "gpt",
+        "value": "The buildings is located at coordinates [70, 50, 190, 170]."
+      }
+    ]
+  },
+  {
+    "id": "VRS_0058_agricultural_fields",
+    "image_path": "C:\\Users\\Tilak M K\\OneDrive\\Pictures\\Desktop\\VYOMIX 2026\\SatQuery-AI\\backend\\data\\vrs_patches\\VRS_0058_agricultural_fields.tif",
+    "scene_type": "agricultural_fields",
+    "target_entity": "agricultural fields",
+    "grounding": {
+      "expression": "Locate the agricultural fields",
+      "bbox": [
+        40,
+        40,
+        210,
+        180
+      ],
+      "normalized_bbox": [
+        0.1562,
+        0.1562,
+        0.8203,
+        0.7031
+      ]
+    },
+    "caption": "An extensive expanse of photosynthetic agricultural fields and cultivated crop parcels characterized by high green vegetation reflectance.",
+    "vqa": {
+      "question": "What is the primary land use in this scene?",
+      "answer": "Agricultural cropland and cultivated vegetated parcels with distinct boundary lines."
+    },
+    "conversations": [
+      {
+        "from": "human",
+        "value": "<image>\nWhat is the primary land use in this scene?"
+      },
+      {
+        "from": "gpt",
+        "value": "Agricultural cropland and cultivated vegetated parcels with distinct boundary lines."
+      },
+      {
+        "from": "human",
+        "value": "Where are the agricultural fields located?"
+      },
+      {
+        "from": "gpt",
+        "value": "The agricultural fields is located at coordinates [40, 40, 210, 180]."
+      }
+    ]
+  },
+  {
+    "id": "VRS_0059_infrastructure_runway",
+    "image_path": "C:\\Users\\Tilak M K\\OneDrive\\Pictures\\Desktop\\VYOMIX 2026\\SatQuery-AI\\backend\\data\\vrs_patches\\VRS_0059_infrastructure_runway.tif",
+    "scene_type": "infrastructure_runway",
+    "target_entity": "infrastructure runway",
+    "grounding": {
+      "expression": "Locate the infrastructure runway",
+      "bbox": [
+        50,
+        100,
+        210,
+        150
+      ],
+      "normalized_bbox": [
+        0.1953,
+        0.3906,
+        0.8203,
+        0.5859
+      ]
+    },
+    "caption": "A linear infrastructure transport corridor and runway facility situated within an open terrestrial setting.",
+    "vqa": {
+      "question": "Are there linear transportation structures present?",
+      "answer": "Yes, a clear linear transportation corridor and paved runway infrastructure are identifiable."
+    },
+    "conversations": [
+      {
+        "from": "human",
+        "value": "<image>\nAre there linear transportation structures present?"
+      },
+      {
+        "from": "gpt",
+        "value": "Yes, a clear linear transportation corridor and paved runway infrastructure are identifiable."
+      },
+      {
+        "from": "human",
+        "value": "Where are the infrastructure runway located?"
+      },
+      {
+        "from": "gpt",
+        "value": "The infrastructure runway is located at coordinates [50, 100, 210, 150]."
+      }
+    ]
+  },
+  {
+    "id": "VRS_0060_water_river",
+    "image_path": "C:\\Users\\Tilak M K\\OneDrive\\Pictures\\Desktop\\VYOMIX 2026\\SatQuery-AI\\backend\\data\\vrs_patches\\VRS_0060_water_river.tif",
+    "scene_type": "water_river",
+    "target_entity": "water body",
+    "grounding": {
+      "expression": "Locate the water body",
+      "bbox": [
+        30,
+        80,
+        220,
+        160
+      ],
+      "normalized_bbox": [
+        0.1172,
+        0.3125,
+        0.8594,
+        0.625
+      ]
+    },
+    "caption": "The satellite scene features a conspicuous meandering water canal with low reflectance and distinct hydrological boundaries traversing open vegetated terrain.",
+    "vqa": {
+      "question": "Is there a water body visible in this image?",
+      "answer": "Yes, an inland water channel is clearly visible with prominent absorption in optical bands."
+    },
+    "conversations": [
+      {
+        "from": "human",
+        "value": "<image>\nIs there a water body visible in this image?"
+      },
+      {
+        "from": "gpt",
+        "value": "Yes, an inland water channel is clearly visible with prominent absorption in optical bands."
+      },
+      {
+        "from": "human",
+        "value": "Where are the water body located?"
+      },
+      {
+        "from": "gpt",
+        "value": "The water body is located at coordinates [30, 80, 220, 160]."
+      }
+    ]
+  },
+  {
+    "id": "VRS_0061_industrial_buildings",
+    "image_path": "C:\\Users\\Tilak M K\\OneDrive\\Pictures\\Desktop\\VYOMIX 2026\\SatQuery-AI\\backend\\data\\vrs_patches\\VRS_0061_industrial_buildings.tif",
+    "scene_type": "industrial_buildings",
+    "target_entity": "buildings",
+    "grounding": {
+      "expression": "Locate the buildings",
+      "bbox": [
+        70,
+        50,
+        190,
+        170
+      ],
+      "normalized_bbox": [
+        0.2734,
+        0.1953,
+        0.7422,
+        0.6641
+      ]
+    },
+    "caption": "An aerial view of dense industrial built-up structures and commercial facilities with high radiometric brightness and organized paved surface access.",
+    "vqa": {
+      "question": "What type of infrastructure is visible?",
+      "answer": "High-density commercial and industrial buildings with rectangular roofs and paved surfaces."
+    },
+    "conversations": [
+      {
+        "from": "human",
+        "value": "<image>\nWhat type of infrastructure is visible?"
+      },
+      {
+        "from": "gpt",
+        "value": "High-density commercial and industrial buildings with rectangular roofs and paved surfaces."
+      },
+      {
+        "from": "human",
+        "value": "Where are the buildings located?"
+      },
+      {
+        "from": "gpt",
+        "value": "The buildings is located at coordinates [70, 50, 190, 170]."
+      }
+    ]
+  },
+  {
+    "id": "VRS_0062_agricultural_fields",
+    "image_path": "C:\\Users\\Tilak M K\\OneDrive\\Pictures\\Desktop\\VYOMIX 2026\\SatQuery-AI\\backend\\data\\vrs_patches\\VRS_0062_agricultural_fields.tif",
+    "scene_type": "agricultural_fields",
+    "target_entity": "agricultural fields",
+    "grounding": {
+      "expression": "Locate the agricultural fields",
+      "bbox": [
+        40,
+        40,
+        210,
+        180
+      ],
+      "normalized_bbox": [
+        0.1562,
+        0.1562,
+        0.8203,
+        0.7031
+      ]
+    },
+    "caption": "An extensive expanse of photosynthetic agricultural fields and cultivated crop parcels characterized by high green vegetation reflectance.",
+    "vqa": {
+      "question": "What is the primary land use in this scene?",
+      "answer": "Agricultural cropland and cultivated vegetated parcels with distinct boundary lines."
+    },
+    "conversations": [
+      {
+        "from": "human",
+        "value": "<image>\nWhat is the primary land use in this scene?"
+      },
+      {
+        "from": "gpt",
+        "value": "Agricultural cropland and cultivated vegetated parcels with distinct boundary lines."
+      },
+      {
+        "from": "human",
+        "value": "Where are the agricultural fields located?"
+      },
+      {
+        "from": "gpt",
+        "value": "The agricultural fields is located at coordinates [40, 40, 210, 180]."
+      }
+    ]
+  },
+  {
+    "id": "VRS_0063_infrastructure_runway",
+    "image_path": "C:\\Users\\Tilak M K\\OneDrive\\Pictures\\Desktop\\VYOMIX 2026\\SatQuery-AI\\backend\\data\\vrs_patches\\VRS_0063_infrastructure_runway.tif",
+    "scene_type": "infrastructure_runway",
+    "target_entity": "infrastructure runway",
+    "grounding": {
+      "expression": "Locate the infrastructure runway",
+      "bbox": [
+        50,
+        100,
+        210,
+        150
+      ],
+      "normalized_bbox": [
+        0.1953,
+        0.3906,
+        0.8203,
+        0.5859
+      ]
+    },
+    "caption": "A linear infrastructure transport corridor and runway facility situated within an open terrestrial setting.",
+    "vqa": {
+      "question": "Are there linear transportation structures present?",
+      "answer": "Yes, a clear linear transportation corridor and paved runway infrastructure are identifiable."
+    },
+    "conversations": [
+      {
+        "from": "human",
+        "value": "<image>\nAre there linear transportation structures present?"
+      },
+      {
+        "from": "gpt",
+        "value": "Yes, a clear linear transportation corridor and paved runway infrastructure are identifiable."
+      },
+      {
+        "from": "human",
+        "value": "Where are the infrastructure runway located?"
+      },
+      {
+        "from": "gpt",
+        "value": "The infrastructure runway is located at coordinates [50, 100, 210, 150]."
+      }
+    ]
+  },
+  {
+    "id": "VRS_0064_water_river",
+    "image_path": "C:\\Users\\Tilak M K\\OneDrive\\Pictures\\Desktop\\VYOMIX 2026\\SatQuery-AI\\backend\\data\\vrs_patches\\VRS_0064_water_river.tif",
+    "scene_type": "water_river",
+    "target_entity": "water body",
+    "grounding": {
+      "expression": "Locate the water body",
+      "bbox": [
+        30,
+        80,
+        220,
+        160
+      ],
+      "normalized_bbox": [
+        0.1172,
+        0.3125,
+        0.8594,
+        0.625
+      ]
+    },
+    "caption": "The satellite scene features a conspicuous meandering water canal with low reflectance and distinct hydrological boundaries traversing open vegetated terrain.",
+    "vqa": {
+      "question": "Is there a water body visible in this image?",
+      "answer": "Yes, an inland water channel is clearly visible with prominent absorption in optical bands."
+    },
+    "conversations": [
+      {
+        "from": "human",
+        "value": "<image>\nIs there a water body visible in this image?"
+      },
+      {
+        "from": "gpt",
+        "value": "Yes, an inland water channel is clearly visible with prominent absorption in optical bands."
+      },
+      {
+        "from": "human",
+        "value": "Where are the water body located?"
+      },
+      {
+        "from": "gpt",
+        "value": "The water body is located at coordinates [30, 80, 220, 160]."
+      }
+    ]
+  },
+  {
+    "id": "VRS_0065_industrial_buildings",
+    "image_path": "C:\\Users\\Tilak M K\\OneDrive\\Pictures\\Desktop\\VYOMIX 2026\\SatQuery-AI\\backend\\data\\vrs_patches\\VRS_0065_industrial_buildings.tif",
+    "scene_type": "industrial_buildings",
+    "target_entity": "buildings",
+    "grounding": {
+      "expression": "Locate the buildings",
+      "bbox": [
+        70,
+        50,
+        190,
+        170
+      ],
+      "normalized_bbox": [
+        0.2734,
+        0.1953,
+        0.7422,
+        0.6641
+      ]
+    },
+    "caption": "An aerial view of dense industrial built-up structures and commercial facilities with high radiometric brightness and organized paved surface access.",
+    "vqa": {
+      "question": "What type of infrastructure is visible?",
+      "answer": "High-density commercial and industrial buildings with rectangular roofs and paved surfaces."
+    },
+    "conversations": [
+      {
+        "from": "human",
+        "value": "<image>\nWhat type of infrastructure is visible?"
+      },
+      {
+        "from": "gpt",
+        "value": "High-density commercial and industrial buildings with rectangular roofs and paved surfaces."
+      },
+      {
+        "from": "human",
+        "value": "Where are the buildings located?"
+      },
+      {
+        "from": "gpt",
+        "value": "The buildings is located at coordinates [70, 50, 190, 170]."
+      }
+    ]
+  },
+  {
+    "id": "VRS_0066_agricultural_fields",
+    "image_path": "C:\\Users\\Tilak M K\\OneDrive\\Pictures\\Desktop\\VYOMIX 2026\\SatQuery-AI\\backend\\data\\vrs_patches\\VRS_0066_agricultural_fields.tif",
+    "scene_type": "agricultural_fields",
+    "target_entity": "agricultural fields",
+    "grounding": {
+      "expression": "Locate the agricultural fields",
+      "bbox": [
+        40,
+        40,
+        210,
+        180
+      ],
+      "normalized_bbox": [
+        0.1562,
+        0.1562,
+        0.8203,
+        0.7031
+      ]
+    },
+    "caption": "An extensive expanse of photosynthetic agricultural fields and cultivated crop parcels characterized by high green vegetation reflectance.",
+    "vqa": {
+      "question": "What is the primary land use in this scene?",
+      "answer": "Agricultural cropland and cultivated vegetated parcels with distinct boundary lines."
+    },
+    "conversations": [
+      {
+        "from": "human",
+        "value": "<image>\nWhat is the primary land use in this scene?"
+      },
+      {
+        "from": "gpt",
+        "value": "Agricultural cropland and cultivated vegetated parcels with distinct boundary lines."
+      },
+      {
+        "from": "human",
+        "value": "Where are the agricultural fields located?"
+      },
+      {
+        "from": "gpt",
+        "value": "The agricultural fields is located at coordinates [40, 40, 210, 180]."
+      }
+    ]
+  },
+  {
+    "id": "VRS_0067_infrastructure_runway",
+    "image_path": "C:\\Users\\Tilak M K\\OneDrive\\Pictures\\Desktop\\VYOMIX 2026\\SatQuery-AI\\backend\\data\\vrs_patches\\VRS_0067_infrastructure_runway.tif",
+    "scene_type": "infrastructure_runway",
+    "target_entity": "infrastructure runway",
+    "grounding": {
+      "expression": "Locate the infrastructure runway",
+      "bbox": [
+        50,
+        100,
+        210,
+        150
+      ],
+      "normalized_bbox": [
+        0.1953,
+        0.3906,
+        0.8203,
+        0.5859
+      ]
+    },
+    "caption": "A linear infrastructure transport corridor and runway facility situated within an open terrestrial setting.",
+    "vqa": {
+      "question": "Are there linear transportation structures present?",
+      "answer": "Yes, a clear linear transportation corridor and paved runway infrastructure are identifiable."
+    },
+    "conversations": [
+      {
+        "from": "human",
+        "value": "<image>\nAre there linear transportation structures present?"
+      },
+      {
+        "from": "gpt",
+        "value": "Yes, a clear linear transportation corridor and paved runway infrastructure are identifiable."
+      },
+      {
+        "from": "human",
+        "value": "Where are the infrastructure runway located?"
+      },
+      {
+        "from": "gpt",
+        "value": "The infrastructure runway is located at coordinates [50, 100, 210, 150]."
+      }
+    ]
+  },
+  {
+    "id": "VRS_0068_water_river",
+    "image_path": "C:\\Users\\Tilak M K\\OneDrive\\Pictures\\Desktop\\VYOMIX 2026\\SatQuery-AI\\backend\\data\\vrs_patches\\VRS_0068_water_river.tif",
+    "scene_type": "water_river",
+    "target_entity": "water body",
+    "grounding": {
+      "expression": "Locate the water body",
+      "bbox": [
+        30,
+        80,
+        220,
+        160
+      ],
+      "normalized_bbox": [
+        0.1172,
+        0.3125,
+        0.8594,
+        0.625
+      ]
+    },
+    "caption": "The satellite scene features a conspicuous meandering water canal with low reflectance and distinct hydrological boundaries traversing open vegetated terrain.",
+    "vqa": {
+      "question": "Is there a water body visible in this image?",
+      "answer": "Yes, an inland water channel is clearly visible with prominent absorption in optical bands."
+    },
+    "conversations": [
+      {
+        "from": "human",
+        "value": "<image>\nIs there a water body visible in this image?"
+      },
+      {
+        "from": "gpt",
+        "value": "Yes, an inland water channel is clearly visible with prominent absorption in optical bands."
+      },
+      {
+        "from": "human",
+        "value": "Where are the water body located?"
+      },
+      {
+        "from": "gpt",
+        "value": "The water body is located at coordinates [30, 80, 220, 160]."
+      }
+    ]
+  },
+  {
+    "id": "VRS_0069_industrial_buildings",
+    "image_path": "C:\\Users\\Tilak M K\\OneDrive\\Pictures\\Desktop\\VYOMIX 2026\\SatQuery-AI\\backend\\data\\vrs_patches\\VRS_0069_industrial_buildings.tif",
+    "scene_type": "industrial_buildings",
+    "target_entity": "buildings",
+    "grounding": {
+      "expression": "Locate the buildings",
+      "bbox": [
+        70,
+        50,
+        190,
+        170
+      ],
+      "normalized_bbox": [
+        0.2734,
+        0.1953,
+        0.7422,
+        0.6641
+      ]
+    },
+    "caption": "An aerial view of dense industrial built-up structures and commercial facilities with high radiometric brightness and organized paved surface access.",
+    "vqa": {
+      "question": "What type of infrastructure is visible?",
+      "answer": "High-density commercial and industrial buildings with rectangular roofs and paved surfaces."
+    },
+    "conversations": [
+      {
+        "from": "human",
+        "value": "<image>\nWhat type of infrastructure is visible?"
+      },
+      {
+        "from": "gpt",
+        "value": "High-density commercial and industrial buildings with rectangular roofs and paved surfaces."
+      },
+      {
+        "from": "human",
+        "value": "Where are the buildings located?"
+      },
+      {
+        "from": "gpt",
+        "value": "The buildings is located at coordinates [70, 50, 190, 170]."
+      }
+    ]
+  },
+  {
+    "id": "VRS_0070_agricultural_fields",
+    "image_path": "C:\\Users\\Tilak M K\\OneDrive\\Pictures\\Desktop\\VYOMIX 2026\\SatQuery-AI\\backend\\data\\vrs_patches\\VRS_0070_agricultural_fields.tif",
+    "scene_type": "agricultural_fields",
+    "target_entity": "agricultural fields",
+    "grounding": {
+      "expression": "Locate the agricultural fields",
+      "bbox": [
+        40,
+        40,
+        210,
+        180
+      ],
+      "normalized_bbox": [
+        0.1562,
+        0.1562,
+        0.8203,
+        0.7031
+      ]
+    },
+    "caption": "An extensive expanse of photosynthetic agricultural fields and cultivated crop parcels characterized by high green vegetation reflectance.",
+    "vqa": {
+      "question": "What is the primary land use in this scene?",
+      "answer": "Agricultural cropland and cultivated vegetated parcels with distinct boundary lines."
+    },
+    "conversations": [
+      {
+        "from": "human",
+        "value": "<image>\nWhat is the primary land use in this scene?"
+      },
+      {
+        "from": "gpt",
+        "value": "Agricultural cropland and cultivated vegetated parcels with distinct boundary lines."
+      },
+      {
+        "from": "human",
+        "value": "Where are the agricultural fields located?"
+      },
+      {
+        "from": "gpt",
+        "value": "The agricultural fields is located at coordinates [40, 40, 210, 180]."
+      }
+    ]
+  },
+  {
+    "id": "VRS_0071_infrastructure_runway",
+    "image_path": "C:\\Users\\Tilak M K\\OneDrive\\Pictures\\Desktop\\VYOMIX 2026\\SatQuery-AI\\backend\\data\\vrs_patches\\VRS_0071_infrastructure_runway.tif",
+    "scene_type": "infrastructure_runway",
+    "target_entity": "infrastructure runway",
+    "grounding": {
+      "expression": "Locate the infrastructure runway",
+      "bbox": [
+        50,
+        100,
+        210,
+        150
+      ],
+      "normalized_bbox": [
+        0.1953,
+        0.3906,
+        0.8203,
+        0.5859
+      ]
+    },
+    "caption": "A linear infrastructure transport corridor and runway facility situated within an open terrestrial setting.",
+    "vqa": {
+      "question": "Are there linear transportation structures present?",
+      "answer": "Yes, a clear linear transportation corridor and paved runway infrastructure are identifiable."
+    },
+    "conversations": [
+      {
+        "from": "human",
+        "value": "<image>\nAre there linear transportation structures present?"
+      },
+      {
+        "from": "gpt",
+        "value": "Yes, a clear linear transportation corridor and paved runway infrastructure are identifiable."
+      },
+      {
+        "from": "human",
+        "value": "Where are the infrastructure runway located?"
+      },
+      {
+        "from": "gpt",
+        "value": "The infrastructure runway is located at coordinates [50, 100, 210, 150]."
+      }
+    ]
+  },
+  {
+    "id": "VRS_0072_water_river",
+    "image_path": "C:\\Users\\Tilak M K\\OneDrive\\Pictures\\Desktop\\VYOMIX 2026\\SatQuery-AI\\backend\\data\\vrs_patches\\VRS_0072_water_river.tif",
+    "scene_type": "water_river",
+    "target_entity": "water body",
+    "grounding": {
+      "expression": "Locate the water body",
+      "bbox": [
+        30,
+        80,
+        220,
+        160
+      ],
+      "normalized_bbox": [
+        0.1172,
+        0.3125,
+        0.8594,
+        0.625
+      ]
+    },
+    "caption": "The satellite scene features a conspicuous meandering water canal with low reflectance and distinct hydrological boundaries traversing open vegetated terrain.",
+    "vqa": {
+      "question": "Is there a water body visible in this image?",
+      "answer": "Yes, an inland water channel is clearly visible with prominent absorption in optical bands."
+    },
+    "conversations": [
+      {
+        "from": "human",
+        "value": "<image>\nIs there a water body visible in this image?"
+      },
+      {
+        "from": "gpt",
+        "value": "Yes, an inland water channel is clearly visible with prominent absorption in optical bands."
+      },
+      {
+        "from": "human",
+        "value": "Where are the water body located?"
+      },
+      {
+        "from": "gpt",
+        "value": "The water body is located at coordinates [30, 80, 220, 160]."
+      }
+    ]
+  },
+  {
+    "id": "VRS_0073_industrial_buildings",
+    "image_path": "C:\\Users\\Tilak M K\\OneDrive\\Pictures\\Desktop\\VYOMIX 2026\\SatQuery-AI\\backend\\data\\vrs_patches\\VRS_0073_industrial_buildings.tif",
+    "scene_type": "industrial_buildings",
+    "target_entity": "buildings",
+    "grounding": {
+      "expression": "Locate the buildings",
+      "bbox": [
+        70,
+        50,
+        190,
+        170
+      ],
+      "normalized_bbox": [
+        0.2734,
+        0.1953,
+        0.7422,
+        0.6641
+      ]
+    },
+    "caption": "An aerial view of dense industrial built-up structures and commercial facilities with high radiometric brightness and organized paved surface access.",
+    "vqa": {
+      "question": "What type of infrastructure is visible?",
+      "answer": "High-density commercial and industrial buildings with rectangular roofs and paved surfaces."
+    },
+    "conversations": [
+      {
+        "from": "human",
+        "value": "<image>\nWhat type of infrastructure is visible?"
+      },
+      {
+        "from": "gpt",
+        "value": "High-density commercial and industrial buildings with rectangular roofs and paved surfaces."
+      },
+      {
+        "from": "human",
+        "value": "Where are the buildings located?"
+      },
+      {
+        "from": "gpt",
+        "value": "The buildings is located at coordinates [70, 50, 190, 170]."
+      }
+    ]
+  },
+  {
+    "id": "VRS_0074_agricultural_fields",
+    "image_path": "C:\\Users\\Tilak M K\\OneDrive\\Pictures\\Desktop\\VYOMIX 2026\\SatQuery-AI\\backend\\data\\vrs_patches\\VRS_0074_agricultural_fields.tif",
+    "scene_type": "agricultural_fields",
+    "target_entity": "agricultural fields",
+    "grounding": {
+      "expression": "Locate the agricultural fields",
+      "bbox": [
+        40,
+        40,
+        210,
+        180
+      ],
+      "normalized_bbox": [
+        0.1562,
+        0.1562,
+        0.8203,
+        0.7031
+      ]
+    },
+    "caption": "An extensive expanse of photosynthetic agricultural fields and cultivated crop parcels characterized by high green vegetation reflectance.",
+    "vqa": {
+      "question": "What is the primary land use in this scene?",
+      "answer": "Agricultural cropland and cultivated vegetated parcels with distinct boundary lines."
+    },
+    "conversations": [
+      {
+        "from": "human",
+        "value": "<image>\nWhat is the primary land use in this scene?"
+      },
+      {
+        "from": "gpt",
+        "value": "Agricultural cropland and cultivated vegetated parcels with distinct boundary lines."
+      },
+      {
+        "from": "human",
+        "value": "Where are the agricultural fields located?"
+      },
+      {
+        "from": "gpt",
+        "value": "The agricultural fields is located at coordinates [40, 40, 210, 180]."
+      }
+    ]
+  },
+  {
+    "id": "VRS_0075_infrastructure_runway",
+    "image_path": "C:\\Users\\Tilak M K\\OneDrive\\Pictures\\Desktop\\VYOMIX 2026\\SatQuery-AI\\backend\\data\\vrs_patches\\VRS_0075_infrastructure_runway.tif",
+    "scene_type": "infrastructure_runway",
+    "target_entity": "infrastructure runway",
+    "grounding": {
+      "expression": "Locate the infrastructure runway",
+      "bbox": [
+        50,
+        100,
+        210,
+        150
+      ],
+      "normalized_bbox": [
+        0.1953,
+        0.3906,
+        0.8203,
+        0.5859
+      ]
+    },
+    "caption": "A linear infrastructure transport corridor and runway facility situated within an open terrestrial setting.",
+    "vqa": {
+      "question": "Are there linear transportation structures present?",
+      "answer": "Yes, a clear linear transportation corridor and paved runway infrastructure are identifiable."
+    },
+    "conversations": [
+      {
+        "from": "human",
+        "value": "<image>\nAre there linear transportation structures present?"
+      },
+      {
+        "from": "gpt",
+        "value": "Yes, a clear linear transportation corridor and paved runway infrastructure are identifiable."
+      },
+      {
+        "from": "human",
+        "value": "Where are the infrastructure runway located?"
+      },
+      {
+        "from": "gpt",
+        "value": "The infrastructure runway is located at coordinates [50, 100, 210, 150]."
+      }
+    ]
+  },
+  {
+    "id": "VRS_0076_water_river",
+    "image_path": "C:\\Users\\Tilak M K\\OneDrive\\Pictures\\Desktop\\VYOMIX 2026\\SatQuery-AI\\backend\\data\\vrs_patches\\VRS_0076_water_river.tif",
+    "scene_type": "water_river",
+    "target_entity": "water body",
+    "grounding": {
+      "expression": "Locate the water body",
+      "bbox": [
+        30,
+        80,
+        220,
+        160
+      ],
+      "normalized_bbox": [
+        0.1172,
+        0.3125,
+        0.8594,
+        0.625
+      ]
+    },
+    "caption": "The satellite scene features a conspicuous meandering water canal with low reflectance and distinct hydrological boundaries traversing open vegetated terrain.",
+    "vqa": {
+      "question": "Is there a water body visible in this image?",
+      "answer": "Yes, an inland water channel is clearly visible with prominent absorption in optical bands."
+    },
+    "conversations": [
+      {
+        "from": "human",
+        "value": "<image>\nIs there a water body visible in this image?"
+      },
+      {
+        "from": "gpt",
+        "value": "Yes, an inland water channel is clearly visible with prominent absorption in optical bands."
+      },
+      {
+        "from": "human",
+        "value": "Where are the water body located?"
+      },
+      {
+        "from": "gpt",
+        "value": "The water body is located at coordinates [30, 80, 220, 160]."
+      }
+    ]
+  },
+  {
+    "id": "VRS_0077_industrial_buildings",
+    "image_path": "C:\\Users\\Tilak M K\\OneDrive\\Pictures\\Desktop\\VYOMIX 2026\\SatQuery-AI\\backend\\data\\vrs_patches\\VRS_0077_industrial_buildings.tif",
+    "scene_type": "industrial_buildings",
+    "target_entity": "buildings",
+    "grounding": {
+      "expression": "Locate the buildings",
+      "bbox": [
+        70,
+        50,
+        190,
+        170
+      ],
+      "normalized_bbox": [
+        0.2734,
+        0.1953,
+        0.7422,
+        0.6641
+      ]
+    },
+    "caption": "An aerial view of dense industrial built-up structures and commercial facilities with high radiometric brightness and organized paved surface access.",
+    "vqa": {
+      "question": "What type of infrastructure is visible?",
+      "answer": "High-density commercial and industrial buildings with rectangular roofs and paved surfaces."
+    },
+    "conversations": [
+      {
+        "from": "human",
+        "value": "<image>\nWhat type of infrastructure is visible?"
+      },
+      {
+        "from": "gpt",
+        "value": "High-density commercial and industrial buildings with rectangular roofs and paved surfaces."
+      },
+      {
+        "from": "human",
+        "value": "Where are the buildings located?"
+      },
+      {
+        "from": "gpt",
+        "value": "The buildings is located at coordinates [70, 50, 190, 170]."
+      }
+    ]
+  },
+  {
+    "id": "VRS_0078_agricultural_fields",
+    "image_path": "C:\\Users\\Tilak M K\\OneDrive\\Pictures\\Desktop\\VYOMIX 2026\\SatQuery-AI\\backend\\data\\vrs_patches\\VRS_0078_agricultural_fields.tif",
+    "scene_type": "agricultural_fields",
+    "target_entity": "agricultural fields",
+    "grounding": {
+      "expression": "Locate the agricultural fields",
+      "bbox": [
+        40,
+        40,
+        210,
+        180
+      ],
+      "normalized_bbox": [
+        0.1562,
+        0.1562,
+        0.8203,
+        0.7031
+      ]
+    },
+    "caption": "An extensive expanse of photosynthetic agricultural fields and cultivated crop parcels characterized by high green vegetation reflectance.",
+    "vqa": {
+      "question": "What is the primary land use in this scene?",
+      "answer": "Agricultural cropland and cultivated vegetated parcels with distinct boundary lines."
+    },
+    "conversations": [
+      {
+        "from": "human",
+        "value": "<image>\nWhat is the primary land use in this scene?"
+      },
+      {
+        "from": "gpt",
+        "value": "Agricultural cropland and cultivated vegetated parcels with distinct boundary lines."
+      },
+      {
+        "from": "human",
+        "value": "Where are the agricultural fields located?"
+      },
+      {
+        "from": "gpt",
+        "value": "The agricultural fields is located at coordinates [40, 40, 210, 180]."
+      }
+    ]
+  },
+  {
+    "id": "VRS_0079_infrastructure_runway",
+    "image_path": "C:\\Users\\Tilak M K\\OneDrive\\Pictures\\Desktop\\VYOMIX 2026\\SatQuery-AI\\backend\\data\\vrs_patches\\VRS_0079_infrastructure_runway.tif",
+    "scene_type": "infrastructure_runway",
+    "target_entity": "infrastructure runway",
+    "grounding": {
+      "expression": "Locate the infrastructure runway",
+      "bbox": [
+        50,
+        100,
+        210,
+        150
+      ],
+      "normalized_bbox": [
+        0.1953,
+        0.3906,
+        0.8203,
+        0.5859
+      ]
+    },
+    "caption": "A linear infrastructure transport corridor and runway facility situated within an open terrestrial setting.",
+    "vqa": {
+      "question": "Are there linear transportation structures present?",
+      "answer": "Yes, a clear linear transportation corridor and paved runway infrastructure are identifiable."
+    },
+    "conversations": [
+      {
+        "from": "human",
+        "value": "<image>\nAre there linear transportation structures present?"
+      },
+      {
+        "from": "gpt",
+        "value": "Yes, a clear linear transportation corridor and paved runway infrastructure are identifiable."
+      },
+      {
+        "from": "human",
+        "value": "Where are the infrastructure runway located?"
+      },
+      {
+        "from": "gpt",
+        "value": "The infrastructure runway is located at coordinates [50, 100, 210, 150]."
+      }
+    ]
+  }
+]

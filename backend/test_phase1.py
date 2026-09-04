@@ -30,12 +30,18 @@ def run_tests():
 
     # 2. Test /upload
     print("\n[2] Testing POST /upload with multipart images...")
-    dummy_optical = io.BytesIO(b"DUMMY_OPTICAL_TIFF_CONTENT_FOR_TESTING")
-    dummy_sar = io.BytesIO(b"DUMMY_SAR_TIFF_CONTENT_FOR_TESTING")
+    from PIL import Image
+    opt_buf = io.BytesIO()
+    Image.new("RGB", (64, 64), color=(60, 150, 80)).save(opt_buf, format="TIFF")
+    opt_buf.seek(0)
+
+    sar_buf = io.BytesIO()
+    Image.new("L", (64, 64), color=128).save(sar_buf, format="TIFF")
+    sar_buf.seek(0)
 
     files = {
-        "optical": ("test_sentinel2.tif", dummy_optical, "image/tiff"),
-        "sar": ("test_sentinel1.tif", dummy_sar, "image/tiff"),
+        "optical": ("test_sentinel2.tif", opt_buf, "image/tiff"),
+        "sar": ("test_sentinel1.tif", sar_buf, "image/tiff"),
     }
 
     upload_res = client.post("/upload", files=files)
@@ -56,7 +62,7 @@ def run_tests():
     print(f" -> PASS: Verified files exist on disk in {saved_optical.parent}")
 
     # 3. Test /query
-    print("\n[3] Testing POST /query stub...")
+    print("\n[3] Testing POST /query...")
     query_payload = {
         "upload_id": upload_id,
         "query_text": "What is the dominant land cover in this satellite image?"
@@ -64,10 +70,9 @@ def run_tests():
     query_res = client.post("/query", json=query_payload)
     assert query_res.status_code == 200, f"Query failed: {query_res.status_code} {query_res.text}"
     query_data = query_res.json()
-    assert query_data["status"] == "received", f"Unexpected status: {query_data}"
-    assert query_data["task"] == "not_yet_implemented"
+    assert query_data["status"] in ["received", "completed"], f"Unexpected status: {query_data}"
     assert query_data["upload_id"] == upload_id
-    print(" -> PASS: /query returned:", query_data)
+    print(" -> PASS: /query returned:", query_data["status"], "task:", query_data.get("task"))
 
     print("\n========================================")
     print(" ALL PHASE 1 TESTS PASSED SUCCESSFULLY!")

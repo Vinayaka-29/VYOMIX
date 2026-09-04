@@ -26,12 +26,12 @@ Remote sensing analysis across diverse Earth Observation sensors (High-Resolutio
 
 | Requirement | Implementation Status | Evidence / Verification |
 | :--- | :---: | :--- |
-| **Single-Image VQA** | **COMPLETED** | `models/vqa_model.py` (94.2% domain accuracy) |
-| **Dense Captioning OR Grounding** | **BOTH COMPLETED** | `models/captioning_model.py` & `models/grounding_model.py` (0.855 mIoU) |
+| **Single-Image VQA** | **IMPLEMENTED** | `models/vqa_model.py` (real configured VLM inference; benchmark not evaluated yet) |
+| **Dense Captioning OR Grounding** | **IMPLEMENTED** | `models/captioning_model.py` & `models/grounding_model.py` (real model pipelines; benchmark not evaluated yet) |
 | **Bi-Temporal Change Detection / Change-VQA** | **COMPLETED** | `models/change_detection.py` (CV diffing) & `change_vqa_model.py` |
 | **Optical + SAR Cross-Modal Fusion** | **COMPLETED** | `models/optical_sar_fusion.py` (Dual-branch + evidence attribution) |
 | **Agentic Auto-Routing Controller** | **COMPLETED** | `agent/query_interpreter.py`, `task_classifier.py`, `planner.py`, `executor.py` |
-| **Genuinely Adapted Backbone (BigEarthNet / VRSBench)**| **COMPLETED** | `training/lora_finetune_vlm.py` (PEFT LoRA $r=16, \alpha=32$, `models/checkpoints/`) |
+| **Genuinely Adapted Backbone (BigEarthNet / VRSBench)**| **PIPELINE READY** | `training/lora_finetune_vlm.py` (real PEFT LoRA; run with `TRAINING_DATA`) |
 | **Input Validation & Modality Checking** | **COMPLETED** | `validation/file_validator.py`, `metadata_extractor.py`, `modality_detector.py` |
 | **Auditable Execution Trace in UI & PDF Report** | **COMPLETED** | `agent/execution_trace.py`, `reporting/report_generator.py`, `ExecutionTracePanel.jsx` |
 | **Confidence Scoring & Disagreement Flagging** | **COMPLETED** | `agent/confidence.py` (Conflict detection when differencing diverges from VLM) |

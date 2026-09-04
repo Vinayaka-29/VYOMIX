@@ -1,76 +1,8 @@
 {
+  "status": "Not evaluated yet.",
   "benchmark": "VRSBench Referring Expression Grounding Test Split",
-  "num_test_queries": 4,
-  "mean_iou": 0.855,
-  "precision_at_50": "100.0%",
-  "samples": [
-    {
-      "id": "GROUND_001",
-      "expression": "the reservoir water body in the southern sector",
-      "ground_truth_bbox": [
-        60,
-        220,
-        290,
-        440
-      ],
-      "predicted_bbox": [
-        65,
-        225,
-        285,
-        435
-      ],
-      "iou": 0.884
-    },
-    {
-      "id": "GROUND_002",
-      "expression": "dense commercial warehouse clusters and logistics yard",
-      "ground_truth_bbox": [
-        180,
-        80,
-        430,
-        320
-      ],
-      "predicted_bbox": [
-        175,
-        75,
-        435,
-        330
-      ],
-      "iou": 0.852
-    },
-    {
-      "id": "GROUND_003",
-      "expression": "agricultural cultivation field with center-pivot boundary",
-      "ground_truth_bbox": [
-        40,
-        50,
-        360,
-        300
-      ],
-      "predicted_bbox": [
-        45,
-        55,
-        355,
-        295
-      ],
-      "iou": 0.869
-    },
-    {
-      "id": "GROUND_004",
-      "expression": "airport runway tarmac and terminal apron",
-      "ground_truth_bbox": [
-        200,
-        150,
-        350,
-        310
-      ],
-      "predicted_bbox": [
-        205,
-        155,
-        345,
-        305
-      ],
-      "iou": 0.817
-    }
-  ]
+  "num_test_queries": 0,
+  "mean_iou": null,
+  "precision_at_50": null,
+  "samples": []
 }

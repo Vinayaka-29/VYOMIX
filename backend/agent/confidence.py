@@ -19,7 +19,18 @@ def evaluate_confidence_and_conflicts(
     if not executed_steps:
         return 0.5, False, []
 
-    step_confs = [s.get("confidence", 0.85) for s in executed_steps]
+    step_confs = [
+        s.get("confidence") for s in executed_steps
+        if isinstance(s.get("confidence"), (int, float))
+    ]
+    if not step_confs:
+        return 0.0, False, [{
+            "conflict_id": "CONFIDENCE_UNAVAILABLE",
+            "type": "UNCALIBRATED_MODEL_OUTPUT",
+            "description": "The specialist completed without a calibrated confidence score.",
+            "specialist_a": task_name,
+            "specialist_b": "confidence_engine",
+        }]
     disagreements: List[Dict[str, str]] = []
 
     # --- Conflict Check 1: Multi-Temporal Differencing vs. VLM Reasoning ---

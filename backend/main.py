@@ -3,6 +3,7 @@ from pathlib import Path
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from api.routes import router as api_router, UPLOAD_BASE_DIR
+from models.model_server import model_server
 
 
 @asynccontextmanager
@@ -49,7 +50,8 @@ async def health_check():
         "service": "SatQuery AI Backend",
         "problem_statement": "26167 (ISRO/SAC)",
         "team": "Vyomix",
-        "version": "1.0.0"
+        "version": "1.0.0",
+        "model": model_server.status(),
     }
 
 

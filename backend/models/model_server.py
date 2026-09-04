@@ -505,6 +505,19 @@ class RemoteSensingVLMServer:
         tensor = torch.from_numpy(final_tensor).unsqueeze(0).float()
         return tensor.to(self.device)
 
+    def status(self) -> Dict[str, Any]:
+        """Telemetry status for /health endpoint."""
+        return {
+            "initialized": self._initialized,
+            "model": getattr(self, "model_name", "SatQuery-RS-VLM"),
+            "checkpoint": getattr(self, "checkpoint", None),
+            "adapter": str(CHECKPOINT_DIR) if getattr(self, "is_lora_adapted", False) else None,
+            "device": getattr(self, "device", "cpu"),
+            "is_adapted": getattr(self, "is_lora_adapted", False),
+            "parameters": getattr(self, "param_info", {}),
+            "error": None,
+        }
+
 
 # Global singleton instance
 model_server = RemoteSensingVLMServer()

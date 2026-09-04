@@ -7,15 +7,15 @@
 
 ## 🏆 Performance Across Mandatory Capabilities
 
-This document provides empirical evaluation evidence across all four mandatory functional pillars and confirms genuine domain adaptation of the Vision-Language Model backbone.
+This document records the evaluation status. The repository does not currently contain a reproducible held-out benchmark run, so unverified scores are intentionally not reported.
 
 | Capability Pillar | Benchmark Dataset | Baseline Score | SatQuery AI Score | Relative Gain | Key Metric |
 | :--- | :--- | :---: | :---: | :---: | :--- |
-| **1. Single-Image VQA** | RSVQA-LR / BigEarthNet | 67.2% | **94.2%** | **+40.2%** | VQA Domain Accuracy |
-| **2. Dense Captioning** | VRSBench Captioning Split | 2.14 loss | **0.42 loss** | **-80.4%** | Cross-Entropy Loss |
-| **3. Text-Guided Grounding** | VRSBench Grounding Split | 0.61 IoU | **0.855 mIoU** | **+40.2%** | Mean IoU / Precision@0.5 |
-| **4. Bi-Temporal Change-VQA** | CDVQA Test Split | 64.0% | **92.7%** | **+44.8%** | F1 / Temporal Change Accuracy |
-| **5. Optical + SAR Fusion** | Co-Registered Evaluation Set | N/A (Single-modal) | **High (5/5)** | Qualitative | Cloud/Shadow Invariance |
+| **1. Single-Image VQA** | RSVQA-LR / BigEarthNet | Not evaluated yet | Not evaluated yet | Not evaluated yet | VQA Domain Accuracy |
+| **2. Dense Captioning** | VRSBench Captioning Split | Not evaluated yet | Not evaluated yet | Not evaluated yet | Cross-Entropy Loss |
+| **3. Text-Guided Grounding** | VRSBench Grounding Split | Not evaluated yet | Not evaluated yet | Not evaluated yet | Mean IoU / Precision@0.5 |
+| **4. Bi-Temporal Change-VQA** | CDVQA Test Split | Not evaluated yet | Not evaluated yet | Not evaluated yet | F1 / Temporal Change Accuracy |
+| **5. Optical + SAR Fusion** | Co-Registered Evaluation Set | Not evaluated yet | Not evaluated yet | Not evaluated yet | Cloud/Shadow Invariance |
 
 ---
 
@@ -25,21 +25,16 @@ Evaluated by running identical prompts through:
 - **(A) Base Model**: `GeoChat-7B` (Zero-shot)
 - **(B) Adapted Checkpoint**: `SatQuery-AI` (LoRA-adapted on BigEarthNet & VRSBench, $r=16, \alpha=32$)
 
-### Representative Comparisons
-1. **Query**: *"What is the dominant land cover class in this Sentinel-2 tile?"*
-   - *Base Model*: "It looks like a green landscape with many trees, possibly countryside or park." (Score: 0.68)
-   - *Adapted SatQuery*: **"Dense mixed forest canopy with high NIR reflectance and characteristic Corine Land Cover Class 3.1.3."** (Score: 0.94)
-2. **Query**: *"Identify hydrological boundaries or surface water bodies."*
-   - *Base Model*: "A dark curved line that might be water or a shadow." (Score: 0.62)
-   - *Adapted SatQuery*: **"An inland meandering river channel with distinct low-reflectance water absorption and riparian wetland margins."** (Score: 0.95)
+### Evaluation Status
+No base-versus-adapter benchmark run has been recorded yet. Use `backend/evaluation/eval_vqa.py` after supplying a real held-out dataset.
 
 ---
 
 ## 🎯 2. Text-Guided Grounding Performance (Phase 4 & 10)
 - **Evaluation Split**: 500 held-out referring expressions from VRSBench.
-- **Mean IoU (mIoU)**: **0.855**
-- **Precision@0.5**: **100.0%** across tested target entities.
-- **Out-of-Distribution / Not-Found Handling**: 100% graceful rejection without hallucinated bounding boxes when entities are absent.
+- **Mean IoU (mIoU)**: Not evaluated yet.
+- **Precision@0.5**: Not evaluated yet.
+- **Out-of-Distribution / Not-Found Handling**: Implemented by returning no detection when the grounding model returns no box; benchmark status is not evaluated yet.
 
 ---
 

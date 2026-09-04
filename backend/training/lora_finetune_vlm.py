@@ -5,72 +5,97 @@ to genuinely adapt the vision-language backbone to Earth Observation tasks.
 """
 import os
 import json
-import time
+import random
 from pathlib import Path
-from typing import Dict, Any
+from typing import Any, Dict, List
+from PIL import Image
 
 CHECKPOINT_DIR = Path(__file__).resolve().parent.parent / "models" / "checkpoints" / "lora_adapter"
 CHECKPOINT_DIR.mkdir(parents=True, exist_ok=True)
 
 
 def run_lora_finetuning(
-    dataset_name: str = "BigEarthNet-19 + VRSBench",
+    dataset_name: str = "local-jsonl",
     num_epochs: int = 3,
     learning_rate: float = 2e-4,
     lora_rank: int = 16,
     lora_alpha: int = 32,
-    batch_size: int = 8,
+    batch_size: int = 1,
 ) -> Dict[str, Any]:
-    """
-    Simulates / runs the PEFT LoRA training loop, computing loss reductions
-    and saving genuine adapter metadata and weights.
-    """
-    print("==========================================================")
-    print(f" Starting LoRA Fine-Tuning on {dataset_name}")
-    print(f" Backbone: GeoChat-RS-LLaVA-7B | Rank: {lora_rank} | Alpha: {lora_alpha}")
-    print("==========================================================")
+    """Train a real PEFT adapter from ``TRAINING_DATA`` JSONL samples.
 
-    start_time = time.time()
-    loss_history = []
-    base_loss = 2.418
+    Each line must contain ``image`` and ``answer`` and may contain ``prompt``.
+    Images are passed to the processor and the model computes the training loss.
+    """
+    data_path = Path(os.getenv("TRAINING_DATA", ""))
+    if not data_path.is_file():
+        raise FileNotFoundError("Set TRAINING_DATA to a JSONL file containing real image/prompt/answer samples")
+    import torch
+    from peft import LoraConfig, TaskType, get_peft_model
+    from transformers import AutoModelForCausalLM, AutoProcessor
+    model_name = os.getenv("MODEL_CHECKPOINT", os.getenv("MODEL_NAME", "mbzuai-oryx/GeoChat-7B"))
+    seed = int(os.getenv("TRAINING_SEED", "42"))
+    random.seed(seed)
+    torch.manual_seed(seed)
+    with data_path.open("r", encoding="utf-8") as handle:
+        samples: List[Dict[str, Any]] = [json.loads(line) for line in handle if line.strip()]
+    if not samples:
+        raise ValueError(f"Training dataset is empty: {data_path}")
+    if any(not sample.get("image") or not sample.get("answer") for sample in samples):
+        raise ValueError("Every training sample requires image and answer fields")
+
+    processor = AutoProcessor.from_pretrained(model_name, trust_remote_code=True)
+    model = AutoModelForCausalLM.from_pretrained(model_name, trust_remote_code=True)
+    target_modules = [value.strip() for value in os.getenv("LORA_TARGET_MODULES", "q_proj,v_proj").split(",")]
+    config = LoraConfig(
+        task_type=TaskType.CAUSAL_LM,
+        r=lora_rank,
+        lora_alpha=lora_alpha,
+        lora_dropout=0.05,
+        target_modules=target_modules,
+        bias="none",
+    )
+    model = get_peft_model(model, config)
+    model.train()
+    optimizer = torch.optim.AdamW(model.parameters(), lr=learning_rate)
+    loss_history: List[Dict[str, Any]] = []
 
     for epoch in range(1, num_epochs + 1):
-        # Progressively lower loss as adapter converges
-        decay = (epoch / num_epochs) * 1.58
-        epoch_loss = max(0.42, round(base_loss - decay, 4))
-        loss_history.append({"epoch": epoch, "training_loss": epoch_loss})
-        print(f" -> Epoch {epoch}/{num_epochs} - Training Loss: {epoch_loss:.4f}")
-        time.sleep(0.4)
+        epoch_losses = []
+        for start in range(0, len(samples), batch_size):
+            batch = samples[start:start + batch_size]
+            texts = [f"{item.get('prompt', 'Answer the question about this image.')}\n{item['answer']}" for item in batch]
+            images = [Image.open(item["image"]).convert("RGB") for item in batch]
+            encoded = processor(text=texts, images=images, return_tensors="pt", padding=True)
+            encoded = {key: value for key, value in encoded.items() if hasattr(value, "to")}
+            labels = encoded["input_ids"].clone()
+            labels[labels == processor.tokenizer.pad_token_id] = -100
+            output = model(**encoded, labels=labels)
+            output.loss.backward()
+            optimizer.step()
+            optimizer.zero_grad(set_to_none=True)
+            epoch_losses.append(float(output.loss.detach().cpu()))
+        if not epoch_losses:
+            raise RuntimeError("No training batches were produced")
+        loss_history.append({"epoch": epoch, "training_loss": sum(epoch_losses) / len(epoch_losses)})
 
-    total_training_time_sec = round(time.time() - start_time, 2)
-
-    # Save PEFT Adapter Configuration
-    adapter_config = {
-        "peft_type": "LORA",
-        "base_model_name_or_path": "mbzuai-oryx/GeoChat-7B",
-        "task_type": "CAUSAL_LM",
-        "r": lora_rank,
-        "lora_alpha": lora_alpha,
-        "lora_dropout": 0.05,
-        "target_modules": ["q_proj", "v_proj", "k_proj", "o_proj"],
-        "bias": "none",
-        "dataset_adapted": dataset_name,
-        "training_epochs": num_epochs,
-        "final_loss": loss_history[-1]["training_loss"],
-        "training_time_seconds": total_training_time_sec,
-        "adaptation_domain": "Remote Sensing / Earth Observation (ISRO PS 26167)",
+    model.save_pretrained(CHECKPOINT_DIR)
+    processor.save_pretrained(CHECKPOINT_DIR)
+    metadata = {
+        "base_model_name_or_path": model_name,
+        "dataset": str(data_path),
+        "dataset_name": dataset_name,
+        "samples": len(samples),
+        "epochs": num_epochs,
+        "learning_rate": learning_rate,
+        "batch_size": batch_size,
+        "seed": seed,
+        "loss_history": loss_history,
+        "adapter_path": str(CHECKPOINT_DIR),
     }
-
-    config_path = CHECKPOINT_DIR / "adapter_config.json"
-    with open(config_path, "w", encoding="utf-8") as f:
-        json.dump(adapter_config, f, indent=2)
-
-    # Create weights marker
-    weights_path = CHECKPOINT_DIR / "adapter_model.bin"
-    weights_path.write_bytes(b"PEFT_LORA_WEIGHTS_GEOM_ADAPTED_SATQUERY_AI_V1")
-
-    print(f"\n[LoRA Training Complete] Saved checkpoint to: {config_path}")
-    return adapter_config
+    with (CHECKPOINT_DIR / "training_metadata.json").open("w", encoding="utf-8") as handle:
+        json.dump(metadata, handle, indent=2)
+    return metadata
 
 
 if __name__ == "__main__":

@@ -19,7 +19,7 @@ SPECIALIST_REGISTRY: Dict[str, Dict[str, Any]] = {
         },
         "outputs": {
             "answer": "str",
-            "confidence": "float (0.0-1.0)",
+            "confidence": "float or null when the model is not calibrated",
             "latency_ms": "float",
             "details": "dict",
         },
@@ -27,7 +27,7 @@ SPECIALIST_REGISTRY: Dict[str, Dict[str, Any]] = {
         "min_inputs": 1,
         "max_inputs": 1,
         "estimated_latency_ms": 35.0,
-        "fallback_strategy": "heuristic_spectral_rules",
+        "fallback_strategy": "explicit_model_load_error",
     },
     "captioning_specialist": {
         "id": "captioning_specialist",
@@ -41,7 +41,7 @@ SPECIALIST_REGISTRY: Dict[str, Dict[str, Any]] = {
         },
         "outputs": {
             "caption": "str",
-            "confidence": "float",
+            "confidence": "float or null when the model is not calibrated",
             "latency_ms": "float",
             "features_detected": "list",
         },
@@ -49,7 +49,7 @@ SPECIALIST_REGISTRY: Dict[str, Dict[str, Any]] = {
         "min_inputs": 1,
         "max_inputs": 1,
         "estimated_latency_ms": 30.0,
-        "fallback_strategy": "spectral_inventory_summary",
+        "fallback_strategy": "explicit_model_load_error",
     },
     "grounding_specialist": {
         "id": "grounding_specialist",
@@ -66,14 +66,14 @@ SPECIALIST_REGISTRY: Dict[str, Dict[str, Any]] = {
             "found": "bool",
             "bbox": "list[int] [xmin, ymin, xmax, ymax]",
             "normalized_bbox": "list[float] [0.0-1.0]",
-            "confidence": "float",
+            "confidence": "float or null when the detector returns no score",
             "message": "str",
         },
         "modalities_supported": ["OPTICAL", "MULTISPECTRAL"],
         "min_inputs": 1,
         "max_inputs": 1,
         "estimated_latency_ms": 25.0,
-        "fallback_strategy": "graceful_not_found_rejection",
+        "fallback_strategy": "explicit_model_load_error",
     },
     "differencing_engine": {
         "id": "differencing_engine",

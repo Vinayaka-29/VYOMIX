@@ -91,9 +91,9 @@ def execute_plan(plan: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
         step_cache[step_id] = output
 
         # Extract confidence score
-        step_conf = 0.90
+        step_conf = None
         if isinstance(output, dict):
-            step_conf = output.get("confidence", 0.90)
+            step_conf = output.get("confidence")
 
         executed_steps.append({
             "step_id": step_id,

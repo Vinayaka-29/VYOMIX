@@ -150,7 +150,7 @@ def generate_pdf_report(
             Paragraph(str(step.get("step_id")), body_style),
             Paragraph(str(step.get("model")), body_style),
             Paragraph(f"{step.get('latency_ms', 0)} ms", body_style),
-            Paragraph(f"{int(step.get('confidence', 0.9) * 100)}%", body_style),
+            Paragraph(f"{int(step['confidence'] * 100)}%" if step.get('confidence') is not None else "N/A", body_style),
         ])
 
     t_trace = Table(trace_rows, colWidths=[120, 230, 90, 90])

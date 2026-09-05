@@ -92,7 +92,8 @@ def generate_pdf_report(
 
     # 2. Executive Metadata Box
     task_name = trace_data.get("task", "Remote Sensing Analysis")
-    conf = trace_data.get("final_confidence", 0.9)
+    conf = trace_data.get("final_confidence")
+    conf_display = f"<b>{int(conf * 100)}%</b>" if conf is not None else "<b>N/A (Uncalibrated)</b>"
     disagree = trace_data.get("disagreement_flagged", False)
     created_at = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M:%S UTC")
 
@@ -100,7 +101,7 @@ def generate_pdf_report(
         [Paragraph("<b>Query ID:</b>", body_style), Paragraph(str(query_id)[:18] + "...", body_style),
          Paragraph("<b>Timestamp:</b>", body_style), Paragraph(created_at, body_style)],
         [Paragraph("<b>Agent Task:</b>", body_style), Paragraph(task_name.upper(), body_style),
-         Paragraph("<b>Confidence:</b>", body_style), Paragraph(f"<b>{int(conf * 100)}%</b>", body_style)],
+         Paragraph("<b>Confidence:</b>", body_style), Paragraph(conf_display, body_style)],
         [Paragraph("<b>Disagreement Flag:</b>", body_style), 
          Paragraph(f"<font color='{'red' if disagree else 'green'}'>{'YES (CONFLICT FLAGGED)' if disagree else 'NONE (CONSENSUS)'}</font>", body_style),
          Paragraph("<b>Inputs Used:</b>", body_style), Paragraph(", ".join(trace_data.get("inputs_used", ["image"])), body_style)],

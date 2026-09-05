@@ -328,8 +328,12 @@ async def process_query(request: QueryRequest):
         "answer": fusion_result["final_answer"],
         "confidence": final_confidence,
         "disagreement_flagged": disagreement_flagged,
+        "conflicts": conflicts,
+        "evidence": fusion_result.get("evidence_items", []),
+        "supporting_facts": fusion_result.get("supporting_facts", []),
         "visual_artifacts": fusion_result["visual_artifacts"],
         "execution_trace": trace,
+        "warnings": geo_report.get("warnings", []) if geo_report else [],
     }
 
     # Store for PDF report generation

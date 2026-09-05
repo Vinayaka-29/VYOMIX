@@ -1,7 +1,10 @@
 """
-Auditable Execution Trace Ledger for SatQuery AI (Phase 12)
-Produces factual, observable execution records strictly compliant with ISRO/SAC PS 26167.
-Suppresses internal LLM chain-of-thought tokens while logging observable tasks, parameters, and latencies.
+Auditable Execution Trace Ledger for SatQuery AI
+SIH Problem Statement 26167 | Team Vyomix
+
+Produces factual, observable execution ledger records strictly compliant with ISRO/SAC PS 26167.
+Suppresses internal LLM chain-of-thought tokens while logging observable tasks, parameters,
+specialists, and execution latencies.
 """
 from datetime import datetime, timezone
 from typing import Dict, Any, List, Optional
@@ -12,15 +15,16 @@ def build_execution_trace(
     query_text: str,
     inputs_used: List[str],
     executed_steps: List[Dict[str, Any]],
-    final_confidence: float,
+    final_confidence: Optional[float],
     disagreement_flagged: bool,
-    conflicts: List[Dict[str, str]],
+    conflicts: List[Dict[str, Any]],
     intent: Dict[str, Any],
     geospatial_report: Optional[Dict[str, Any]] = None,
 ) -> Dict[str, Any]:
     """
     Builds the complete auditable execution trace.
     Emits observable facts only: task, models called, parameters, step outputs, and conflict flags.
+    Zero chain-of-thought or reasoning traces exposed.
     """
     models_called = [
         {
@@ -28,7 +32,7 @@ def build_execution_trace(
             "version": step.get("model_version", "1.0.0"),
             "status": step.get("status", "SUCCESS"),
             "execution_time_ms": step.get("execution_time_ms", 0.0),
-            "confidence": step.get("confidence", 0.9),
+            "confidence": step.get("confidence"),
         }
         for step in executed_steps
     ]
@@ -43,19 +47,25 @@ def build_execution_trace(
                 or out.get("caption")
                 or out.get("location_summary")
                 or out.get("message")
+                or out.get("error")
                 or "Structured output generated."
             )
         elif isinstance(out, str):
             summary = out
 
+        truncated_summary = str(summary)[:180] + ("..." if len(str(summary)) > 180 else "")
+
+        # Provide fields for both legacy and current frontend component bindings
         structured_steps.append({
             "step_id": step.get("step_id", "step"),
             "specialist_invoked": step.get("model_called", "specialist"),
+            "model": step.get("model_called", "specialist"),
             "version": step.get("model_version", "1.0.0"),
             "latency_ms": step.get("execution_time_ms", 0.0),
-            "confidence": step.get("confidence", 0.9),
+            "confidence": step.get("confidence") if step.get("confidence") is not None else 0.0,
             "status": step.get("status", "SUCCESS"),
-            "observable_output": summary[:180] + ("..." if len(summary) > 180 else ""),
+            "observable_output": truncated_summary,
+            "output_summary": truncated_summary,
         })
 
     total_latency_ms = round(sum(s.get("execution_time_ms", 0.0) for s in executed_steps), 2)

@@ -17,11 +17,11 @@
   "bias": "none",
   "dataset_adapted": "BigEarthNet-19 + VRSBench Remote Sensing",
   "training_epochs": 1,
-  "final_loss": 6.9793,
+  "final_loss": 6.8139,
   "loss_reduction": 0.0,
   "trainable_parameters": 1179648,
   "trainable_percentage": 7.6,
-  "training_time_seconds": 5.49,
+  "training_time_seconds": 6.37,
   "weight_size_bytes": 4733847,
   "adaptation_domain": "Remote Sensing / Earth Observation (ISRO PS 26167)",
   "hardware_used": "Host CPU"

@@ -21,7 +21,7 @@
         255,
         255
       ],
-      "confidence": 0.841,
+      "confidence": 0.871,
       "iou": 0.2338,
       "pass_50": false
     },
@@ -41,7 +41,7 @@
         255,
         255
       ],
-      "confidence": 0.835,
+      "confidence": 0.864,
       "iou": 0.2215,
       "pass_50": false
     },
@@ -61,7 +61,7 @@
         255,
         255
       ],
-      "confidence": 0.849,
+      "confidence": 0.876,
       "iou": 0.366,
       "pass_50": false
     },
@@ -81,7 +81,7 @@
         255,
         255
       ],
-      "confidence": 0.837,
+      "confidence": 0.864,
       "iou": 0.123,
       "pass_50": false
     },
@@ -101,7 +101,7 @@
         255,
         255
       ],
-      "confidence": 0.841,
+      "confidence": 0.871,
       "iou": 0.2338,
       "pass_50": false
     },
@@ -121,7 +121,7 @@
         255,
         255
       ],
-      "confidence": 0.835,
+      "confidence": 0.864,
       "iou": 0.2215,
       "pass_50": false
     }

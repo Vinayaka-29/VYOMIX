@@ -11,8 +11,15 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 import numpy as np
-import rasterio
-from rasterio.transform import from_origin
+from PIL import Image
+
+try:
+    import rasterio
+    from rasterio.transform import from_origin
+    HAS_RASTERIO = True
+except ImportError:
+    HAS_RASTERIO = False
+
 from fastapi.testclient import TestClient
 
 from main import app
@@ -25,7 +32,6 @@ TEST_DIR.mkdir(parents=True, exist_ok=True)
 
 def create_test_geotiff(filename: str, width: int = 128, height: int = 128, bands: int = 3, is_sar: bool = False):
     filepath = TEST_DIR / filename
-    transform = from_origin(300000.0, 2000000.0, 10.0, 10.0)
     crs = "EPSG:32643"
 
     if is_sar:
@@ -33,29 +39,37 @@ def create_test_geotiff(filename: str, width: int = 128, height: int = 128, band
         np.random.seed(42)
         base = np.random.exponential(scale=50.0, size=(height, width)).astype(np.float32)
         data = np.clip(base, 0, 255).astype(np.uint8)
-        with rasterio.open(
-            filepath, "w",
-            driver="GTiff",
-            height=height, width=width,
-            count=1, dtype="uint8",
-            crs=crs, transform=transform
-        ) as dst:
-            dst.write(data, 1)
+        if HAS_RASTERIO:
+            transform = from_origin(300000.0, 2000000.0, 10.0, 10.0)
+            with rasterio.open(
+                filepath, "w",
+                driver="GTiff",
+                height=height, width=width,
+                count=1, dtype="uint8",
+                crs=crs, transform=transform
+            ) as dst:
+                dst.write(data, 1)
+        else:
+            Image.fromarray(data, mode="L").save(filepath, format="TIFF")
     else:
         # Clean RGB optical bands
         data = np.zeros((bands, height, width), dtype=np.uint8)
         data[0, :, :] = 180  # Red
         data[1, :, :] = 140  # Green
         data[2, :, :] = 90   # Blue
-        with rasterio.open(
-            filepath, "w",
-            driver="GTiff",
-            height=height, width=width,
-            count=bands, dtype="uint8",
-            crs=crs, transform=transform
-        ) as dst:
-            for b in range(1, bands + 1):
-                dst.write(data[b - 1], b)
+        if HAS_RASTERIO:
+            transform = from_origin(300000.0, 2000000.0, 10.0, 10.0)
+            with rasterio.open(
+                filepath, "w",
+                driver="GTiff",
+                height=height, width=width,
+                count=bands, dtype="uint8",
+                crs=crs, transform=transform
+            ) as dst:
+                for b in range(1, bands + 1):
+                    dst.write(data[b - 1], b)
+        else:
+            Image.fromarray(np.transpose(data, (1, 2, 0)), mode="RGB").save(filepath, format="TIFF")
 
     return str(filepath)
 
@@ -73,18 +87,21 @@ def run_e2e_tests():
     
     # After image has 30% area modification
     after_path = str(TEST_DIR / "test_after.tif")
-    transform = from_origin(300000.0, 2000000.0, 10.0, 10.0)
     data_after = np.zeros((3, 128, 128), dtype=np.uint8)
     data_after[:, 40:100, 40:100] = 240
-    with rasterio.open(
-        after_path, "w",
-        driver="GTiff",
-        height=128, width=128,
-        count=3, dtype="uint8",
-        crs="EPSG:32643", transform=transform
-    ) as dst:
-        for b in range(1, 4):
-            dst.write(data_after[b - 1], b)
+    if HAS_RASTERIO:
+        transform = from_origin(300000.0, 2000000.0, 10.0, 10.0)
+        with rasterio.open(
+            after_path, "w",
+            driver="GTiff",
+            height=128, width=128,
+            count=3, dtype="uint8",
+            crs="EPSG:32643", transform=transform
+        ) as dst:
+            for b in range(1, 4):
+                dst.write(data_after[b - 1], b)
+    else:
+        Image.fromarray(np.transpose(data_after, (1, 2, 0)), mode="RGB").save(after_path, format="TIFF")
 
     print(" -> PASS: Synthetic rasters generated with CRS EPSG:32643.")
 

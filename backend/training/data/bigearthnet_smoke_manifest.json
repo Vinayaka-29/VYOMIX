@@ -1,0 +1,247 @@
+{
+  "dataset": "BigEarthNet.txt (BIFOLD/TU Berlin/DLR)",
+  "mode": "smoke",
+  "total_samples": 12,
+  "samples": [
+    {
+      "id": "BEN_CLC_0000",
+      "patch_id": "S2A_MSIL2A_20170812T100031_N0205_R122_T32TMR_00",
+      "category": "multi-label classification",
+      "split": "test",
+      "primary_class": "Urban fabric",
+      "secondary_class": "Complex cultivation patterns",
+      "input_prompt": "Identify the dominant Corine Land Cover classifications present in this Sentinel-2 footprint.",
+      "ground_truth": "The dominant land cover is Urban fabric, with presence of Complex cultivation patterns.",
+      "conversations": [
+        {
+          "from": "human",
+          "value": "<image>\nIdentify the dominant Corine Land Cover classifications present in this Sentinel-2 footprint."
+        },
+        {
+          "from": "gpt",
+          "value": "The dominant land cover is Urban fabric, with presence of Complex cultivation patterns."
+        }
+      ]
+    },
+    {
+      "id": "BEN_CLC_0001",
+      "patch_id": "S2A_MSIL2A_20170812T100031_N0205_R122_T32TMR_01",
+      "category": "multi-label classification",
+      "split": "train",
+      "primary_class": "Industrial or commercial units",
+      "secondary_class": "Land principally occupied by agriculture",
+      "input_prompt": "Identify the dominant Corine Land Cover classifications present in this Sentinel-2 footprint.",
+      "ground_truth": "The dominant land cover is Industrial or commercial units, with presence of Land principally occupied by agriculture.",
+      "conversations": [
+        {
+          "from": "human",
+          "value": "<image>\nIdentify the dominant Corine Land Cover classifications present in this Sentinel-2 footprint."
+        },
+        {
+          "from": "gpt",
+          "value": "The dominant land cover is Industrial or commercial units, with presence of Land principally occupied by agriculture."
+        }
+      ]
+    },
+    {
+      "id": "BEN_CLC_0002",
+      "patch_id": "S2A_MSIL2A_20170812T100031_N0205_R122_T32TMR_02",
+      "category": "multi-label classification",
+      "split": "train",
+      "primary_class": "Arable land",
+      "secondary_class": "Broad-leaved forest",
+      "input_prompt": "Identify the dominant Corine Land Cover classifications present in this Sentinel-2 footprint.",
+      "ground_truth": "The dominant land cover is Arable land, with presence of Broad-leaved forest.",
+      "conversations": [
+        {
+          "from": "human",
+          "value": "<image>\nIdentify the dominant Corine Land Cover classifications present in this Sentinel-2 footprint."
+        },
+        {
+          "from": "gpt",
+          "value": "The dominant land cover is Arable land, with presence of Broad-leaved forest."
+        }
+      ]
+    },
+    {
+      "id": "BEN_CLC_0003",
+      "patch_id": "S2A_MSIL2A_20170812T100031_N0205_R122_T32TMR_03",
+      "category": "multi-label classification",
+      "split": "train",
+      "primary_class": "Permanent crops",
+      "secondary_class": "Coniferous forest",
+      "input_prompt": "Identify the dominant Corine Land Cover classifications present in this Sentinel-2 footprint.",
+      "ground_truth": "The dominant land cover is Permanent crops, with presence of Coniferous forest.",
+      "conversations": [
+        {
+          "from": "human",
+          "value": "<image>\nIdentify the dominant Corine Land Cover classifications present in this Sentinel-2 footprint."
+        },
+        {
+          "from": "gpt",
+          "value": "The dominant land cover is Permanent crops, with presence of Coniferous forest."
+        }
+      ]
+    },
+    {
+      "id": "BEN_CLC_0004",
+      "patch_id": "S2A_MSIL2A_20170812T100031_N0205_R122_T32TMR_04",
+      "category": "multi-label classification",
+      "split": "test",
+      "primary_class": "Pastures",
+      "secondary_class": "Mixed forest",
+      "input_prompt": "Identify the dominant Corine Land Cover classifications present in this Sentinel-2 footprint.",
+      "ground_truth": "The dominant land cover is Pastures, with presence of Mixed forest.",
+      "conversations": [
+        {
+          "from": "human",
+          "value": "<image>\nIdentify the dominant Corine Land Cover classifications present in this Sentinel-2 footprint."
+        },
+        {
+          "from": "gpt",
+          "value": "The dominant land cover is Pastures, with presence of Mixed forest."
+        }
+      ]
+    },
+    {
+      "id": "BEN_CLC_0005",
+      "patch_id": "S2A_MSIL2A_20170812T100031_N0205_R122_T32TMR_05",
+      "category": "multi-label classification",
+      "split": "train",
+      "primary_class": "Complex cultivation patterns",
+      "secondary_class": "Natural grassland",
+      "input_prompt": "Identify the dominant Corine Land Cover classifications present in this Sentinel-2 footprint.",
+      "ground_truth": "The dominant land cover is Complex cultivation patterns, with presence of Natural grassland.",
+      "conversations": [
+        {
+          "from": "human",
+          "value": "<image>\nIdentify the dominant Corine Land Cover classifications present in this Sentinel-2 footprint."
+        },
+        {
+          "from": "gpt",
+          "value": "The dominant land cover is Complex cultivation patterns, with presence of Natural grassland."
+        }
+      ]
+    },
+    {
+      "id": "BEN_CLC_0006",
+      "patch_id": "S2A_MSIL2A_20170812T100031_N0205_R122_T32TMR_06",
+      "category": "multi-label classification",
+      "split": "train",
+      "primary_class": "Land principally occupied by agriculture",
+      "secondary_class": "Moors and heathland",
+      "input_prompt": "Identify the dominant Corine Land Cover classifications present in this Sentinel-2 footprint.",
+      "ground_truth": "The dominant land cover is Land principally occupied by agriculture, with presence of Moors and heathland.",
+      "conversations": [
+        {
+          "from": "human",
+          "value": "<image>\nIdentify the dominant Corine Land Cover classifications present in this Sentinel-2 footprint."
+        },
+        {
+          "from": "gpt",
+          "value": "The dominant land cover is Land principally occupied by agriculture, with presence of Moors and heathland."
+        }
+      ]
+    },
+    {
+      "id": "BEN_CLC_0007",
+      "patch_id": "S2A_MSIL2A_20170812T100031_N0205_R122_T32TMR_07",
+      "category": "multi-label classification",
+      "split": "train",
+      "primary_class": "Broad-leaved forest",
+      "secondary_class": "Sclerophyllous vegetation",
+      "input_prompt": "Identify the dominant Corine Land Cover classifications present in this Sentinel-2 footprint.",
+      "ground_truth": "The dominant land cover is Broad-leaved forest, with presence of Sclerophyllous vegetation.",
+      "conversations": [
+        {
+          "from": "human",
+          "value": "<image>\nIdentify the dominant Corine Land Cover classifications present in this Sentinel-2 footprint."
+        },
+        {
+          "from": "gpt",
+          "value": "The dominant land cover is Broad-leaved forest, with presence of Sclerophyllous vegetation."
+        }
+      ]
+    },
+    {
+      "id": "BEN_CLC_0008",
+      "patch_id": "S2A_MSIL2A_20170812T100031_N0205_R122_T32TMR_08",
+      "category": "multi-label classification",
+      "split": "test",
+      "primary_class": "Coniferous forest",
+      "secondary_class": "Transitional woodland, shrub",
+      "input_prompt": "Identify the dominant Corine Land Cover classifications present in this Sentinel-2 footprint.",
+      "ground_truth": "The dominant land cover is Coniferous forest, with presence of Transitional woodland, shrub.",
+      "conversations": [
+        {
+          "from": "human",
+          "value": "<image>\nIdentify the dominant Corine Land Cover classifications present in this Sentinel-2 footprint."
+        },
+        {
+          "from": "gpt",
+          "value": "The dominant land cover is Coniferous forest, with presence of Transitional woodland, shrub."
+        }
+      ]
+    },
+    {
+      "id": "BEN_CLC_0009",
+      "patch_id": "S2A_MSIL2A_20170812T100031_N0205_R122_T32TMR_09",
+      "category": "multi-label classification",
+      "split": "train",
+      "primary_class": "Mixed forest",
+      "secondary_class": "Beaches, dunes, sands",
+      "input_prompt": "Identify the dominant Corine Land Cover classifications present in this Sentinel-2 footprint.",
+      "ground_truth": "The dominant land cover is Mixed forest, with presence of Beaches, dunes, sands.",
+      "conversations": [
+        {
+          "from": "human",
+          "value": "<image>\nIdentify the dominant Corine Land Cover classifications present in this Sentinel-2 footprint."
+        },
+        {
+          "from": "gpt",
+          "value": "The dominant land cover is Mixed forest, with presence of Beaches, dunes, sands."
+        }
+      ]
+    },
+    {
+      "id": "BEN_CLC_0010",
+      "patch_id": "S2A_MSIL2A_20170812T100031_N0205_R122_T32TMR_10",
+      "category": "multi-label classification",
+      "split": "train",
+      "primary_class": "Natural grassland",
+      "secondary_class": "Inland wetlands",
+      "input_prompt": "Identify the dominant Corine Land Cover classifications present in this Sentinel-2 footprint.",
+      "ground_truth": "The dominant land cover is Natural grassland, with presence of Inland wetlands.",
+      "conversations": [
+        {
+          "from": "human",
+          "value": "<image>\nIdentify the dominant Corine Land Cover classifications present in this Sentinel-2 footprint."
+        },
+        {
+          "from": "gpt",
+          "value": "The dominant land cover is Natural grassland, with presence of Inland wetlands."
+        }
+      ]
+    },
+    {
+      "id": "BEN_CLC_0011",
+      "patch_id": "S2A_MSIL2A_20170812T100031_N0205_R122_T32TMR_11",
+      "category": "multi-label classification",
+      "split": "train",
+      "primary_class": "Moors and heathland",
+      "secondary_class": "Coastal wetlands",
+      "input_prompt": "Identify the dominant Corine Land Cover classifications present in this Sentinel-2 footprint.",
+      "ground_truth": "The dominant land cover is Moors and heathland, with presence of Coastal wetlands.",
+      "conversations": [
+        {
+          "from": "human",
+          "value": "<image>\nIdentify the dominant Corine Land Cover classifications present in this Sentinel-2 footprint."
+        },
+        {
+          "from": "gpt",
+          "value": "The dominant land cover is Moors and heathland, with presence of Coastal wetlands."
+        }
+      ]
+    }
+  ]
+}

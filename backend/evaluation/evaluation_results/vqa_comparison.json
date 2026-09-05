@@ -1,0 +1,92 @@
+{
+  "timestamp": "2026-09-05T17:20:56Z",
+  "hardware": "Host CPU",
+  "task": "vqa",
+  "benchmark": "BigEarthNet.txt + VRSBench Held-out Split",
+  "sample_count": 4,
+  "base_model": {
+    "name": "SatQuery-RS-Multimodal-Transformer (Base)",
+    "mean_token_f1": 0.0,
+    "samples": [
+      {
+        "id": "BEN_EVAL_01",
+        "question": "What is the dominant land cover class in this Sentinel-2 tile?",
+        "ground_truth": "coniferous and mixed forest vegetation canopy",
+        "answer": "Sclerophyllous confirmed box",
+        "confidence": 0.05,
+        "token_f1": 0.0,
+        "latency_ms": 20.14
+      },
+      {
+        "id": "BEN_EVAL_02",
+        "question": "Are there industrial units or commercial structures present?",
+        "ground_truth": "industrial commercial structures and paved impervious surfaces",
+        "answer": "Coordinates",
+        "confidence": 0.05,
+        "token_f1": 0.0,
+        "latency_ms": 18.62
+      },
+      {
+        "id": "VRS_EVAL_01",
+        "question": "Identify hydrological surface water bodies.",
+        "ground_truth": "inland water river channel surface water",
+        "answer": "Identified remote sensing features: .",
+        "confidence": 0.05,
+        "token_f1": 0.0,
+        "latency_ms": 16.58
+      },
+      {
+        "id": "VRS_EVAL_02",
+        "question": "Assess agricultural cropland and pasture parcels.",
+        "ground_truth": "arable land pastures and complex cultivation patterns",
+        "answer": "Identified remote sensing features: .",
+        "confidence": 0.05,
+        "token_f1": 0.0,
+        "latency_ms": 18.42
+      }
+    ]
+  },
+  "adapted_model": {
+    "name": "SatQuery-RS-Adapted-VLM (LoRA)",
+    "mean_token_f1": 0.0,
+    "samples": [
+      {
+        "id": "BEN_EVAL_01",
+        "question": "What is the dominant land cover class in this Sentinel-2 tile?",
+        "ground_truth": "coniferous and mixed forest vegetation canopy",
+        "answer": "Sclerophyllous confirmed box",
+        "confidence": 0.05,
+        "token_f1": 0.0,
+        "latency_ms": 18.07
+      },
+      {
+        "id": "BEN_EVAL_02",
+        "question": "Are there industrial units or commercial structures present?",
+        "ground_truth": "industrial commercial structures and paved impervious surfaces",
+        "answer": "Coordinates",
+        "confidence": 0.05,
+        "token_f1": 0.0,
+        "latency_ms": 16.42
+      },
+      {
+        "id": "VRS_EVAL_01",
+        "question": "Identify hydrological surface water bodies.",
+        "ground_truth": "inland water river channel surface water",
+        "answer": "Identified remote sensing features: .",
+        "confidence": 0.05,
+        "token_f1": 0.0,
+        "latency_ms": 15.9
+      },
+      {
+        "id": "VRS_EVAL_02",
+        "question": "Assess agricultural cropland and pasture parcels.",
+        "ground_truth": "arable land pastures and complex cultivation patterns",
+        "answer": "Identified remote sensing features: .",
+        "confidence": 0.05,
+        "token_f1": 0.0,
+        "latency_ms": 17.79
+      }
+    ]
+  },
+  "relative_gain_f1": 0.0
+}

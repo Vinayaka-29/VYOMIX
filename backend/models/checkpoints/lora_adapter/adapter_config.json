@@ -3,26 +3,24 @@
   "auto_mapping": null,
   "base_model_name_or_path": "SatQuery-RS-Multimodal-Transformer",
   "task_type": "CAUSAL_LM",
-  "r": 32,
+  "r": 16,
   "lora_alpha": 32,
   "lora_dropout": 0.05,
   "target_modules": [
     "q_proj",
     "k_proj",
     "v_proj",
-    "out_proj",
-    "mlp_fc1",
-    "mlp_fc2"
+    "out_proj"
   ],
   "bias": "none",
-  "dataset_adapted": "BigEarthNet-19 + VRSBench Remote Sensing",
+  "dataset_adapted": "BigEarthNet.txt + VRSBench (smoke mode)",
   "training_epochs": 1,
-  "final_loss": 6.8139,
-  "loss_reduction": 0.0,
-  "trainable_parameters": 1179648,
-  "trainable_percentage": 7.6,
-  "training_time_seconds": 6.37,
-  "weight_size_bytes": 4733847,
-  "adaptation_domain": "Remote Sensing / Earth Observation (ISRO PS 26167)",
-  "hardware_used": "Host CPU"
+  "training_steps": 11,
+  "final_loss": 6.9868,
+  "trainable_parameters": 262144,
+  "trainable_percentage": 1.81,
+  "training_time_seconds": 0.7,
+  "weight_size_bytes": 1060007,
+  "hardware_used": "Host CPU",
+  "device": "cpu"
 }

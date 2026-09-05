@@ -1,0 +1,65 @@
+{
+  "timestamp": "2026-09-05T17:20:57Z",
+  "benchmark": "VRSBench Referring Expression Grounding Test Split",
+  "total_queries": 3,
+  "mean_iou": 0.0771,
+  "precision_at_50": 0.0,
+  "absent_entity_rejection_rate": 0.0,
+  "samples": [
+    {
+      "id": "VRS_GND_01",
+      "expression": "dense vegetation canopy",
+      "ground_truth_bbox": [
+        10,
+        10,
+        80,
+        80
+      ],
+      "predicted_bbox": [
+        63,
+        58,
+        82,
+        77
+      ],
+      "found": true,
+      "confidence": 0.541,
+      "iou": 0.0654,
+      "pass_50": false
+    },
+    {
+      "id": "VRS_GND_02",
+      "expression": "built-up urban structure",
+      "ground_truth_bbox": [
+        60,
+        60,
+        120,
+        120
+      ],
+      "predicted_bbox": [
+        64,
+        58,
+        83,
+        77
+      ],
+      "found": true,
+      "confidence": 0.555,
+      "iou": 0.0888,
+      "pass_50": false
+    },
+    {
+      "id": "VRS_GND_03_ABSENT",
+      "expression": "cargo maritime vessel on open water",
+      "ground_truth_bbox": null,
+      "predicted_bbox": [
+        66,
+        59,
+        86,
+        66
+      ],
+      "found": true,
+      "confidence": 0.523,
+      "iou": 0.0,
+      "pass_50": false
+    }
+  ]
+}

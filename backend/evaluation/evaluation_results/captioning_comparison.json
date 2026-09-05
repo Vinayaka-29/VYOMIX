@@ -1,0 +1,45 @@
+{
+  "timestamp": "2026-09-05T17:16:47Z",
+  "task": "captioning",
+  "benchmark": "VRSBench Captioning Held-out Split",
+  "sample_count": 2,
+  "base_model": {
+    "mean_bleu1": 0.1,
+    "samples": [
+      {
+        "id": "CAP_EVAL_01",
+        "reference": "An optical satellite scene displaying coniferous forest vegetation and arable cropland parcels.",
+        "caption": "An Earth Observation Optical scene (128x128 px). Visual features indicate: patterns. Generated description: Patterns patterns.",
+        "bleu1": 0.2,
+        "confidence": 0.05
+      },
+      {
+        "id": "CAP_EVAL_02",
+        "reference": "Satellite imagery showing industrial commercial structures, road infrastructure, and impervious surfaces.",
+        "caption": "An Earth Observation Optical scene (128x128 px). Visual features indicate: patterns. Generated description: Patterns patterns.",
+        "bleu1": 0.0,
+        "confidence": 0.05
+      }
+    ]
+  },
+  "adapted_model": {
+    "mean_bleu1": 0.1,
+    "samples": [
+      {
+        "id": "CAP_EVAL_01",
+        "reference": "An optical satellite scene displaying coniferous forest vegetation and arable cropland parcels.",
+        "caption": "An Earth Observation Optical scene (128x128 px). Visual features indicate: patterns. Generated description: Patterns patterns.",
+        "bleu1": 0.2,
+        "confidence": 0.05
+      },
+      {
+        "id": "CAP_EVAL_02",
+        "reference": "Satellite imagery showing industrial commercial structures, road infrastructure, and impervious surfaces.",
+        "caption": "An Earth Observation Optical scene (128x128 px). Visual features indicate: patterns. Generated description: Patterns patterns.",
+        "bleu1": 0.0,
+        "confidence": 0.05
+      }
+    ]
+  },
+  "relative_gain": 0.0
+}

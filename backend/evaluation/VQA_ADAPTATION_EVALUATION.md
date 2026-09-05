@@ -1,42 +1,56 @@
-# Remote Sensing VLM Adaptation Evidence Report
-**SIH 2026 | Problem Statement 26167 (ISRO/SAC) | Team Vyomix**
+# Remote Sensing VLM LoRA Domain Adaptation Evaluation Report
+**SIH 2026 | Problem Statement 26167 (ISRO / SAC) | Team Vyomix**
 
-### Executive Summary
-This evaluation proves genuine domain adaptation of the Vision-Language Model backbone using Parameter-Efficient Fine-Tuning (LoRA) on remote sensing imagery from BigEarthNet and VRSBench.
+This document records the empirical results measured across the Remote Sensing Vision-Language Model
+subsystem, comparing the **Base Pretrained Backbone** against the **LoRA-Adapted Checkpoint**.
 
-| Metric | Base Model (Pretrained Backbone) | LoRA-Adapted SatQuery-AI | Absolute Gain |
-| :--- | :---: | :---: | :---: |
-| **VQA Domain Alignment** | **25.8%** | **57.5%** | **+122.87%** |
-| **Domain Terminology Precision** | Moderate | High (Calibrated) | Enhanced |
-| **Spectral Index Grounding** | Standard | High (Calibrated) | Enhanced |
-
-### Side-by-Side Qualitative Comparison
-
-#### Query: "What is the dominant land cover class in this Sentinel-2 tile?"
-- **Image**: `S2A_BEN_0000_Urban_fabric.tif`
-- **Ground Truth**: Dense coniferous and broad-leaved mixed forest canopy with high photosynthetic absorption.
-- **Base Checkpoint**: *"Based on general vision-language features: The satellite imagery displays general surface reflectance and unclassified terrain. In response to 'What is the dominant land cover class in this Sentinel-2 tile', general visual appearance indicates broad landscape features without specialized Earth Observation CLC classification (Base confidence: 62.1%)."* (Score: 0.141)
-- **Adapted Checkpoint**: **"Based on Earth Observation domain-adapted visual reasoning: The region inspected displays dense photosynthetic vegetation and cultivated agricultural canopy. In response to 'What is the dominant land cover class in this Sentinel-2 tile', spectral reflectance and spatial distribution confirm this feature across the satellite scene footprint. Domain adaptation matches Corine Land Cover taxonomy with calibrated 84.1% confidence."** (Score: 0.605)
+- **Timestamp**: `2026-09-05T17:16:46Z`
+- **Execution Device**: `cpu` (`Host CPU`)
+- **CUDA Available**: `False`
+- **Adapter Directory**: `C:\Users\Tilak M K\OneDrive\Pictures\Desktop\VYOMIX 2026\SatQuery-AI\backend\models\checkpoints\lora_adapter`
 
 ---
-#### Query: "Are there industrial storage facilities or commercial units visible?"
-- **Image**: `S2A_BEN_0001_Industrial_or_commercial_units.tif`
-- **Ground Truth**: Yes, clustered industrial and commercial units with regular rectangular footprints and high albedo.
-- **Base Checkpoint**: *"Based on general vision-language features: The satellite imagery displays general surface reflectance and unclassified terrain. In response to 'Are there industrial storage facilities or commercial units visible', general visual appearance indicates broad landscape features without specialized Earth Observation CLC classification (Base confidence: 62.1%)."* (Score: 0.333)
-- **Adapted Checkpoint**: **"Based on Earth Observation domain-adapted visual reasoning: The region inspected displays dense photosynthetic vegetation and cultivated agricultural canopy. In response to 'Are there industrial storage facilities or commercial units visible', spectral reflectance and spatial distribution confirm this feature across the satellite scene footprint. Domain adaptation matches Corine Land Cover taxonomy with calibrated 84.1% confidence."** (Score: 0.567)
+
+## 📊 Measured Benchmark Performance Summary
+
+| Capability / Benchmark Task | Metric | Base Pretrained Model | LoRA-Adapted Checkpoint | Measured Gain |
+| :--- | :--- | :---: | :---: | :---: |
+| **Visual Question Answering (VQA)** | Token-F1 Score | **0.05** | **0.05** | **+0.0%** |
+| **Dense Scene Captioning** | BLEU-1 Unigram Overlap | **0.1** | **0.1** | **+0.0%** |
+| **Referring Expression Grounding** | Mean IoU (mIoU) | **0.0389** | **0.0389** | Evaluated |
+| **Absent Entity Rejection Rate** | Detection Rejection | N/A | **0.0%** | Verified |
 
 ---
-#### Query: "Identify hydrological boundaries or surface water bodies."
-- **Image**: `VRS_0000_water_river.tif`
-- **Ground Truth**: Inland river channel and surface water body with distinct low reflectance in NIR band.
-- **Base Checkpoint**: *"Based on general vision-language features: The satellite imagery displays general surface reflectance and unclassified terrain. In response to 'Identify hydrological boundaries or surface water bodies.', general visual appearance indicates broad landscape features without specialized Earth Observation CLC classification (Base confidence: 62.1%)."* (Score: 0.357)
-- **Adapted Checkpoint**: **"Based on Earth Observation domain-adapted visual reasoning: The region inspected displays dense photosynthetic vegetation and cultivated agricultural canopy. In response to 'Identify hydrological boundaries or surface water bodies.', spectral reflectance and spatial distribution confirm this feature across the satellite scene footprint. Domain adaptation matches Corine Land Cover taxonomy with calibrated 84.1% confidence."** (Score: 0.579)
+
+## 🔬 Qualitative VQA Sample Comparisons
+
+### Sample 1: "What is the dominant land cover class in this Sentinel-2 tile?"
+- **Ground Truth Target**: *"coniferous and mixed forest vegetation canopy"*
+- **Base Model Prediction**: `"Patterns"` (Token-F1: `0.0`, Conf: `0.05`)
+- **Adapted Model Prediction**: `"Patterns"` (Token-F1: `0.0`, Conf: `0.05`)
 
 ---
-#### Query: "Assess the density of built-up urban infrastructure."
-- **Image**: `VRS_0001_industrial_buildings.tif`
-- **Ground Truth**: Continuous urban fabric with dense impervious surfaces and road infrastructure.
-- **Base Checkpoint**: *"Based on general vision-language features: The satellite imagery displays general surface reflectance and unclassified terrain. In response to 'Assess the density of built-up urban infrastructure.', general visual appearance indicates broad landscape features without specialized Earth Observation CLC classification (Base confidence: 62.1%)."* (Score: 0.2)
-- **Adapted Checkpoint**: **"Based on Earth Observation domain-adapted visual reasoning: The region inspected displays dense photosynthetic vegetation and cultivated agricultural canopy. In response to 'Assess the density of built-up urban infrastructure.', spectral reflectance and spatial distribution confirm this feature across the satellite scene footprint. Domain adaptation matches Corine Land Cover taxonomy with calibrated 84.1% confidence."** (Score: 0.55)
+### Sample 2: "Are there industrial units or commercial structures present?"
+- **Ground Truth Target**: *"industrial commercial structures and paved impervious surfaces"*
+- **Base Model Prediction**: `"Patterns"` (Token-F1: `0.0`, Conf: `0.05`)
+- **Adapted Model Prediction**: `"Patterns"` (Token-F1: `0.0`, Conf: `0.05`)
 
 ---
+### Sample 3: "Identify hydrological surface water bodies."
+- **Ground Truth Target**: *"inland water river channel surface water"*
+- **Base Model Prediction**: `"Sclerophyllous patterns"` (Token-F1: `0.0`, Conf: `0.05`)
+- **Adapted Model Prediction**: `"Sclerophyllous patterns"` (Token-F1: `0.0`, Conf: `0.05`)
+
+---
+### Sample 4: "Assess agricultural cropland and pasture parcels."
+- **Ground Truth Target**: *"arable land pastures and complex cultivation patterns"*
+- **Base Model Prediction**: `"Backscatter patterns patterns"` (Token-F1: `0.2`, Conf: `0.05`)
+- **Adapted Model Prediction**: `"Backscatter patterns patterns"` (Token-F1: `0.2`, Conf: `0.05`)
+
+---
+
+## 🛰️ Verification Artifacts
+- Comparison JSON: [`backend/evaluation/evaluation_results/comparison.json`](./evaluation_results/comparison.json)
+- Before LoRA JSON: [`backend/evaluation/evaluation_results/before_lora.json`](./evaluation_results/before_lora.json)
+- After LoRA JSON: [`backend/evaluation/evaluation_results/after_lora.json`](./evaluation_results/after_lora.json)
+- Grounding Results: [`backend/evaluation/evaluation_results/grounding_results.json`](./evaluation_results/grounding_results.json)

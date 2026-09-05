@@ -1,0 +1,68 @@
+{
+  "model": "SatQuery-RS-Multimodal-Transformer (Base)",
+  "adapter": null,
+  "timestamp": "2026-09-05T17:16:46Z",
+  "hardware": "Host CPU",
+  "device": "cpu",
+  "metrics": {
+    "vqa_token_f1": 0.05,
+    "caption_bleu1": 0.1,
+    "grounding_mIoU": 0.0389
+  },
+  "details": {
+    "vqa_samples": [
+      {
+        "id": "BEN_EVAL_01",
+        "question": "What is the dominant land cover class in this Sentinel-2 tile?",
+        "ground_truth": "coniferous and mixed forest vegetation canopy",
+        "answer": "Patterns",
+        "confidence": 0.05,
+        "token_f1": 0.0,
+        "latency_ms": 55.04
+      },
+      {
+        "id": "BEN_EVAL_02",
+        "question": "Are there industrial units or commercial structures present?",
+        "ground_truth": "industrial commercial structures and paved impervious surfaces",
+        "answer": "Patterns",
+        "confidence": 0.05,
+        "token_f1": 0.0,
+        "latency_ms": 16.48
+      },
+      {
+        "id": "VRS_EVAL_01",
+        "question": "Identify hydrological surface water bodies.",
+        "ground_truth": "inland water river channel surface water",
+        "answer": "Sclerophyllous patterns",
+        "confidence": 0.05,
+        "token_f1": 0.0,
+        "latency_ms": 17.65
+      },
+      {
+        "id": "VRS_EVAL_02",
+        "question": "Assess agricultural cropland and pasture parcels.",
+        "ground_truth": "arable land pastures and complex cultivation patterns",
+        "answer": "Backscatter patterns patterns",
+        "confidence": 0.05,
+        "token_f1": 0.2,
+        "latency_ms": 17.06
+      }
+    ],
+    "caption_samples": [
+      {
+        "id": "CAP_EVAL_01",
+        "reference": "An optical satellite scene displaying coniferous forest vegetation and arable cropland parcels.",
+        "caption": "An Earth Observation Optical scene (128x128 px). Visual features indicate: patterns. Generated description: Patterns patterns.",
+        "bleu1": 0.2,
+        "confidence": 0.05
+      },
+      {
+        "id": "CAP_EVAL_02",
+        "reference": "Satellite imagery showing industrial commercial structures, road infrastructure, and impervious surfaces.",
+        "caption": "An Earth Observation Optical scene (128x128 px). Visual features indicate: patterns. Generated description: Patterns patterns.",
+        "bleu1": 0.0,
+        "confidence": 0.05
+      }
+    ]
+  }
+}

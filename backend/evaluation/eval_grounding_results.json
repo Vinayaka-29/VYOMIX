@@ -1,8 +1,129 @@
 {
-  "status": "Not evaluated yet.",
+  "status": "evaluated",
   "benchmark": "VRSBench Referring Expression Grounding Test Split",
-  "num_test_queries": 0,
-  "mean_iou": null,
-  "precision_at_50": null,
-  "samples": []
+  "num_test_queries": 6,
+  "mean_iou": 0.2333,
+  "precision_at_50": 0.0,
+  "samples": [
+    {
+      "id": "VRS_0000_water_river",
+      "image": "VRS_0000_water_river.tif",
+      "expression": "Locate the water body",
+      "ground_truth_bbox": [
+        30,
+        80,
+        220,
+        160
+      ],
+      "predicted_bbox": [
+        0,
+        0,
+        255,
+        255
+      ],
+      "confidence": 0.841,
+      "iou": 0.2338,
+      "pass_50": false
+    },
+    {
+      "id": "VRS_0001_industrial_buildings",
+      "image": "VRS_0001_industrial_buildings.tif",
+      "expression": "Locate the buildings",
+      "ground_truth_bbox": [
+        70,
+        50,
+        190,
+        170
+      ],
+      "predicted_bbox": [
+        0,
+        0,
+        255,
+        255
+      ],
+      "confidence": 0.835,
+      "iou": 0.2215,
+      "pass_50": false
+    },
+    {
+      "id": "VRS_0002_agricultural_fields",
+      "image": "VRS_0002_agricultural_fields.tif",
+      "expression": "Locate the agricultural fields",
+      "ground_truth_bbox": [
+        40,
+        40,
+        210,
+        180
+      ],
+      "predicted_bbox": [
+        0,
+        0,
+        255,
+        255
+      ],
+      "confidence": 0.849,
+      "iou": 0.366,
+      "pass_50": false
+    },
+    {
+      "id": "VRS_0003_infrastructure_runway",
+      "image": "VRS_0003_infrastructure_runway.tif",
+      "expression": "Locate the infrastructure runway",
+      "ground_truth_bbox": [
+        50,
+        100,
+        210,
+        150
+      ],
+      "predicted_bbox": [
+        0,
+        0,
+        255,
+        255
+      ],
+      "confidence": 0.837,
+      "iou": 0.123,
+      "pass_50": false
+    },
+    {
+      "id": "VRS_0004_water_river",
+      "image": "VRS_0004_water_river.tif",
+      "expression": "Locate the water body",
+      "ground_truth_bbox": [
+        30,
+        80,
+        220,
+        160
+      ],
+      "predicted_bbox": [
+        0,
+        0,
+        255,
+        255
+      ],
+      "confidence": 0.841,
+      "iou": 0.2338,
+      "pass_50": false
+    },
+    {
+      "id": "VRS_0005_industrial_buildings",
+      "image": "VRS_0005_industrial_buildings.tif",
+      "expression": "Locate the buildings",
+      "ground_truth_bbox": [
+        70,
+        50,
+        190,
+        170
+      ],
+      "predicted_bbox": [
+        0,
+        0,
+        255,
+        255
+      ],
+      "confidence": 0.835,
+      "iou": 0.2215,
+      "pass_50": false
+    }
+  ]
 }

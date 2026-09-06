@@ -92,24 +92,55 @@ def run_integration_tests():
     # ----------------------------------------------------
     print("\n[3] Testing Phase 6: Geospatial Compatibility Validator...")
     manifest_geo = {
-        "before": {
-            "metadata": {
-                "crs": "EPSG:32643",
-                "epsg": 32643,
-                "bounds": {"bbox_list": [300000, 2000000, 310000, 2010000]},
-                "resolution": {"x": 10.0, "y": 10.0},
-            }
+    "before": {
+        "metadata": {
+            "is_georeferenced": True,
+            "crs": "EPSG:32643",
+            "epsg": 32643,
+            "width": 1000,
+            "height": 1000,
+            "bounds": {
+                "bbox_list": [300000, 2000000, 310000, 2010000]
         },
-        "after": {
-            "metadata": {
-                "crs": "EPSG:32643",
-                "epsg": 32643,
-                "bounds": {"bbox_list": [300000, 2000000, 310000, 2010000]},
-                "resolution": {"x": 10.0, "y": 10.0},
-            }
+            "resolution": {
+                "x": 10.0,
+                "y": 10.0,
+                "unit": "meters"
+            },
+            "transform": [
+                10.0, 0.0, 300000.0,
+                0.0, -10.0, 2010000.0,
+                0.0, 0.0, 1.0
+            ]
+        }
+    },
+    "after": {
+        "metadata": {
+            "is_georeferenced": True,
+            "crs": "EPSG:32643",
+            "epsg": 32643,
+            "width": 1000,
+            "height": 1000,
+            "bounds": {
+                "bbox_list": [300000, 2000000, 310000, 2010000]
+            },
+            "resolution": {
+                "x": 10.0,
+                "y": 10.0,
+                "unit": "meters"
+            },
+            "transform": [
+                10.0, 0.0, 300000.0,
+                0.0, -10.0, 2010000.0,
+                0.0, 0.0, 1.0
+            ]
         }
     }
+}
     g_ok, g_msg, g_rep = validate_geospatial_compatibility(cfg, manifest_geo)
+    print("g_ok =", g_ok)
+    print("g_msg =", g_msg)
+    print("g_rep =", g_rep)
     assert g_ok is True
     assert g_rep["spatial_alignment_status"] == "VERIFIED"
     print(" -> PASS: Co-registered rasters geospatial compatibility verified.")

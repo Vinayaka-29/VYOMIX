@@ -55,25 +55,45 @@ def validate_geospatial_compatibility(
         reg = check_registration(meta_b, meta_a, overlap_threshold=70.0)
         report["pairwise_metrics"]["temporal_pair"] = reg
 
-        if not reg.get("is_co_registered", True):
-            flag = reg.get("flag", "")
-            if flag == "CRS_MISMATCH":
-                return False, f"Geospatial Compatibility Error: {reg.get('warning', 'CRS mismatch between temporal rasters.')}", report
-            elif flag == "NO_OVERLAP":
-                return False, "Geospatial Compatibility Error: Before and After rasters have zero geographical overlap.", report
+        if not reg["is_co_registered"]:
+            if reg["flag"] in [
+                "CRS_MISMATCH",
+                "GEOREFERENCING_MISMATCH",
+                "MISSING_GEOREFERENCING",
+            ]:
+                return (
+                    False,
+                    f"Geospatial Compatibility Error: {reg['warning']}",
+                    report,
+                )
+
+            elif reg["flag"] == "NO_OVERLAP":
+                return (
+                    False,
+                    "Geospatial Compatibility Error: "
+                    "Before and After rasters have zero geographical overlap.",
+                    report,
+                )
+
             else:
-                report["warnings"].append(reg.get("warning", "Marginal spatial overlap detected."))
+                report["warnings"].append(reg["warning"])
                 report["spatial_alignment_status"] = "MARGINAL_OVERLAP"
 
         # Check resolution compatibility
-        res_b = meta_b.get("resolution", {}).get("x", 1.0)
-        res_a = meta_a.get("resolution", {}).get("x", 1.0)
+        res_b = meta_b.get("resolution", {}).get("x")
+        res_a = meta_a.get("resolution", {}).get("x")
         if res_b and res_a:
             ratio = max(res_b, res_a) / max(1e-6, min(res_b, res_a))
             if ratio > 3.0:
+                unit_b = meta_b.get("resolution", {}).get("unit", "unknown")
+                unit_a = meta_a.get("resolution", {}).get("unit", "unknown")
+
                 report["warnings"].append(
-                    f"Scale Discrepancy: Before resolution ({res_b}m) and After resolution ({res_a}m) differ by >3x. Differencing will resample."
-                )
+                    f"Scale Discrepancy: Before resolution "
+                    f"({res_b} {unit_b}) and After resolution "
+                    f"({res_a} {unit_a}) differ by >3x. "
+                    f"Differencing may require resampling."
+    )
 
     # 3. Optical + SAR Cross-Modal Pairwise Validation
     elif pipeline_type == "cross_modal":
@@ -88,15 +108,61 @@ def validate_geospatial_compatibility(
         reg = check_registration(meta_opt, meta_sar, overlap_threshold=70.0)
         report["pairwise_metrics"]["cross_modal_pair"] = reg
 
-        if not reg.get("is_co_registered", True):
-            flag = reg.get("flag", "")
-            if flag == "CRS_MISMATCH":
-                return False, f"Cross-Modal Compatibility Error: {reg.get('warning', 'CRS mismatch between Optical and SAR rasters.')}", report
-            elif flag == "NO_OVERLAP":
-                return False, "Cross-Modal Compatibility Error: Optical and SAR images do not observe the same geographical footprint.", report
+        if not reg["is_co_registered"]:
+            if reg["flag"] in [
+                "CRS_MISMATCH",
+                "GEOREFERENCING_MISMATCH",
+                "MISSING_GEOREFERENCING",
+            ]:
+                return (
+                    False,
+                    f"Cross-Modal Compatibility Error: {reg['warning']}",
+                    report,
+                )
+
+            elif reg["flag"] == "NO_OVERLAP":
+                return (
+                    False,
+                    "Cross-Modal Compatibility Error: "
+                    "Optical and SAR images do not observe the same geographical footprint.",
+                    report,
+                )
+
             else:
-                report["warnings"].append(reg.get("warning", "Marginal spatial overlap between sensors."))
+                report["warnings"].append(reg["warning"])
                 report["spatial_alignment_status"] = "MARGINAL_OVERLAP"
+
+        # Check Optical + SAR resolution compatibility
+        res_opt = meta_opt.get("resolution") or {}
+        res_sar = meta_sar.get("resolution") or {}
+
+        res_opt_x = res_opt.get("x")
+        res_opt_y = res_opt.get("y")
+        res_sar_x = res_sar.get("x")
+        res_sar_y = res_sar.get("y")
+
+        if all(
+            value is not None
+            for value in (res_opt_x, res_opt_y, res_sar_x, res_sar_y)
+        ):
+            if (
+                res_opt_x > 0
+                and res_opt_y > 0
+                and res_sar_x > 0
+                and res_sar_y > 0
+            ):
+                ratio_x = max(res_opt_x, res_sar_x) / min(res_opt_x, res_sar_x)
+                ratio_y = max(res_opt_y, res_sar_y) / min(res_opt_y, res_sar_y)
+
+                if ratio_x > 3.0 or ratio_y > 3.0:
+                    report["warnings"].append(
+                        f"Optical/SAR resolution discrepancy: "
+                        f"Optical ({res_opt_x}x{res_opt_y} "
+                        f"{res_opt.get('unit', 'unknown')}) vs "
+                        f"SAR ({res_sar_x}x{res_sar_y} "
+                        f"{res_sar.get('unit', 'unknown')}). "
+                        f"Fusion may require resampling."
+                    )
 
     # 4. Single-Image Verification
     else:

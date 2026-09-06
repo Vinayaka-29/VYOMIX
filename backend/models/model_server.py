@@ -8,6 +8,7 @@ Supports:
   2. Local Functional Engine: Deep RS Multimodal Transformer with PEFT LoRA adapter loading
 Truthful runtime telemetry, zero fake heuristics, zero hardcoded f-string answers, and calibrated confidence.
 """
+from __future__ import annotations
 import os
 import sys
 import time
@@ -18,12 +19,16 @@ from typing import Dict, Any, List, Optional, Tuple, Union
 import numpy as np
 from PIL import Image
 
+
 try:
     import torch
     import torch.nn as nn
     import torch.nn.functional as F
     HAS_TORCH = True
 except ImportError:
+    torch = None
+    nn = None
+    F = None
     HAS_TORCH = False
 
 from training.data_adapters.image_preprocessor import rs_preprocessor

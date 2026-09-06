@@ -1,0 +1,158 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * SatQuery AI design system — Soft Sky & Studio Light Earth aesthetic.
+ * Clean powder-blue backdrop, white floating cards, deep navy accents, serif headlines.
+ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+  --color-success: var(--success);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-panel: var(--panel);
+  --color-grid: var(--grid);
+  --font-display: "DM Sans", system-ui, sans-serif;
+  --font-sans: "DM Sans", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+  --font-serif: "Cormorant Garamond", Georgia, serif;
+}
+
+:root {
+  --radius: 0.875rem;
+  /* Light powder-blue / duck-egg sky blue backdrop */
+  --background: oklch(0.85 0.04 212);
+  --foreground: oklch(0.2 0.04 240);
+  
+  /* Pristine white floating cards */
+  --card: #ffffff;
+  --card-foreground: oklch(0.2 0.04 240);
+  --panel: #ffffff;
+  --popover: #ffffff;
+  --popover-foreground: oklch(0.2 0.04 240);
+  
+  /* Deep Navy CTA primary buttons */
+  --primary: oklch(0.22 0.045 240);
+  --primary-foreground: #ffffff;
+  
+  /* Soft ice-blue secondary pills */
+  --secondary: oklch(0.92 0.025 210);
+  --secondary-foreground: oklch(0.25 0.04 240);
+  
+  --muted: oklch(0.93 0.02 210);
+  --muted-foreground: oklch(0.45 0.035 230);
+  
+  --accent: oklch(0.9 0.03 210);
+  --accent-foreground: oklch(0.2 0.04 240);
+  
+  --destructive: oklch(0.55 0.22 25);
+  --destructive-foreground: #ffffff;
+  
+  --warning: oklch(0.72 0.16 75);
+  --warning-foreground: oklch(0.25 0.05 60);
+  
+  --success: oklch(0.55 0.16 160);
+  
+  --border: oklch(0.86 0.025 210);
+  --input: oklch(0.88 0.02 210);
+  --ring: oklch(0.28 0.045 240);
+  --grid: oklch(0.25 0.04 240 / 5%);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    background-image:
+      radial-gradient(circle at 50% -5%, oklch(0.93 0.03 210 / 80%), transparent 60%),
+      radial-gradient(circle at 10% 40%, oklch(0.88 0.03 200 / 50%), transparent 40%),
+      radial-gradient(circle at 90% 70%, oklch(0.88 0.03 220 / 50%), transparent 40%);
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3 {
+    letter-spacing: -0.01em;
+  }
+}
+
+@utility panel {
+  background-color: var(--color-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-2xl);
+  box-shadow: 0 10px 30px -10px rgba(15, 25, 40, 0.05), 0 4px 12px -2px rgba(15, 25, 40, 0.02);
+}
+
+@utility label-mono {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-muted-foreground);
+}
+
+@utility hero-title {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+}
+
+@utility nav-link {
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: oklch(0.35 0.04 240);
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid transparent;
+  transition: color 150ms ease, border-color 150ms ease;
+
+  &:hover {
+    color: var(--color-foreground);
+  }
+}
+
+@utility nav-link-active {
+  color: var(--color-foreground);
+  border-bottom-color: var(--color-primary);
+}
+
+@utility earth-glow {
+  filter: drop-shadow(0 20px 40px rgba(15, 40, 70, 0.18));
+}
+
+

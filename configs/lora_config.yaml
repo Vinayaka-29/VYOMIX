@@ -5,7 +5,8 @@
 model_checkpoint: "MBZUAI/geochat-7B"
 local_fallback_backbone: "Salesforce/blip-vqa-base"
 task_type: "CAUSAL_LM"
-remote_vlm_url: "Shubham0328an/SatQuery-geochat-service"
+remote_vlm_url: ""
+hf_token: ""
 
 # Dataset Specification
 dataset: "BigEarthNet.txt + VRSBench"

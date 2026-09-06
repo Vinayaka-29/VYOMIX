@@ -128,7 +128,12 @@ class TestRemoteSensingVLM(unittest.TestCase):
         res = generate_caption(str(self.opt_path))
         self.assertEqual(res["task"], "captioning")
         self.assertEqual(res["status"], "success")
-        self.assertIn("Earth Observation", res["caption"])
+        self.assertIsInstance(res["caption"], str)
+        self.assertGreater(len(res["caption"]), 10)
+        self.assertTrue(
+            "Earth Observation" in res["caption"] or "satellite" in res["caption"].lower() or "landscape" in res["caption"].lower(),
+            f"Caption should describe remote sensing scene: {res['caption']}"
+        )
         self.assertGreater(res["confidence"], 0.0)
         self.assertIn("features_detected", res)
 

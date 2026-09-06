@@ -101,8 +101,10 @@ export function getApiBaseUrl(): string {
     const stored = window.localStorage.getItem(STORAGE_KEY);
     if (stored) return stored.replace(/\/$/, "");
   }
-  const env = import.meta.env["VITE_SATQUERY_API_URL"] as string | undefined;
-  return (env ?? "").replace(/\/$/, "");
+  const env =
+    (import.meta.env["VITE_SATQUERY_API_URL"] as string | undefined) ??
+    (import.meta.env["VITE_API_URL"] as string | undefined);
+  return (env || "http://localhost:8000").replace(/\/$/, "");
 }
 
 export function setApiBaseUrl(url: string) {

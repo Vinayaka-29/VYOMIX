@@ -447,7 +447,7 @@ class RemoteSensingVLMServer:
             try:
                 from gradio_client import Client
                 headers = {"Authorization": f"Bearer {token}"} if token else None
-                self._hf_clients[cache_key] = Client(space_id, headers=headers)
+                self._hf_clients[cache_key] = Client(space_id, token=token, headers=headers)
                 logger.info(f"[Remote VLM] Successfully connected Gradio Client to Hugging Face Space: {space_id} (authenticated: {bool(token)})")
             except Exception as e:
                 logger.warning(f"[Remote VLM] Could not connect to Hugging Face Space {space_id}: {e}")

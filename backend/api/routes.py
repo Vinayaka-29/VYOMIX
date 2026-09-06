@@ -524,8 +524,8 @@ async def analyze_endpoint(
     q_req = QueryRequest(upload_id=upload_id, query_text=query)
     q_res = await process_query(q_req)
 
-    steps = q_res.get("execution_trace", {}).get("steps", [])
-    model_name = steps[0].get("model") if steps else "MBZUAI/geochat-7B"
+    models_called = q_res.get("execution_trace", {}).get("models_called", [])
+    model_name = models_called[0].get("name") if models_called else "MBZUAI/geochat-7B (Hugging Face ZeroGPU)"
 
     return {
         "answer": q_res.get("answer"),

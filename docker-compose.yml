@@ -9,6 +9,7 @@ services:
     environment:
       - DATABASE_URL=postgresql://satquery_user:satquery_pass@db:5432/satquery_db
       - ENVIRONMENT=development
+      - GEOCHAT_REMOTE_URL=
     volumes:
       - ./backend:/app
       - ./backend/data/uploads:/app/data/uploads

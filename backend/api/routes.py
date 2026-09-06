@@ -14,6 +14,7 @@ from validation.modality_detector import detect_modality
 from validation.registration_checker import check_registration
 
 # Phase 3-7 Specialist Models
+from models.model_server import model_server
 from models.vqa_model import answer_question
 from models.captioning_model import generate_caption
 from models.grounding_model import ground_expression
@@ -539,4 +540,46 @@ async def analyze_endpoint(
         "report_url": f"/report/{q_res.get('query_id')}",
         "warnings": q_res.get("warnings", []),
     }
+
+
+class VLMConfigRequest(BaseModel):
+    remote_url: str
+
+
+@router.get("/api/vlm/status")
+@router.get("/vlm/status")
+async def get_vlm_status():
+    """Returns real-time deployment status of VLM (Local vs Remote Cloud GeoChat)."""
+    model_server.initialize()
+    remote_url = model_server.get_remote_url()
+    is_remote = bool(remote_url)
+    return {
+        "status": "online",
+        "remote_url": remote_url or "",
+        "is_remote_configured": is_remote,
+        "local_model": model_server.model_name,
+        "device": model_server.device,
+        "is_lora_adapted": model_server.is_lora_adapted,
+        "active_engine": "Remote GeoChat-7B (Cloud GPU / Kaggle)" if is_remote else f"{model_server.model_name} (Local Engine)",
+    }
+
+
+@router.post("/api/vlm/configure")
+@router.post("/vlm/configure")
+async def configure_vlm(request: VLMConfigRequest):
+    """
+    Dynamically updates the remote GeoChat / Cloud GPU endpoint URL at runtime.
+    Accepts Gradio live URLs (*.gradio.live), HF Spaces, or REST tunnels.
+    """
+    new_url = request.remote_url.strip()
+    model_server.set_remote_url(new_url)
+    is_remote = bool(new_url)
+    return {
+        "status": "updated",
+        "remote_url": new_url,
+        "is_remote_configured": is_remote,
+        "active_engine": "Remote GeoChat-7B (Cloud GPU / Kaggle)" if is_remote else f"{model_server.model_name} (Local Engine)",
+        "message": f"Successfully connected remote VLM to: {new_url}" if is_remote else "Switched to local RS-Adapted VLM engine.",
+    }
+
 

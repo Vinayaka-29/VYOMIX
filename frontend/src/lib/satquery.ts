@@ -190,6 +190,44 @@ export async function checkHealth(): Promise<boolean> {
   }
 }
 
+export interface VLMStatus {
+  status: string;
+  remote_url: string;
+  is_remote_configured: boolean;
+  local_model: string;
+  device: string;
+  is_lora_adapted: boolean;
+  active_engine: string;
+}
+
+export async function getVlmStatus(): Promise<VLMStatus | null> {
+  const base = getApiBaseUrl();
+  if (!base) return null;
+  try {
+    const res = await fetch(`${base}/api/vlm/status`);
+    if (!res.ok) return null;
+    return (await res.json()) as VLMStatus;
+  } catch {
+    return null;
+  }
+}
+
+export async function configureVlm(remoteUrl: string): Promise<VLMStatus | null> {
+  const base = getApiBaseUrl();
+  if (!base) return null;
+  try {
+    const res = await fetch(`${base}/api/vlm/configure`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ remote_url: remoteUrl }),
+    });
+    if (!res.ok) return null;
+    return (await res.json()) as VLMStatus;
+  } catch {
+    return null;
+  }
+}
+
 export function formatConfidence(value?: number): string | null {
   if (typeof value !== "number" || Number.isNaN(value)) return null;
   const pct = value <= 1 ? value * 100 : value;
@@ -201,3 +239,4 @@ export function confidenceRatio(value?: number): number | null {
   const ratio = value <= 1 ? value : value / 100;
   return Math.max(0, Math.min(1, ratio));
 }
+

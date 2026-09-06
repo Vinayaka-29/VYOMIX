@@ -1,52 +1,38 @@
-# LoRA / PEFT Training Configuration for SatQuery AI
-# Problem Statement: 26167 (ISRO/SAC) | Team Vyomix
-
-# Model Specification
-model_checkpoint: "MBZUAI/geochat-7B"
-local_fallback_backbone: "Salesforce/blip-vqa-base"
-task_type: "CAUSAL_LM"
-remote_vlm_url: ""
-hf_token: ""
-
-# Dataset Specification
-dataset: "BigEarthNet.txt + VRSBench"
-dataset_mode: "smoke"
-train_split: 0.8
-validation_split: 0.2
-seed: 42
-
-# Image Preprocessing
-image_resolution: 336
-channels: 3
-percentile_stretch: [2, 98]
-
-# Optimization & Training Hyperparameters (Conservative Defaults for Smoke Verification)
 batch_size: 2
-gradient_accumulation_steps: 4
-learning_rate: 0.0002
-weight_decay: 0.01
+bias: none
+channels: 3
+dataset: BigEarthNet.txt + VRSBench
+dataset_mode: smoke
+device_map: auto
+dtype: bfloat16
 epochs: 1
-max_seq_length: 512
-warmup_ratio: 0.05
-lr_scheduler_type: "cosine"
-
-# LoRA / PEFT Parameters
-lora_rank: 16
+gradient_accumulation_steps: 4
+hf_token: ''
+image_resolution: 336
+learning_rate: 0.0002
+local_fallback_backbone: Salesforce/blip-vqa-base
+logging_steps: 5
 lora_alpha: 32
 lora_dropout: 0.05
-target_modules:
-  - "q_proj"
-  - "v_proj"
-  - "k_proj"
-  - "o_proj"
-bias: "none"
-
-# Precision & Hardware
-quantization: "4-bit"  # Options: '4-bit', '8-bit', 'none'
-dtype: "bfloat16"      # Options: 'float16', 'bfloat16', 'float32'
-device_map: "auto"
-
-# Serialization
-output_directory: "backend/models/checkpoints/lora_adapter"
+lora_rank: 16
+lr_scheduler_type: cosine
+max_seq_length: 512
+model_checkpoint: MBZUAI/geochat-7B
+output_directory: backend/models/checkpoints/lora_adapter
+percentile_stretch:
+- 2
+- 98
+quantization: 4-bit
+remote_vlm_url: https://6747b3707c4a7e7d44.gradio.live
 save_safetensors: true
-logging_steps: 5
+seed: 42
+target_modules:
+- q_proj
+- v_proj
+- k_proj
+- o_proj
+task_type: CAUSAL_LM
+train_split: 0.8
+validation_split: 0.2
+warmup_ratio: 0.05
+weight_decay: 0.01

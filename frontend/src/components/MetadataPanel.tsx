@@ -30,7 +30,7 @@ export function MetadataPanel({ metadata }: { metadata?: ImageMetadata[] | undef
               )}
               {FIELDS.map(([key, label]) =>
                 m[key] !== undefined && m[key] !== null ? (
-                  <Row key={key} label={label} value={String(m[key])} />
+                  <Row key={key} label={label} value={formatMetaValue(key, m[key])} />
                 ) : null,
               )}
             </dl>
@@ -39,6 +39,20 @@ export function MetadataPanel({ metadata }: { metadata?: ImageMetadata[] | undef
       </div>
     </section>
   );
+}
+
+function formatMetaValue(key: string, val: unknown): string {
+  if (val === undefined || val === null) return "Not available";
+  if (key === "resolution" && typeof val === "object" && val !== null) {
+    const res = val as { x?: number; y?: number; unit?: string };
+    if (res.x !== undefined && res.y !== undefined) {
+      return `${res.x} × ${res.y} ${res.unit ?? "m"}`;
+    }
+  }
+  if (typeof val === "object") {
+    return JSON.stringify(val);
+  }
+  return String(val);
 }
 
 function Row({ label, value }: { label: string; value: string }) {

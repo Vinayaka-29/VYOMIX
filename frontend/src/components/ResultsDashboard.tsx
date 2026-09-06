@@ -70,10 +70,15 @@ export function ResultsDashboard({ result }: { result: AnalysisResponse }) {
                 <li key={i} className="flex items-start gap-3 text-sm sm:text-base font-medium">
                   <Check className="mt-1 size-4 shrink-0 text-emerald-600 font-bold" />
                   <span>
-                    <span className="font-semibold text-slate-900">{e.label ?? e.type ?? "Evidence"}</span>
+                    <span className="font-semibold text-slate-900">{e.label ?? "Evidence Point"}</span>
                     {(e.detail ?? e.description) && (
                       <span className="block text-xs sm:text-sm text-slate-600 font-normal mt-0.5">
                         {e.detail ?? e.description}
+                      </span>
+                    )}
+                    {e.type && e.type !== "observation" && e.type !== "scene_description" && e.type !== "visual_feature" && (
+                      <span className="inline-block mt-0.5 text-[10px] font-mono uppercase px-1.5 py-0.5 rounded bg-slate-100 text-slate-600">
+                        {e.type}
                       </span>
                     )}
                   </span>
@@ -114,5 +119,15 @@ export function ResultsDashboard({ result }: { result: AnalysisResponse }) {
 
 function normalizeEvidence(evidence: AnalysisResponse["evidence"]): EvidenceItem[] {
   if (!evidence) return [];
-  return evidence.map((e) => (typeof e === "string" ? { label: e } : e));
+  return evidence.map((e) => {
+    if (typeof e === "string") return { label: e };
+    const raw = e as Record<string, unknown>;
+    const text = (raw["finding"] ?? raw["label"] ?? raw["description"] ?? raw["detail"] ?? raw["type"] ?? "Evidence") as string;
+    return {
+      label: text,
+      detail: raw["detail"] as string | undefined,
+      description: raw["description"] as string | undefined,
+      type: raw["type"] as string | undefined,
+    };
+  });
 }

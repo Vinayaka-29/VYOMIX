@@ -29,28 +29,68 @@ def run_optical_branch(optical_path: str, query: str) -> Dict[str, Any]:
 
 
 def run_sar_branch(sar_path: str, query: str) -> Dict[str, Any]:
-    """Analyzes microwave radar backscatter and structural roughness."""
+    """Analyzes microwave radar backscatter and structural roughness from actual raster data."""
     model_server.initialize()
     sar_info = model_server.inspect_raster_channels(sar_path)
-    cv = sar_info.get("brightness", 0.3)
+    brightness = sar_info.get("brightness", 0.3)
+    veg_index = sar_info.get("veg_index", 0.0)
+    water_index = sar_info.get("water_index", 0.0)
+    is_sar = sar_info.get("is_sar", True)
 
-    # Grounded SAR radar interpretation
+    # Extract actual raster statistics for dynamic analysis
+    import numpy as np
+    from PIL import Image
+    try:
+        img = Image.open(sar_path)
+        arr = np.array(img, dtype=np.float32)
+        if arr.ndim == 3:
+            arr = np.mean(arr, axis=2)
+        mean_val = float(np.mean(arr))
+        std_val = float(np.std(arr))
+        cv = std_val / (mean_val + 1e-8)  # Coefficient of variation
+    except Exception:
+        mean_val, std_val, cv = brightness * 255.0, 50.0, 0.3
+
+    # Identify dominant scattering mechanism from statistics
+    scattering_mechanisms = []
+    if cv > 0.5:
+        scattering_mechanisms.append("volume_scattering_vegetation")
+    if brightness > 0.45:
+        scattering_mechanisms.append("double_bounce_structures")
+    if brightness < 0.15:
+        scattering_mechanisms.append("specular_smooth_surface")
+    if not scattering_mechanisms:
+        scattering_mechanisms.append("diffuse_surface_scattering")
+
+    # Dynamic SAR analysis text grounded in measured statistics
+    mechanism_desc = ", ".join(scattering_mechanisms).replace("_", " ")
     sar_analysis = (
-        "SAR microwave analysis reveals strong double-bounce backscatter highlights along geometric urban structures, "
-        "low dielectric surface backscatter indicating calm water or smooth pavement, and diffuse volume scattering "
-        "across rough vegetation canopies. All-weather penetration provides sharp structural delineation unaffected by cloud cover."
+        f"SAR microwave analysis of the input raster (mean backscatter intensity: {mean_val:.1f}, "
+        f"texture CV: {cv:.3f}) reveals {mechanism_desc}. "
+        f"{'High texture variance indicates heterogeneous surface features (vegetation canopies, urban edges). ' if cv > 0.4 else ''}"
+        f"{'Low backscatter suggests smooth surfaces (water or pavement). ' if brightness < 0.15 else ''}"
+        f"{'Elevated backscatter indicates rough terrain or built-up structures. ' if brightness > 0.45 else ''}"
+        f"All-weather radar penetration provides structural delineation unaffected by atmospheric conditions."
     )
+
+    # Confidence from signal clarity: higher CV = more distinct features = higher confidence
+    # Bounded [0.55, 0.94]
+    sar_conf = round(min(0.94, max(0.55, 0.60 + 0.35 * min(cv, 1.0))), 3)
 
     return {
         "modality": "SAR",
         "findings": sar_analysis,
-        "confidence": 0.93,
+        "confidence": sar_conf,
+        "confidence_method": "backscatter_cv_scaling",
         "cues": {
-            "backscatter_intensity": round(cv, 3),
-            "scattering_mechanisms": ["double_bounce_structures", "specular_smooth_surface", "volume_scattering"],
+            "backscatter_mean": round(mean_val, 3),
+            "backscatter_std": round(std_val, 3),
+            "backscatter_cv": round(cv, 3),
+            "scattering_mechanisms": scattering_mechanisms,
             "all_weather_penetration": True,
         }
     }
+
 
 
 def fuse_optical_and_sar(

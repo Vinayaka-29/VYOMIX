@@ -16,10 +16,10 @@
   "dataset_adapted": "BigEarthNet.txt + VRSBench (smoke mode)",
   "training_epochs": 1,
   "training_steps": 11,
-  "final_loss": 6.9868,
+  "final_loss": 6.9523,
   "trainable_parameters": 262144,
   "trainable_percentage": 1.81,
-  "training_time_seconds": 0.7,
+  "training_time_seconds": 3.84,
   "weight_size_bytes": 1060007,
   "hardware_used": "Host CPU",
   "device": "cpu"

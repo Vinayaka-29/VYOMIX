@@ -36,8 +36,15 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+from fastapi.staticfiles import StaticFiles
+
 # Register API routes
 app.include_router(api_router, prefix="")
+
+# Mount data directory for raster imagery and overlay artifacts
+DATA_DIR = Path(__file__).resolve().parent / "data"
+DATA_DIR.mkdir(parents=True, exist_ok=True)
+app.mount("/data", StaticFiles(directory=str(DATA_DIR)), name="data")
 
 
 @app.get("/health")

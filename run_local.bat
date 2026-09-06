@@ -5,8 +5,11 @@ echo   SIH 2026 - Problem Statement 26167 (ISRO/SAC)
 echo ========================================================
 echo.
 
-echo Starting FastAPI Backend on port 8000...
-start "SatQuery Backend" cmd /k "cd backend && python -m uvicorn main:app --host 0.0.0.0 --port 8000 --reload"
+set PYTHON_CMD=python
+if exist ".venv\Scripts\python.exe" set PYTHON_CMD=..\.venv\Scripts\python.exe
+
+echo Starting FastAPI Backend on port 8000 (using %PYTHON_CMD%)...
+start "SatQuery Backend" cmd /k "cd backend && %PYTHON_CMD% -m uvicorn main:app --host 0.0.0.0 --port 8000 --reload"
 
 timeout /t 2 >nul
 

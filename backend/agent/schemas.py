@@ -66,6 +66,7 @@ class QueryIntent(BaseModel):
     signals: List[str] = Field(default_factory=list)
     raw_query: str
     confidence: Optional[Dict[str, Any]] = None
+    geo_constraints: Optional[Dict[str, Any]] = None
 
     def to_dict(self) -> Dict[str, Any]:
         return self.model_dump()

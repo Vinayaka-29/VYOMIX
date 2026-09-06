@@ -14,6 +14,7 @@ from PIL import Image
 
 from validation.metadata_extractor import extract_metadata
 from validation.registration_checker import check_registration
+from agent.geo_measurements import compute_region_area
 
 logger = logging.getLogger("satquery.change_detection")
 
@@ -127,13 +128,23 @@ def compute_change_map(
     latency_ms = round((time.time() - start_time) * 1000, 2)
     logger.info(f"[Change Detection] {pct_changed}% change detected in {latency_ms}ms -> {dominant_sector}")
 
+    # 7. Physical area measurements
+    resolution = meta_before.get("resolution", {})
+    res_x = resolution.get("x", 1.0)
+    res_y = resolution.get("y", 1.0)
+    res_unit = resolution.get("unit", "pixels")
+    area_info = compute_region_area(changed_pixels, res_x, res_y, res_unit)
+
     return {
         "change_detected": change_detected,
         "percentage_changed": pct_changed,
+        "changed_pixels": changed_pixels,
+        "total_pixels": total_pixels,
         "location_summary": location_desc,
         "dominant_sector": dominant_sector,
         "mask_path": str(mask_file),
         "overlay_path": str(overlay_file),
         "co_registration": reg_check,
+        "measurements": area_info,
         "latency_ms": latency_ms,
     }

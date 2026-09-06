@@ -5,11 +5,13 @@ SIH Problem Statement 26167 | Team Vyomix
 Locates natural-language referring expressions into real pixel-coordinate bounding boxes
 [xmin, ymin, xmax, ymax] derived from the neural grounding head in RemoteSensingVLMServer.
 Zero keyword matching. Zero heuristic threshold cluster masks. Graceful absent entity rejection.
+Enriches results with geographic coordinates when input is georeferenced.
 """
 import time
 import logging
 from typing import Dict, Any
 from models.model_server import model_server
+from agent.geo_evidence import enrich_grounding_with_geo
 
 logger = logging.getLogger("satquery.grounding")
 
@@ -18,6 +20,7 @@ def ground_expression(image_path: str, expression: str) -> Dict[str, Any]:
     """
     Grounds a natural-language referring expression to actual pixel bounding box [xmin, ymin, xmax, ymax].
     Dispatches to model_server.generate_grounding for neural grounding head forward pass.
+    Enriches with geographic coordinates when georeferenced imagery is provided.
     """
     start_time = time.time()
     try:
@@ -38,7 +41,7 @@ def ground_expression(image_path: str, expression: str) -> Dict[str, Any]:
                 "entity": expression,
             })
 
-        return {
+        result = {
             "task": "grounding",
             "status": "success",
             "query": expression,
@@ -54,6 +57,12 @@ def ground_expression(image_path: str, expression: str) -> Dict[str, Any]:
             "image_dimensions": res.get("image_dimensions", {}),
             "message": res["message"],
         }
+
+        # Enrich with geographic coordinates if available
+        result = enrich_grounding_with_geo(result, image_path)
+
+        return result
     except Exception as e:
         logger.error(f"[Grounding Specialist Failure]: {e}")
         raise RuntimeError(f"Grounding model inference failed for expression '{expression}': {str(e)}")
+

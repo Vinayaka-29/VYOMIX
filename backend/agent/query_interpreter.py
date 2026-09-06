@@ -9,6 +9,7 @@ and semantic signals without hardcoded or arbitrary confidence scores.
 import re
 from typing import Dict, Any, List, Optional, Tuple
 from agent.schemas import QueryIntent, TaskType
+from agent.nl_geo_ops import parse_geo_constraints
 
 
 # =========================================================================
@@ -129,6 +130,15 @@ def parse_query_intent(query_text: str) -> QueryIntent:
     temporal_markers, temp_signals = _extract_temporal_signals(q_lower)
     signals.extend(temp_signals)
 
+    # 1b. NL Geospatial Operations & Constraints
+    geo_parsed = parse_geo_constraints(q_clean)
+    geo_dict = geo_parsed.to_dict() if geo_parsed.has_constraints() else None
+    if geo_parsed.has_constraints():
+        for k, v in geo_parsed.to_dict().items():
+            signals.append(f"geo_constraint:{k}={v}")
+        if geo_parsed.spatial_selector and not sector:
+            sector = geo_parsed.spatial_selector
+
     # 2. Modality Signal Detection
     has_optical = any(re.search(rf"\b{k}\b", q_lower) for k in OPTICAL_KEYWORDS)
     has_sar = any(re.search(rf"\b{k}\b", q_lower) for k in SAR_KEYWORDS)
@@ -161,6 +171,7 @@ def parse_query_intent(query_text: str) -> QueryIntent:
             signals=signals,
             raw_query=q_clean,
             confidence=None,  # No fake confidence
+            geo_constraints=geo_dict,
         )
 
     # ---------------------------------------------------------------------
@@ -184,6 +195,7 @@ def parse_query_intent(query_text: str) -> QueryIntent:
             signals=signals,
             raw_query=q_clean,
             confidence=None,
+            geo_constraints=geo_dict,
         )
 
     # ---------------------------------------------------------------------
@@ -207,6 +219,7 @@ def parse_query_intent(query_text: str) -> QueryIntent:
             signals=signals,
             raw_query=q_clean,
             confidence=None,
+            geo_constraints=geo_dict,
         )
 
     # ---------------------------------------------------------------------
@@ -226,6 +239,7 @@ def parse_query_intent(query_text: str) -> QueryIntent:
             signals=signals,
             raw_query=q_clean,
             confidence=None,
+            geo_constraints=geo_dict,
         )
 
     # ---------------------------------------------------------------------
@@ -244,6 +258,7 @@ def parse_query_intent(query_text: str) -> QueryIntent:
         signals=signals,
         raw_query=q_clean,
         confidence=None,
+        geo_constraints=geo_dict,
     )
 
 
@@ -272,5 +287,6 @@ def interpret_query(query_text: str) -> Dict[str, Any]:
         "signals": intent.signals,
         "raw_query": intent.raw_query,
         "confidence": None,  # Purged fake confidence numbers (0.98, 0.96, etc.)
+        "geo_constraints": intent.geo_constraints,
     }
     return d

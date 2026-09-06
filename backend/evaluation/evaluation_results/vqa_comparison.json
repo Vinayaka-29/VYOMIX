@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-09-05T17:20:56Z",
+  "timestamp": "2026-09-06T04:55:10Z",
   "hardware": "Host CPU",
   "task": "vqa",
   "benchmark": "BigEarthNet.txt + VRSBench Held-out Split",
@@ -12,37 +12,37 @@
         "id": "BEN_EVAL_01",
         "question": "What is the dominant land cover class in this Sentinel-2 tile?",
         "ground_truth": "coniferous and mixed forest vegetation canopy",
-        "answer": "Sclerophyllous confirmed box",
+        "answer": "Identified remote sensing features: .",
         "confidence": 0.05,
         "token_f1": 0.0,
-        "latency_ms": 20.14
+        "latency_ms": 38.17
       },
       {
         "id": "BEN_EVAL_02",
         "question": "Are there industrial units or commercial structures present?",
         "ground_truth": "industrial commercial structures and paved impervious surfaces",
-        "answer": "Coordinates",
+        "answer": "Corridor",
         "confidence": 0.05,
         "token_f1": 0.0,
-        "latency_ms": 18.62
+        "latency_ms": 33.74
       },
       {
         "id": "VRS_EVAL_01",
         "question": "Identify hydrological surface water bodies.",
         "ground_truth": "inland water river channel surface water",
-        "answer": "Identified remote sensing features: .",
+        "answer": "Identified no photosynthetic",
         "confidence": 0.05,
         "token_f1": 0.0,
-        "latency_ms": 16.58
+        "latency_ms": 38.29
       },
       {
         "id": "VRS_EVAL_02",
         "question": "Assess agricultural cropland and pasture parcels.",
         "ground_truth": "arable land pastures and complex cultivation patterns",
-        "answer": "Identified remote sensing features: .",
+        "answer": "Band",
         "confidence": 0.05,
         "token_f1": 0.0,
-        "latency_ms": 18.42
+        "latency_ms": 41.43
       }
     ]
   },
@@ -54,37 +54,37 @@
         "id": "BEN_EVAL_01",
         "question": "What is the dominant land cover class in this Sentinel-2 tile?",
         "ground_truth": "coniferous and mixed forest vegetation canopy",
-        "answer": "Sclerophyllous confirmed box",
+        "answer": "Identified remote sensing features: .",
         "confidence": 0.05,
         "token_f1": 0.0,
-        "latency_ms": 18.07
+        "latency_ms": 69.32
       },
       {
         "id": "BEN_EVAL_02",
         "question": "Are there industrial units or commercial structures present?",
         "ground_truth": "industrial commercial structures and paved impervious surfaces",
-        "answer": "Coordinates",
+        "answer": "Corridor",
         "confidence": 0.05,
         "token_f1": 0.0,
-        "latency_ms": 16.42
+        "latency_ms": 42.63
       },
       {
         "id": "VRS_EVAL_01",
         "question": "Identify hydrological surface water bodies.",
         "ground_truth": "inland water river channel surface water",
-        "answer": "Identified remote sensing features: .",
+        "answer": "Identified no photosynthetic",
         "confidence": 0.05,
         "token_f1": 0.0,
-        "latency_ms": 15.9
+        "latency_ms": 32.3
       },
       {
         "id": "VRS_EVAL_02",
         "question": "Assess agricultural cropland and pasture parcels.",
         "ground_truth": "arable land pastures and complex cultivation patterns",
-        "answer": "Identified remote sensing features: .",
+        "answer": "Band",
         "confidence": 0.05,
         "token_f1": 0.0,
-        "latency_ms": 17.79
+        "latency_ms": 30.72
       }
     ]
   },

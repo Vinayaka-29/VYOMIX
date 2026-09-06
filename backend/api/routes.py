@@ -32,6 +32,11 @@ from agent.confidence import evaluate_confidence_and_conflicts
 from agent.execution_trace import build_execution_trace
 from reporting.report_generator import generate_pdf_report
 
+# Phase 19-21: Mission, AOI, NL Geo Operations
+from agent.mission import create_mission, get_mission, list_missions
+from agent.aoi import parse_aoi, crop_file_to_aoi
+from agent.nl_geo_ops import parse_geo_constraints
+
 router = APIRouter()
 
 UPLOAD_BASE_DIR = Path(__file__).resolve().parent.parent / "data" / "uploads"
@@ -45,6 +50,8 @@ QUERY_REPORT_CACHE: Dict[str, Dict[str, Any]] = {}
 class QueryRequest(BaseModel):
     upload_id: str
     query_text: str
+    mission_id: Optional[str] = None
+    aoi: Optional[Dict[str, Any]] = None
 
 
 class DirectVQARequest(BaseModel):
@@ -318,6 +325,13 @@ async def process_query(request: QueryRequest):
         geospatial_report=geo_report,
     )
 
+    # Attach AOI to visual artifacts if specified
+    if request.aoi:
+        from agent.aoi import parse_aoi
+        aoi_spec = parse_aoi(request.aoi)
+        if aoi_spec:
+            fusion_result.setdefault("visual_artifacts", {})["aoi"] = aoi_spec.to_dict()
+
     response_payload = {
         "status": "completed",
         "query_id": query_id,
@@ -342,6 +356,12 @@ async def process_query(request: QueryRequest):
         "trace_data": trace,
         "timestamp": datetime.now(timezone.utc).isoformat(),
     }
+
+    # Record in mission if active
+    if request.mission_id:
+        mission = get_mission(request.mission_id)
+        if mission:
+            mission.add_query_result(query_text, response_payload)
 
     return response_payload
 
@@ -438,3 +458,41 @@ async def debug_fusion(request: DirectFusionRequest):
     p_opt = list(m_opt["files"].values())[0]["saved_path"]
     p_sar = list(m_sar["files"].values())[0]["saved_path"]
     return fuse_optical_and_sar(p_opt, p_sar, request.question)
+
+
+# --- Mission / Investigation Mode Endpoints (Phase 19-20) ---
+
+class MissionCreateRequest(BaseModel):
+    upload_id: str
+    objective: Optional[str] = None
+
+
+@router.post("/mission/create")
+async def create_mission_endpoint(request: MissionCreateRequest):
+    """Creates a new investigation mission for multi-turn analysis."""
+    manifest = UPLOAD_MANIFEST_STORE.get(request.upload_id)
+    if not manifest:
+        raise HTTPException(status_code=404, detail=f"Upload session '{request.upload_id}' not found.")
+    mission = create_mission(upload_id=request.upload_id, objective=request.objective)
+    return {
+        "status": "created",
+        "mission_id": mission.mission_id,
+        "upload_id": mission.upload_id,
+        "objective": mission.objective,
+        "created_at": mission.created_at,
+    }
+
+
+@router.get("/mission/{mission_id}")
+async def get_mission_endpoint(mission_id: str):
+    """Retrieves mission context and analysis history."""
+    mission = get_mission(mission_id)
+    if not mission:
+        raise HTTPException(status_code=404, detail=f"Mission '{mission_id}' not found.")
+    return mission.to_dict()
+
+
+@router.get("/missions")
+async def list_missions_endpoint():
+    """Lists all active missions."""
+    return {"missions": list_missions()}

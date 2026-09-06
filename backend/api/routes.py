@@ -496,3 +496,47 @@ async def get_mission_endpoint(mission_id: str):
 async def list_missions_endpoint():
     """Lists all active missions."""
     return {"missions": list_missions()}
+
+
+@router.post("/analyze")
+async def analyze_endpoint(
+    query: str = Form(...),
+    images: Optional[List[UploadFile]] = File(None),
+):
+    """
+    Unified analysis endpoint expected by modern SatQuery React UI.
+    Receives raw uploaded images and query, processes via central pipeline,
+    and returns comprehensive AnalysisResponse.
+    """
+    if not images:
+        raise HTTPException(status_code=400, detail="Please provide at least one satellite image.")
+
+    upload_res = await upload_files(
+        optical=None,
+        sar=None,
+        before=None,
+        after=None,
+        files=images,
+        is_benchmark=True,
+    )
+    upload_id = upload_res["upload_id"]
+
+    q_req = QueryRequest(upload_id=upload_id, query_text=query)
+    q_res = await process_query(q_req)
+
+    steps = q_res.get("execution_trace", {}).get("steps", [])
+    model_name = steps[0].get("model") if steps else "MBZUAI/geochat-7B"
+
+    return {
+        "answer": q_res.get("answer"),
+        "confidence": q_res.get("confidence"),
+        "model": model_name,
+        "task": q_res.get("task"),
+        "evidence": q_res.get("evidence", []),
+        "metadata": [f.get("metadata", {}) for f in upload_res.get("files", {}).values()],
+        "execution_trace": q_res.get("execution_trace"),
+        "report_id": q_res.get("query_id"),
+        "report_url": f"/report/{q_res.get('query_id')}",
+        "warnings": q_res.get("warnings", []),
+    }
+

@@ -516,7 +516,13 @@ class RemoteSensingVLMServer:
             try:
                 from gradio_client import Client
                 headers = {"Authorization": f"Bearer {token}"} if token else None
-                self._hf_clients[cache_key] = Client(cleaned_id, token=token, headers=headers)
+                self._hf_clients[cache_key] = Client(
+                    cleaned_id, 
+                    token=token, 
+                    headers=headers,
+                    download_files=False,
+                    httpx_kwargs={"timeout": 60.0}
+                )
                 logger.info(f"[Remote VLM] Successfully connected Gradio Client to: {cleaned_id} (authenticated: {bool(token)})")
             except Exception as e:
                 logger.warning(f"[Remote VLM] Could not connect Gradio Client to {cleaned_id}: {e}")

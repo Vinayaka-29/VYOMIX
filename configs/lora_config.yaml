@@ -23,7 +23,7 @@ percentile_stretch:
 - 2
 - 98
 quantization: 4-bit
-remote_vlm_url: https://33b877a5fad6a720e4.gradio.live
+remote_vlm_url: https://c55e0b5eb4af23e2ec.gradio.live
 save_safetensors: true
 seed: 42
 target_modules:

@@ -115,8 +115,11 @@ def detect_modality(
     }
 
     # 4. Decision Heuristic
-    # Slot designation hint gives prior bias
-    slot_is_sar = slot_hint and "sar" in slot_hint.lower()
+    # Slot or filename designation hint gives prior bias
+    fn_lower = Path(file_path).name.lower()
+    is_sar_hint = (slot_hint and "sar" in slot_hint.lower()) or any(
+        k in fn_lower for k in ("sar", "s1", "sentinel1", "radar", "backscatter")
+    )
 
     if band_count > 4:
         return {
@@ -127,7 +130,7 @@ def detect_modality(
             "metrics": metrics,
         }
 
-    if band_count in (3, 4) and not slot_is_sar:
+    if band_count in (3, 4) and not is_sar_hint:
         return {
             "modality": "OPTICAL",
             "confidence": 0.92,
@@ -137,10 +140,10 @@ def detect_modality(
         }
 
     # Single or dual band analysis: distinguish grayscale Optical vs SAR speckle
-    if band_count in (1, 2):
-        # SAR typically exhibits significant speckle noise (high CV) and strong corner reflector spikes
-        if slot_is_sar or (cv > 0.45 and dynamic_range_ratio > 3.0):
-            conf = 0.94 if slot_is_sar else 0.82
+    if band_count in (1, 2) or is_sar_hint:
+        # SAR typically exhibits significant speckle noise (high CV) or filename cues
+        if is_sar_hint or (cv > 0.4 and dynamic_range_ratio > 2.0) or cv > 0.5:
+            conf = 0.94 if is_sar_hint else 0.85
             return {
                 "modality": "SAR",
                 "confidence": conf,

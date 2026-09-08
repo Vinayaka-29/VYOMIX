@@ -56,17 +56,13 @@ def validate_geospatial_compatibility(
         report["pairwise_metrics"]["temporal_pair"] = reg
 
         if not reg["is_co_registered"]:
-            if reg["flag"] in [
-                "CRS_MISMATCH",
-                "GEOREFERENCING_MISMATCH",
-                "MISSING_GEOREFERENCING",
-            ]:
-                return (
-                    False,
-                    f"Geospatial Compatibility Error: {reg['warning']}",
-                    report,
+            if reg["flag"] in ["MISSING_GEOREFERENCING", "GEOREFERENCING_MISMATCH", "CRS_MISMATCH"]:
+                # Graceful pixel-space fallback for benchmark images, PNGs, and ungeoreferenced pairs
+                report["warnings"].append(
+                    f"Pixel-Space Comparison: {reg.get('warning', 'Imagery lacks embedded GeoTIFF CRS')}. "
+                    "Proceeding with pixel-aligned structural analysis."
                 )
-
+                report["spatial_alignment_status"] = "PIXEL_ALIGNED"
             elif reg["flag"] == "NO_OVERLAP":
                 return (
                     False,
@@ -74,9 +70,8 @@ def validate_geospatial_compatibility(
                     "Before and After rasters have zero geographical overlap.",
                     report,
                 )
-
             else:
-                report["warnings"].append(reg["warning"])
+                report["warnings"].append(reg.get("warning", "Marginal spatial overlap detected."))
                 report["spatial_alignment_status"] = "MARGINAL_OVERLAP"
 
         # Check resolution compatibility
@@ -93,7 +88,7 @@ def validate_geospatial_compatibility(
                     f"({res_b} {unit_b}) and After resolution "
                     f"({res_a} {unit_a}) differ by >3x. "
                     f"Differencing may require resampling."
-    )
+                )
 
     # 3. Optical + SAR Cross-Modal Pairwise Validation
     elif pipeline_type == "cross_modal":
@@ -109,17 +104,12 @@ def validate_geospatial_compatibility(
         report["pairwise_metrics"]["cross_modal_pair"] = reg
 
         if not reg["is_co_registered"]:
-            if reg["flag"] in [
-                "CRS_MISMATCH",
-                "GEOREFERENCING_MISMATCH",
-                "MISSING_GEOREFERENCING",
-            ]:
-                return (
-                    False,
-                    f"Cross-Modal Compatibility Error: {reg['warning']}",
-                    report,
+            if reg["flag"] in ["MISSING_GEOREFERENCING", "GEOREFERENCING_MISMATCH", "CRS_MISMATCH"]:
+                report["warnings"].append(
+                    f"Pixel-Space Comparison: {reg.get('warning', 'Imagery lacks embedded GeoTIFF CRS')}. "
+                    "Proceeding with cross-modal fusion in pixel grid space."
                 )
-
+                report["spatial_alignment_status"] = "PIXEL_ALIGNED"
             elif reg["flag"] == "NO_OVERLAP":
                 return (
                     False,
@@ -127,9 +117,8 @@ def validate_geospatial_compatibility(
                     "Optical and SAR images do not observe the same geographical footprint.",
                     report,
                 )
-
             else:
-                report["warnings"].append(reg["warning"])
+                report["warnings"].append(reg.get("warning", "Marginal spatial overlap detected."))
                 report["spatial_alignment_status"] = "MARGINAL_OVERLAP"
 
         # Check Optical + SAR resolution compatibility
